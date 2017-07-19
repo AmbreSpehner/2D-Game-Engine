@@ -144,15 +144,19 @@ protected:
 	/**
 	 *	@brief	Render the renderable.
 	 *
-	 *	Render the renderable.
+	 *	Render the renderable using indices.
 	 */
-	void Render()
+	void RenderIndices()
 	{
 		m_IBO.Bind();
 
 		glDrawElements( GL_TRIANGLES, m_IBO.GetCount(), GL_UNSIGNED_INT, nullptr );
 
 		m_IBO.Unbind();
+	}
+
+	void RenderVertices( )
+	{
 	}
 
 protected:

@@ -6,7 +6,7 @@
 #include "Renderable.h"
 #include "RectangleShape.h"
 #include "Sprite.h"
-#include "Texture.h"
+#include "../texture/Texture.h"
 
 class GameObject
 {

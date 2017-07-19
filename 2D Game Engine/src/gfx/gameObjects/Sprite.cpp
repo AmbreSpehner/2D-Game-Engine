@@ -92,7 +92,7 @@ void Sprite::Render( Shader& shader )
 	model = glm::translate( model, m_Position );
 	shader.SetUniformMat4f( "model", model );
 
-	Renderable::Render();
+	Renderable::RenderIndices();
 
 	shader.SetUniform1i( "useTexture", false );
 }

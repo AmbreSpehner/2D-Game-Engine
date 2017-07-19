@@ -50,5 +50,5 @@ void RectangleShape::Render( Shader& shader )
 
 	shader.SetUniformMat4f( "model", model );
 
-	Renderable::Render();
+	Renderable::RenderIndices();
 }

@@ -130,7 +130,7 @@
     <ClCompile Include="src\gfx\buffers\VertexBuffer.cpp" />
     <ClCompile Include="src\gfx\gameObjects\RectangleShape.cpp" />
     <ClCompile Include="src\gfx\gameObjects\Sprite.cpp" />
-    <ClCompile Include="src\gfx\gameObjects\Texture.cpp" />
+    <ClCompile Include="src\gfx\texture\Texture.cpp" />
     <ClCompile Include="src\gfx\Renderer2D.cpp" />
     <ClCompile Include="src\gfx\Window.cpp" />
     <ClCompile Include="src\shader\Shader.cpp" />
@@ -151,9 +151,9 @@
     <ClInclude Include="src\gfx\gameObjects\RectangleShape.h" />
     <ClInclude Include="src\gfx\gameObjects\Renderable.h" />
     <ClInclude Include="src\gfx\gameObjects\Sprite.h" />
-    <ClInclude Include="src\gfx\gameObjects\Texture.h" />
+    <ClInclude Include="src\gfx\texture\Texture.h" />
     <ClInclude Include="src\gfx\Renderer2D.h" />
-    <ClInclude Include="src\gfx\res\TextureCodex.h" />
+    <ClInclude Include="src\gfx\texture\TextureCodex.h" />
     <ClInclude Include="src\gfx\shapes\Rect.h" />
     <ClInclude Include="src\gfx\Window.h" />
     <ClInclude Include="src\shader\Shader.h" />

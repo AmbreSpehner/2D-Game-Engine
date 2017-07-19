@@ -16,7 +16,7 @@
 #include <unordered_map>
 
 // Include Project
-#include "../gameObjects/Texture.h"
+#include "Texture.h"
 
 /**
  *	@brief	Holds all textures until deletion.

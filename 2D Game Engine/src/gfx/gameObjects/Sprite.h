@@ -13,7 +13,7 @@
 
 // Include Project
 #include "Renderable.h"
-#include "Texture.h"
+#include "../texture/Texture.h"
 #include "../shapes/Rect.h"
 
 /**
