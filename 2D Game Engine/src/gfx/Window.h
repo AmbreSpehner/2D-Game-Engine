@@ -81,6 +81,15 @@ public:
 	void SetIcon( const std::string& path );
 
 	/**
+	 *	@brief	Enable frame rate limit.
+	 *
+	 *	Enable frame rate limit.
+	 *
+	 *	@param	state, boolean state.
+	 */
+	void EnableFrameLimit( bool state );
+
+	/**
 	 *	@brief Set a KeyCallback.
 	 *
 	 *	Set a KeyCallback to process input.

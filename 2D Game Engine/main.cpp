@@ -29,6 +29,7 @@ int main( )
 {
 	Window window( 1000, 800, "OpenGL" );
 	window.SetIcon( "res/wall.jpg" );
+	window.EnableFrameLimit( true );
 
 	TextureCodex::Discard( );
 

@@ -35,7 +35,6 @@ Window::Window( const GLint width, const GLint height, const std::string& title 
 	}
 
 	glfwMakeContextCurrent( m_pWindow );
-	glfwSwapInterval( 1 );
 
 	glewExperimental = 1;
 	if( glewInit() != 0 )
@@ -88,7 +87,16 @@ void Window::SetIcon( const std::string & path )
 	glfwSetWindowIcon( m_pWindow, 1, &icon );
 }
 
+void Window::EnableFrameLimit( bool state )
+{
+	if( state == true )
+	{
+		glfwSwapInterval( 1 );
+	}
+}
+
 void Window::SetKeyCallback( GLFWkeyfun keyCallback )
 {
 	glfwSetKeyCallback( m_pWindow, keyCallback );
 }
+
