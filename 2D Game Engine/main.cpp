@@ -43,6 +43,13 @@ int main( )
 
 	Sprite sprite( glm::vec3( 0.0f, 0.0f, 0.0f ), TextureCodex::Acquire( "res/wall.jpg" ) );
 
+	glm::vec2 test( 69, 420 );
+	glm::vec2 test2( 10, 10 );
+
+	test.x = test2.x;
+
+	test.y = test2.y;
+
 	// DeltaTime.
 	auto timePoint = std::chrono::steady_clock::now( );
 

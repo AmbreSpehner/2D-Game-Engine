@@ -38,7 +38,7 @@ public:
 	 *	@param	DX, width of the rectangle
 	 *	@param	DY, height of the rectangle
 	 */
-	Rect( T X, T Y, T DX, T DY )
+	Rect( const T X, const T Y, const T DX, const T DY )
 		: 
 		x( X ), y( Y ),
 		dx( DX ), dy( DY )
@@ -54,7 +54,7 @@ public:
 	 *	@param	position, the xy vector of the rectangle
 	 *	@param	size, the width and height vector of the rectangle
 	 */
-	Rect( glm::vec2& position, glm::vec2& size )
+	Rect( const glm::vec2& position, const glm::vec2& size )
 		: Rect( position.x, position.y, size.x, size.y )
 	{
 
@@ -88,10 +88,10 @@ public:
 	 */
 	void SetRect( const glm::vec3& position, const glm::vec2& size )
 	{
-		position.x = x;
-		position.y = y;
-		size.x = dx;
-		size.y = dy;
+		x = position.x;
+		y = position.y;
+		dx = size.x;
+		dy = size.y;
 	}
 
 	/**
@@ -104,8 +104,8 @@ public:
 	 */
 	void SetPosition( const T X, const T Y )
 	{
-		X = x;
-		Y = y;
+		x = X;
+		y = Y;
 	}
 
 	/**
@@ -117,8 +117,8 @@ public:
 	 */
 	void SetPosition( const glm::vec3& position )
 	{
-		position.x = x;
-		position.y = y;
+		x = position.x;
+		y = position.y;
 	}
 
 	/**
@@ -131,8 +131,8 @@ public:
 	 */
 	void SetSize( const T DX, const T DY )
 	{
-		DX = dx;
-		DY = dy;
+		dx = DX;
+		dy = DY;
 	}
 
 	/**
@@ -144,8 +144,8 @@ public:
 	 */
 	void SetSize( const glm::vec2& size )
 	{
-		size.x = x;
-		size.y = y;
+		x = size.x;
+		y = size.y;
 	}
 
 	/**
