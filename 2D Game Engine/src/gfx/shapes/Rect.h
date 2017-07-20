@@ -45,6 +45,7 @@ public:
 	{
 
 	}
+
 	/**
 	 *	@brief	Constructor.
 	 *
@@ -60,21 +61,115 @@ public:
 	}
 
 	/**
-	 *	@brief	Create a rectangle.
+	 *	@brief	Set the rectangle.
 	 *	
-	 *	Create a rectangle.
+	 *	Set the rectangle.
 	 *
 	 *	@param	X, position x of the rectangle
 	 *	@param	Y, position y of the rectangle
 	 *	@param	DX, width of the rectangle
 	 *	@param	DY, height of the rectangle
 	 */
-	void SetRect( T X, T Y, T DX, T DY )
+	void SetRect( const T X, const T Y, const T DX, const T DY )
 	{
 		x = X;
 		y = Y;
 		dx = DX;
 		dy = DY;
+	}
+
+	/**
+	 *	@brief	Set the rectangle.
+	 *
+	 *	Set the rectangle.
+	 *
+	 *	@param	position, position of the rectangle
+	 *	@param	size, size of the rectangle
+	 */
+	void SetRect( const glm::vec3& position, const glm::vec2& size )
+	{
+		position.x = x;
+		position.y = y;
+		size.x = dx;
+		size.y = dy;
+	}
+
+	/**
+	 *	@brief	Set the position of the rectangle.
+	 *
+	 *	Set the position of the rectangle.
+	 *
+	 *	@param	X, position on the x-axis of the rectangle
+	 *	@param	Y, position on the y-axis of the rectangle
+	 */
+	void SetPosition( const T X, const T Y )
+	{
+		X = x;
+		Y = y;
+	}
+
+	/**
+	 *	@brief	Set the position of the rectangle.
+	 *
+	 *	Set the position of the rectangle.
+	 *
+	 *	@param	position, position of the rectangle
+	 */
+	void SetPosition( const glm::vec3& position )
+	{
+		position.x = x;
+		position.y = y;
+	}
+
+	/**
+	 *	@brief	Set the size of the rectangle.
+	 *
+	 *	Set the size of the rectangle.
+	 *
+	 *	@param	DX, width of the rectangle
+	 *	@param	DY, height of the rectangle
+	 */
+	void SetSize( const T DX, const T DY )
+	{
+		DX = dx;
+		DY = dy;
+	}
+
+	/**
+	 *	@brief	Set the size of the rectangle.
+	 *
+	 *	Set the size of the rectangle.
+	 *
+	 *	@param	size, size of the rectangle
+	 */
+	void SetSize( const glm::vec2& size )
+	{
+		size.x = x;
+		size.y = y;
+	}
+
+	/**
+	 *	@brief	Get the position of the rectangle.
+	 *
+	 *	Get the position of the rectangle in 3D.
+	 *
+	 *	@return	glm::vec3 position
+	 */
+	const glm::vec3& GetPosition( ) const
+	{
+		return glm::vec3( x, y, 0 );
+	}
+
+	/**
+	 *	@brief	Get the size of the rectangle.
+	 *
+	 *	Get the size of the rectangle
+	 *
+	 *	@return	glm::vec2 size
+	 */
+	const glm::vec2& GetSize( ) const
+	{
+		return glm::vec2( dx, dy );
 	}
 
 	/**
