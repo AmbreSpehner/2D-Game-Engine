@@ -71,6 +71,17 @@ public:
 	 */
 	void SetPosition( const glm::vec3& position ) { m_Position = position; }
 	/**
+	 *	@brief	Set the position of the renderable.
+	 *
+	 *	Set the position of the renderable.
+	 *
+	 *	@param	x, position x of the renderable
+	 *	@param	y, position y of the renderable
+	 *	@param	z, position z of the renderable
+	 */
+	void SetPosition( const float x, const float y, const float z ) { m_Position = glm::vec3( x, y, z ); }
+
+	/**
 	 *	@brief	Set the size of the renderable.
 	 *
 	 *	Set the size of the renderable.
@@ -91,6 +102,18 @@ public:
 
 		m_VertVBO = VertexBuffer( vertices, vertices.size(), 3 );
 		m_VAO.BindBuffer( m_VertVBO, ShaderLocation::POSITION, 0, 0 );
+	}
+	/**
+	 *	@brief	Set the size of the renderable.
+	 *
+	 *	Set the size of the renderable.
+	 *
+	 *	@param	dx, width of the renderable
+	 *	@param	dy, height of the renderable
+	 */
+	void SetSize( const float dx, const float dy )
+	{
+		SetSize( glm::vec2( dx, dy ) );
 	}
 	/**
 	 *	@brief	Set the colour of the renderable.

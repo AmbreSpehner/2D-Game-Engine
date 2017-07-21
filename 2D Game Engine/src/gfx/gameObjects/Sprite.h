@@ -53,7 +53,55 @@ public:
 	 */
 	void Render( Shader& shader ) override;
 
-	void AddTextureRect( float x, float y, float dx, float dy );
+	/**
+	 *	@brief	Scale the size of the sprite.
+	 *
+	 *	Scale the size of the sprite.
+	 *
+	 *	@param	scale, float to change the scale of the image
+	 */
+	void ScaleSprite( float scale );
+	
+	/**
+	 *	@brief	Set the part of the texture the sprite uses.
+	 *
+	 *	Set the part of the texture the sprite uses.
+	 *
+	 *	@param	rect, the rectangle that define the part to be used
+	 */
+	void SetTextureRect( const FloatRect& rect );
+	/**
+	 *	@brief	Set the part of the texture the sprite uses.
+	 *
+	 *	Set the part of the texture the sprite uses.
+	 *
+	 *	@param	x, x position of the rectangle
+	 *	@param	y, y position of the rectangle
+	 *	@param	dx, width of the rectangle
+	 *	@param	dy, height of the rectangle
+	 */
+	void SetTextureRect( const float x, const float y, const float dx, const float dy );
+	/**
+	 *	@brief	Set the part of the texture the sprite uses.
+	 *
+	 *	Set the part of the texture the sprite uses.
+	 *
+	 *	@param	position, position of the rectangle
+	 *	@param	size, size of the rectangle
+	 */
+	void SetTextureRect( const glm::vec3& position, const glm::vec2& size );
+
+	void SetTextCoords( const float x, const float y, const float dx, const float dy );
+	void SetTextCoords( const glm::vec3& position, const glm::vec2& size );
+
+	/**
+	 *	@brief	default move operator.
+	 *
+	 *	Default move operator.
+	 *
+	 *	@param	rSprite, rValue sprite
+	 */
+	Sprite& operator=( Sprite&& rSprite ) = default;
 
 private:
 	VertexBuffer m_TexCoordVBO;

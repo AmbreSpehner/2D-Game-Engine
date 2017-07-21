@@ -12,6 +12,8 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+#include <iostream>
+
 Sprite::Sprite( const glm::vec3 & position, std::shared_ptr<Texture> pTexture )
 	:
 	Renderable( position, pTexture->GetSize() ),
@@ -50,7 +52,7 @@ Sprite::Sprite( const glm::vec3& position, const glm::vec2& size, std::shared_pt
 	Renderable( position, size ),
 	m_pTexture( pTexture )
 {
-	m_TextureRect.SetRect( 0.0f, 0.0f, 1.0f, 1.0f );
+	m_TextureRect.SetRect( 0.0f, 0.0f, 1.0f, 1.0f );	
 
 	std::vector<GLfloat> vertices =
 	{
@@ -97,17 +99,50 @@ void Sprite::Render( Shader& shader )
 	shader.SetUniform1i( "useTexture", false );
 }
 
-void Sprite::AddTextureRect( float x, float y, float dx, float dy )
+void Sprite::SetTextureRect( const FloatRect& rect )
+{
+	m_TextureRect.SetRect( rect.x, rect.y, rect.dx, rect.dy );
+
+	SetSize( glm::vec2( rect.dx, rect.dy ) );
+	SetTextCoords( m_TextureRect.x, m_TextureRect.y, m_TextureRect.dx, m_TextureRect.dy );
+}
+
+void Sprite::SetTextureRect( float x, float y, float dx, float dy )
+{
+	m_TextureRect.SetRect( x / m_pTexture->GetSize( ).x, y / m_pTexture->GetSize( ).y,
+						   dx / m_pTexture->GetSize( ).x, dy / m_pTexture->GetSize( ).y );
+
+	SetSize( glm::vec2( dx, dy ) );
+	SetTextCoords( m_TextureRect.x, m_TextureRect.y, m_TextureRect.dx, m_TextureRect.dy );
+}
+
+void Sprite::SetTextureRect( const glm::vec3 & position, const glm::vec2 & size )
+{
+	SetTextureRect( position.x, position.y, size.x, size.y );
+}
+
+void Sprite::SetTextCoords( const float x, const float y, const float dx, const float dy )
 {
 	std::vector<GLfloat> textVert =
 	{
-		x / m_pTexture->GetSize().x, y / m_pTexture->GetSize().y,
-		x / m_pTexture->GetSize().x, ( y + dy ) / m_pTexture->GetSize().y,
-		( x + dx ) / m_pTexture->GetSize().x, ( y + dy ) / m_pTexture->GetSize().y,
-		( x + dx ) / m_pTexture->GetSize().x, y / m_pTexture->GetSize().y
+		x, y,
+		x, y + dy,
+		x + dx, y + dy,
+		x + dx, y
 	};
 
-	m_TexCoordVBO = VertexBuffer( textVert, textVert.size(), 2 );
+	m_TexCoordVBO = VertexBuffer( textVert, textVert.size( ), 2 );
 
 	m_VAO.BindBuffer( m_TexCoordVBO, ShaderLocation::TEXTURE_COORD, 0, 0 );
+}
+
+void Sprite::SetTextCoords( const glm::vec3 & position, const glm::vec2 & size )
+{
+	SetTextCoords( position.x, position.y, size.x, size.y );
+}
+
+void Sprite::ScaleSprite( float scale )
+{
+	m_Size *= scale;
+	SetSize( m_Size );
 }

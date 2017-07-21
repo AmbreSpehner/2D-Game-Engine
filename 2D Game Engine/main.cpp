@@ -37,11 +37,9 @@ int main( )
 	VertexArray VAO;
 	Renderer2D renderer;
 
-	GameObject::Factory factory;
-	factory.SetSprite( "block", glm::vec3( 0.0f, 0.0f, 0.0f ), TextureCodex::Acquire( "res/wall.jpg" ) );
-	factory.SetSprite( "block1", glm::vec3( -1000.f, -800.0f, 0.0f ), TextureCodex::Acquire( "res/wall.jpg" ) );
-
-	Sprite sprite( glm::vec3( 0.0f, 0.0f, 0.0f ), TextureCodex::Acquire( "res/wall.jpg" ) );
+	Sprite sprite( glm::vec3( 0.0f, 0.0f, 0.0f ), TextureCodex::Acquire( "res/paddle.png" ) );
+	sprite.SetTextureRect( 0, 16, 32, 8 );
+	sprite.ScaleSprite( 2.0f );
 
 	// DeltaTime.
 	auto timePoint = std::chrono::steady_clock::now( );
@@ -66,7 +64,7 @@ int main( )
 		glm::mat4 view;
 		glm::mat4 projection;
 		view = glm::lookAt( glm::vec3( 0.0f, 0.0f, 1.0f ), glm::vec3( 0.0f, 0.0f, 0.0f ), glm::vec3( 0.0f, 1.0f, 0.0f ) );
-		projection = glm::ortho( -1000.0f, 1000.0f, -800.0f, 800.0f, 0.1f, 100.0f );
+		projection = glm::ortho( -500.0f, 500.0f, -400.0f, 400.0f, 0.1f, 100.0f );
 
 		shader.SetUniformMat4f( "model", model );
 		shader.SetUniformMat4f( "view", view );
@@ -75,10 +73,6 @@ int main( )
 		VAO.Bind( );
 
 		sprite.Render( shader );
-
-		// renderer.Submit( factory.renderableMap["block"].get() );
-		// renderer.Submit( factory.renderableMap["block1"].get() );
-		renderer.Flush( VAO, shader );
 
 		VAO.Unbind( );
 

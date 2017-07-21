@@ -57,9 +57,8 @@ public:
 		return glm::vec2( m_Width, m_Height );
 	}
 
-public:
+private:
 	int m_Width, m_Height;
 
-private:
 	GLuint m_TextureID;
 };

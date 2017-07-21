@@ -45,12 +45,15 @@
     <ClCompile Include="src\gfx\texture\Texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\gfx\Animation\Animation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\block_white.png">
+    <Image Include="res\paddle.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\wall.jpg">
+    <Image Include="res\background_blue1.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
@@ -99,6 +102,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\gfx\texture\Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gfx\Animation\Animation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
