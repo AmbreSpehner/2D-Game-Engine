@@ -140,6 +140,15 @@ public:
 	 */
 	const glm::vec4& GetColour() const { return m_Colour; }
 
+	/**
+	 *	@brief	Default move operator.
+	 *
+	 *	Default move operator.
+	 *
+	 *	@return	renderable, rvalue renderable object
+	 */
+	Renderable& operator=( Renderable&& renderable ) = default;
+
 protected:
 	/**
 	 *	@brief	Render the renderable.
