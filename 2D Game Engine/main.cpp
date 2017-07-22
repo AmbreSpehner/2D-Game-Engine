@@ -23,6 +23,7 @@
 #include "src/shader/Shader.h"
 #include "src/utils/File_Reader.h"
 #include "src/gfx/Animation/Animation.h"
+#include "src/gfx/gameObjects/TriangleShape.h"
 
 std::unordered_map<std::string, std::shared_ptr<Texture>> TextureCodex::m_pTextureMap;
 
@@ -40,10 +41,12 @@ int main( )
 
 	Sprite sprite( glm::vec3( 0.0f, 0.0f, 0.0f ), TextureCodex::Acquire( "res/paddle.png" ) );
 	sprite.SetTextureRect( 0, 16, 32, 8 );
+	sprite.ScaleSprite( 3.0f );
 
 	Animation anim( 0.0f, 16.0f, 32.0f, 8.0f, 16, 0.5f );
 
-	sprite.ScaleSprite( 3.0f );
+	TriangleShape shape( glm::vec3( -200.0f, -200.0f, 0.0f ), glm::vec3( 100.0f, 0.0f, 0.0f ),
+						 glm::vec3( 0.0f, -200.0f, 0.0f ), glm::vec4( 1.0f, 0.0f, 0.0f, 1.0f ) );
 
 	// DeltaTime.
 	auto timePoint = std::chrono::steady_clock::now( );
@@ -79,6 +82,7 @@ int main( )
 
 		VAO.Bind( );
 
+		shape.Render( );
 		sprite.Render( shader );
 
 		VAO.Unbind( );

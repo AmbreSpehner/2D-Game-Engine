@@ -48,6 +48,9 @@
     <ClCompile Include="src\gfx\Animation\Animation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\gfx\gameObjects\TriangleShape.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\paddle.png">
@@ -105,6 +108,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\gfx\Animation\Animation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gfx\gameObjects\TriangleShape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
