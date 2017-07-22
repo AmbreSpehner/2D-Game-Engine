@@ -129,6 +129,7 @@
     <ClCompile Include="src\gfx\buffers\IndexBuffer.cpp" />
     <ClCompile Include="src\gfx\buffers\VertexArray.cpp" />
     <ClCompile Include="src\gfx\buffers\VertexBuffer.cpp" />
+    <ClCompile Include="src\gfx\gameObjects\CircleShape.cpp" />
     <ClCompile Include="src\gfx\gameObjects\RectangleShape.cpp" />
     <ClCompile Include="src\gfx\gameObjects\Sprite.cpp" />
     <ClCompile Include="src\gfx\gameObjects\TriangleShape.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="src\gfx\buffers\IndexBuffer.h" />
     <ClInclude Include="src\gfx\buffers\VertexArray.h" />
     <ClInclude Include="src\gfx\buffers\VertexBuffer.h" />
+    <ClInclude Include="src\gfx\gameObjects\CircleShape.h" />
     <ClInclude Include="src\gfx\gameObjects\GameObject.h" />
     <ClInclude Include="src\gfx\gameObjects\RectangleShape.h" />
     <ClInclude Include="src\gfx\gameObjects\Renderable.h" />
