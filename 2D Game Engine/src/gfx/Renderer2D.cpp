@@ -17,7 +17,7 @@ void Renderer2D::Flush( VertexArray& VAO, Shader& shader )
 		Renderable* renderable = m_RenderQueue.front();
 
 		glm::mat4 model;
-		model = glm::translate( model, renderable->GetPosition() );
+		model = glm::translate( model, renderable->GetRectPosition() );
 
 		shader.SetUniformMat4f( "model", model );
 

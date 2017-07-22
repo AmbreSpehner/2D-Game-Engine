@@ -15,6 +15,8 @@
 #include "../buffers/VertexArray.h"
 #include "../../shader/Shader.h"
 
+#include <iostream>
+
 /**
  *	@brief	Base class for all square objects to be rendered.
  *
@@ -77,6 +79,14 @@ public:
 		: m_Position( position ), m_Size( size ), m_Colour( colour ), m_CurrentType( type )
 	{	}
 
+	Renderable( const glm::vec3& vertPos1, const glm::vec3& vertPos2, const glm::vec3& vertPos3, const glm::vec4& colour )
+		: m_VertPos1( vertPos1 ), m_VertPos2( vertPos2 ), m_VertPos3( vertPos3 ), m_Colour( colour )
+	{ m_CurrentType = 0; }
+
+	Renderable( const glm::vec3& vertPos1, const glm::vec3& vertPos2, const glm::vec3& vertPos3, const glm::vec4& colour, int type )
+		: m_VertPos1( vertPos1 ), m_VertPos2( vertPos2 ), m_VertPos3( vertPos3 ), m_Colour( colour ), m_CurrentType( type )
+	{	}
+
 	/**
 	 *	@brief	Destructor.
 	 *
@@ -93,7 +103,7 @@ public:
 	 *
 	 *	@param	position, vec3 position of the renderable
 	 */
-	void SetPosition( const glm::vec3& position ) { m_Position = position; }
+	void SetRectPosition( const glm::vec3& position ) { m_Position = position; }
 	/**
 	 *	@brief	Set the position of the renderable.
 	 *
@@ -103,7 +113,7 @@ public:
 	 *	@param	y, position y of the renderable
 	 *	@param	z, position z of the renderable
 	 */
-	void SetPosition( const float x, const float y, const float z ) { m_Position = glm::vec3( x, y, z ); }
+	void SetRectPosition( const float x, const float y, const float z ) { m_Position = glm::vec3( x, y, z ); }
 
 	/**
 	 *	@brief	Set the size of the renderable.
@@ -112,7 +122,7 @@ public:
 	 *
 	 *	@param	size, vec2 size of the renderable
 	 */
-	void SetSize( const glm::vec2& size ) 
+	void SetRectSize( const glm::vec2& size ) 
 	{ 
 		m_Size = size; 
 	
@@ -135,9 +145,9 @@ public:
 	 *	@param	dx, width of the renderable
 	 *	@param	dy, height of the renderable
 	 */
-	void SetSize( const float dx, const float dy )
+	void SetRectSize( const float dx, const float dy )
 	{
-		SetSize( glm::vec2( dx, dy ) );
+		SetRectSize( glm::vec2( dx, dy ) );
 	}
 	/**
 	 *	@brief	Set the colour of the renderable.
@@ -181,7 +191,7 @@ public:
 	 *
 	 *	@return glm::vec3
 	 */
-	const glm::vec3& GetPosition() const { return m_Position; }
+	const glm::vec3& GetRectPosition() const { return m_Position; }
 	/**
 	 *	@brief	Get the size of the renderable.
 	 *
@@ -189,7 +199,7 @@ public:
 	 *
 	 *	@return glm::vec2
 	 */
-	const glm::vec2& GetSize() const { return m_Size; }
+	const glm::vec2& GetRectSize() const { return m_Size; }
 	/**
 	 *	@brief	Get the colour of the renderable.
 	 *
@@ -214,7 +224,7 @@ protected:
 	 *
 	 *	Render the renderable using indices.
 	 */
-	void RenderIndices()
+	void RenderIndices( )
 	{
 		m_IBO.Bind();
 
@@ -230,10 +240,26 @@ protected:
 		m_IBO.Unbind();
 	}
 
+	void RenderVertices( )
+	{
+		if( m_CurrentType == ShapeType::FILLED )
+		{
+			glDrawArrays( GL_TRIANGLES, 0, 3 );
+		}
+		else if( m_CurrentType == ShapeType::LINE )
+		{
+			glDrawArrays( GL_LINE_LOOP, 0, 3 );
+		}
+	}
+
 protected:
 	glm::vec3 m_Position;
 	glm::vec2 m_Size;
 	glm::vec4 m_Colour;
+
+	glm::vec3 m_VertPos1;
+	glm::vec3 m_VertPos2;
+	glm::vec3 m_VertPos3;
 
 	int m_CurrentType;
 

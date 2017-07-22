@@ -108,14 +108,14 @@ void Sprite::ScaleSprite( float scale )
 {
 	m_Scale = scale;
 
-	SetSize( m_Size * m_Scale );
+	SetRectSize( m_Size * m_Scale );
 }
 
 void Sprite::SetTextureRect( const FloatRect& rect )
 {
 	m_TextureRect.SetRect( rect.x, rect.y, rect.dx, rect.dy );
 
-	SetSize( glm::vec2( rect.dx, rect.dy ) * m_Scale );
+	SetRectSize( glm::vec2( rect.dx, rect.dy ) * m_Scale );
 	SetTextCoords( m_TextureRect.x, m_TextureRect.y, m_TextureRect.dx, m_TextureRect.dy );
 }
 
@@ -124,7 +124,7 @@ void Sprite::SetTextureRect( float x, float y, float dx, float dy )
 	m_TextureRect.SetRect( x / m_pTexture->GetSize( ).x, y / m_pTexture->GetSize( ).y,
 						   dx / m_pTexture->GetSize( ).x, dy / m_pTexture->GetSize( ).y );
 
-	SetSize( glm::vec2( dx, dy ) * m_Scale );
+	SetRectSize( glm::vec2( dx, dy ) * m_Scale );
 	SetTextCoords( m_TextureRect.x, m_TextureRect.y, m_TextureRect.dx, m_TextureRect.dy );
 }
 
