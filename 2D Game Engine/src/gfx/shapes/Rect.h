@@ -184,15 +184,6 @@ public:
 		return glm::vec2( ( x + dx ) / 2.0f, ( y + dy ) / 2.0f );
 	}
 
-	/**
-	 *	@brief	Default move operator.
-	 *
-	 *	Default move operator.
-	 *
-	 *	@param	rect, rValue rectangle object
-	 */
-	Rect& operator=( Rect<T>&& rect ) = default;
-
 public:
 	T x, y;
 	T dx, dy;

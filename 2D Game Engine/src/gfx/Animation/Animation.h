@@ -1,15 +1,15 @@
 #pragma once
 
+// Include Project
 #include "../texture/TextureCodex.h"
 #include "../gameObjects/Sprite.h"
 #include "../shapes/Rect.h"
 
-/*
 class Animation
 {
 public:
 	Animation( ) = default;
-	Animation( int x, int y, int dx, int dy, int numFrames, float holdTime );
+	Animation( float x, float y, float dx, float dy, int numFrames, float holdTime );
 
 	void ApplyToSprite( Sprite& sprite ) const;
 	void Update( float deltaTime );
@@ -25,4 +25,3 @@ private:
 	std::shared_ptr<Texture> m_pTexture;
 	std::vector<FloatRect> m_Frames;
 };
-*/

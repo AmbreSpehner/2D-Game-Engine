@@ -99,11 +99,23 @@ void Sprite::Render( Shader& shader )
 	shader.SetUniform1i( "useTexture", false );
 }
 
+void Sprite::SetTexture( std::shared_ptr<Texture> pTexture )
+{
+	m_pTexture = pTexture;
+}
+
+void Sprite::ScaleSprite( float scale )
+{
+	m_Scale = scale;
+
+	SetSize( m_Size * m_Scale );
+}
+
 void Sprite::SetTextureRect( const FloatRect& rect )
 {
 	m_TextureRect.SetRect( rect.x, rect.y, rect.dx, rect.dy );
 
-	SetSize( glm::vec2( rect.dx, rect.dy ) );
+	SetSize( glm::vec2( rect.dx, rect.dy ) * m_Scale );
 	SetTextCoords( m_TextureRect.x, m_TextureRect.y, m_TextureRect.dx, m_TextureRect.dy );
 }
 
@@ -112,7 +124,7 @@ void Sprite::SetTextureRect( float x, float y, float dx, float dy )
 	m_TextureRect.SetRect( x / m_pTexture->GetSize( ).x, y / m_pTexture->GetSize( ).y,
 						   dx / m_pTexture->GetSize( ).x, dy / m_pTexture->GetSize( ).y );
 
-	SetSize( glm::vec2( dx, dy ) );
+	SetSize( glm::vec2( dx, dy ) * m_Scale );
 	SetTextCoords( m_TextureRect.x, m_TextureRect.y, m_TextureRect.dx, m_TextureRect.dy );
 }
 
@@ -139,10 +151,4 @@ void Sprite::SetTextCoords( const float x, const float y, const float dx, const 
 void Sprite::SetTextCoords( const glm::vec3 & position, const glm::vec2 & size )
 {
 	SetTextCoords( position.x, position.y, size.x, size.y );
-}
-
-void Sprite::ScaleSprite( float scale )
-{
-	m_Size *= scale;
-	SetSize( m_Size );
 }

@@ -1,6 +1,8 @@
 #include "Animation.h"
-/*
-Animation::Animation( int x, int y, int dx, int dy, int numFrames, float holdTime )
+
+#include <iostream>
+
+Animation::Animation( float x, float y, float dx, float dy, int numFrames, float holdTime )
 	:
 	m_HoldTime( holdTime )
 {
@@ -8,19 +10,21 @@ Animation::Animation( int x, int y, int dx, int dy, int numFrames, float holdTim
 
 	for( int i = 0; i < numFrames; i++ )
 	{
-		m_Frames.emplace_back( glm::vec2{ x, y }, glm::vec2{ dx, dy } );
+		m_Frames.emplace_back( x, y, dx, dy );
 		x += dx;
 	}
 }
 
 void Animation::ApplyToSprite( Sprite & sprite ) const
 {
-	sprite.SetTextureRect( m_Frames[m_FrameIndex] );
+	sprite.SetTextureRect( m_Frames[m_FrameIndex].x, m_Frames[m_FrameIndex].y,
+						   m_Frames[m_FrameIndex].dx, m_Frames[m_FrameIndex].dy );
 }
 
 void Animation::Update( float deltaTime )
 {
 	m_Time += deltaTime;
+
 	while( m_Time >= m_HoldTime )
 	{
 		m_Time -= m_HoldTime;
@@ -35,4 +39,3 @@ void Animation::Advance( )
 		m_FrameIndex = 0;
 	}
 }
-*/

@@ -54,6 +54,15 @@ public:
 	void Render( Shader& shader ) override;
 
 	/**
+	 *	@brief	Set the texture of the sprite.
+	 *
+	 *	Set the texture of the sprite.
+	 *
+	 *	@param	pTexture, shared_ptr to the texture
+	 */
+	void SetTexture( std::shared_ptr<Texture> pTexture );
+
+	/**
 	 *	@brief	Scale the size of the sprite.
 	 *
 	 *	Scale the size of the sprite.
@@ -91,7 +100,27 @@ public:
 	 */
 	void SetTextureRect( const glm::vec3& position, const glm::vec2& size );
 
+	/**
+	 *	@brief	Set the texture coordinates and the according buffers.
+	 *
+	 *	Set the texture coordinates and the according buffers to draw
+	 *	the desired part of the image.
+	 *
+	 *	@param	x, position x of the coordinates
+	 *	@param	y, position y of the coordinates
+	 *	@param	dx, width of the texture
+	 *	@param	dy, height of the texture
+	 */
 	void SetTextCoords( const float x, const float y, const float dx, const float dy );
+	/**
+	 *	@brief	Set the texture coordinates and the according buffers.
+	 *
+	 *	Set the texture coordinates and the according buffers to draw
+	 *	the desired part of the image.
+	 *
+	 *	@param	position, position of the coordinates
+	 *	@param	size, size of the coordinates
+	 */
 	void SetTextCoords( const glm::vec3& position, const glm::vec2& size );
 
 	/**
@@ -104,6 +133,8 @@ public:
 	Sprite& operator=( Sprite&& rSprite ) = default;
 
 private:
+	float m_Scale;
+
 	VertexBuffer m_TexCoordVBO;
 	FloatRect m_TextureRect;
 

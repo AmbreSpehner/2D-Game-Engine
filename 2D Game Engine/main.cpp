@@ -22,6 +22,7 @@
 #include "src/gfx/Renderer2D.h"
 #include "src/shader/Shader.h"
 #include "src/utils/File_Reader.h"
+#include "src/gfx/Animation/Animation.h"
 
 std::unordered_map<std::string, std::shared_ptr<Texture>> TextureCodex::m_pTextureMap;
 
@@ -39,7 +40,10 @@ int main( )
 
 	Sprite sprite( glm::vec3( 0.0f, 0.0f, 0.0f ), TextureCodex::Acquire( "res/paddle.png" ) );
 	sprite.SetTextureRect( 0, 16, 32, 8 );
-	sprite.ScaleSprite( 2.0f );
+
+	Animation anim( 0.0f, 16.0f, 32.0f, 8.0f, 16, 0.5f );
+
+	sprite.ScaleSprite( 3.0f );
 
 	// DeltaTime.
 	auto timePoint = std::chrono::steady_clock::now( );
@@ -69,6 +73,9 @@ int main( )
 		shader.SetUniformMat4f( "model", model );
 		shader.SetUniformMat4f( "view", view );
 		shader.SetUniformMat4f( "projection", projection );
+
+		anim.Update( deltaTime );
+		anim.ApplyToSprite( sprite );
 
 		VAO.Bind( );
 

@@ -187,10 +187,6 @@ protected:
 		m_IBO.Unbind();
 	}
 
-	void RenderVertices( )
-	{
-	}
-
 protected:
 	glm::vec3 m_Position;
 	glm::vec2 m_Size;
