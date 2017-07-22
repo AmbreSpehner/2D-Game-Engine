@@ -41,6 +41,18 @@ public:
 	RectangleShape( const glm::vec3& position, const glm::vec2& size, const glm::vec4& colour );
 
 	/**
+	*	@brief	Constructor.
+	*
+	*	Create the Rectangular shape.
+	*
+	*	@param	position, vec3 position of the shape
+	*	@param	size, vec2 size of the shape
+	*	@param	colour, vec4 colour of the shape
+	*	@param	type, type of rendering
+	*/
+	RectangleShape( const glm::vec3& position, const glm::vec2& size, const glm::vec4& colour, int type );
+
+	/**
 	 *	@brief Render the shape.
 	 *
 	 *	Render the shape to the window.

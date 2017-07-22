@@ -39,6 +39,18 @@ public:
 	 */
 	Renderable( const glm::vec3& position, const glm::vec2& size )
 		: m_Position( position ), m_Size( size )
+	{ m_CurrentType = 0; }
+	/**
+	 *	@brief	Constructor.
+	 *
+	 *	Set the position and size of the object.
+	 *
+	 *	@param	position, vec3 position of the renderable
+	 *	@param	size, vec2 size of the renderable
+	 *	@param	tipe, type of rendering
+	 */
+	Renderable( const glm::vec3& position, const glm::vec2& size, int type )
+		: m_Position( position ), m_Size( size ), m_CurrentType( type ) 
 	{	}
 	/**
 	 *	@brief	Constructor.
@@ -51,6 +63,18 @@ public:
 	 */
 	Renderable( const glm::vec3& position, const glm::vec2& size, const glm::vec4& colour )
 		: m_Position( position ), m_Size( size ), m_Colour( colour )
+	{ m_CurrentType = 0; }
+	/**
+	 *	@brief	Constructor.
+	 *
+	 *	Set the position, size and colour of the object.
+	 *
+	 *	@param	position, vec3 position of the renderable
+	 *	@param	size, vec2 size of the renderable
+	 *	@param	colour, vec4 colour of the renderable
+	 */
+	Renderable( const glm::vec3& position, const glm::vec2& size, const glm::vec4& colour, int type )
+		: m_Position( position ), m_Size( size ), m_Colour( colour ), m_CurrentType( type )
 	{	}
 
 	/**
@@ -139,6 +163,18 @@ public:
 	}
 
 	/**
+	 *	@brief	Set the type of rendering desired.
+	 *
+	 *	Set the type of rendering desired.
+	 *
+	 *	@param	type, type of rendering
+	 */
+	void SetType( int type )
+	{
+		m_CurrentType = type;
+	}
+
+	/**
 	 *	@brief	Get the position of the renderable.
 	 *
 	 *	Get the position of the renderable.
@@ -182,7 +218,14 @@ protected:
 	{
 		m_IBO.Bind();
 
-		glDrawElements( GL_TRIANGLES, m_IBO.GetCount(), GL_UNSIGNED_INT, nullptr );
+		if( m_CurrentType == ShapeType::FILLED )
+		{
+			glDrawElements( GL_TRIANGLES, m_IBO.GetCount( ), GL_UNSIGNED_INT, nullptr );
+		}
+		else if( m_CurrentType == ShapeType::LINE )
+		{
+			glDrawElements( GL_LINE_LOOP, m_IBO.GetCount( ), GL_UNSIGNED_INT, nullptr );
+		}
 
 		m_IBO.Unbind();
 	}
@@ -191,6 +234,8 @@ protected:
 	glm::vec3 m_Position;
 	glm::vec2 m_Size;
 	glm::vec4 m_Colour;
+
+	int m_CurrentType;
 
 	VertexBuffer m_VertVBO;
 	VertexBuffer m_ColourVBO;
@@ -210,5 +255,12 @@ protected:
 		POSITION		= 0,
 		COLOUR			= 1,
 		TEXTURE_COORD	= 2
+	}; 
+
+public:
+	enum ShapeType
+	{
+		FILLED = 0,
+		LINE = 1
 	};
 };

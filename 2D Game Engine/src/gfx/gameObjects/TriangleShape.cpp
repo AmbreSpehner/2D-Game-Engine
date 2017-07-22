@@ -2,12 +2,15 @@
 
 #include <vector>
 
+#include <iostream>
+
 TriangleShape::TriangleShape( const glm::vec3 & vertPos1, const glm::vec3 & vertPos2, const glm::vec3 & vertPos3, const glm::vec4& colour )
 	:
 	m_VertPos1( vertPos1 ),
 	m_VertPos2( vertPos2 ),
 	m_VertPos3( vertPos3 ),
-	m_Colour( colour )
+	m_Colour( colour ),
+	m_CurrentType( ShapeType::FILLED )
 {
 	std::vector<GLfloat> vertices =
 	{
@@ -30,9 +33,30 @@ TriangleShape::TriangleShape( const glm::vec3 & vertPos1, const glm::vec3 & vert
 	m_VAO.BindBuffer( m_ColourVBO, ShaderLocation::COLOUR, 0, 0 );
 }
 
+TriangleShape::TriangleShape( const glm::vec3 & vertPos1, const glm::vec3 & vertPos2, const glm::vec3 & vertPos3, const glm::vec4 & colour, int type )
+	:
+	TriangleShape( vertPos1, vertPos2, vertPos3, colour )
+{
+	m_CurrentType = type;
+}
+
 void TriangleShape::Render( )
 {
 	m_VAO.Bind( );
 
-	glDrawArrays( GL_TRIANGLES, 0, 3 );
+	std::cout << m_CurrentType << '\n';
+
+	if( m_CurrentType == ShapeType::FILLED )
+	{
+		glDrawArrays( GL_TRIANGLES, 0, 3 );
+	}
+	if( m_CurrentType == ShapeType::LINE )
+	{
+		glDrawArrays( GL_LINE_LOOP, 0, 3 );
+	}
+}
+
+void TriangleShape::SetShapeType( int type )
+{
+	m_CurrentType = type;
 }
