@@ -126,7 +126,6 @@ public:
 	*/
 	Renderable& operator=( Renderable&& renderable ) = default;
 
-protected:
 	/**
 	 *	@brief	Set the position of the renderable.
 	 *
@@ -240,6 +239,7 @@ protected:
 	 */
 	const glm::vec4& GetColour() const { return m_Colour; }
 
+protected:
 	/**
 	 *	@brief	Render the renderable.
 	 *
