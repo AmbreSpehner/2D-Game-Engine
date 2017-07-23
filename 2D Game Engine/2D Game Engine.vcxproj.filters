@@ -51,6 +51,9 @@
     <ClCompile Include="src\gfx\gameObjects\shapes\TriangleShape.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\gfx\gameObjects\shapes\PolygonShape.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\paddle.png">
@@ -111,6 +114,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\gfx\gameObjects\shapes\TriangleShape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gfx\gameObjects\shapes\PolygonShape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

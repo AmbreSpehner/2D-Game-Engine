@@ -10,6 +10,7 @@
 
 VertexBuffer::VertexBuffer( std::vector<GLfloat>& data, GLuint count, GLuint componentCount )
 	:
+	m_Count( count ),
 	m_ComponentCount( componentCount )
 {
 	glGenBuffers( 1, &m_VertexBufferID );

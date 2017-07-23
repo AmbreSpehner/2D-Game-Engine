@@ -129,6 +129,7 @@
     <ClCompile Include="src\gfx\buffers\IndexBuffer.cpp" />
     <ClCompile Include="src\gfx\buffers\VertexArray.cpp" />
     <ClCompile Include="src\gfx\buffers\VertexBuffer.cpp" />
+    <ClCompile Include="src\gfx\gameObjects\shapes\PolygonShape.cpp" />
     <ClCompile Include="src\gfx\gameObjects\shapes\RectangleShape.cpp" />
     <ClCompile Include="src\gfx\gameObjects\Sprite.cpp" />
     <ClCompile Include="src\gfx\gameObjects\shapes\TriangleShape.cpp" />
@@ -151,6 +152,7 @@
     <ClInclude Include="src\gfx\buffers\VertexArray.h" />
     <ClInclude Include="src\gfx\buffers\VertexBuffer.h" />
     <ClInclude Include="src\gfx\gameObjects\GameObject.h" />
+    <ClInclude Include="src\gfx\gameObjects\shapes\PolygonShape.h" />
     <ClInclude Include="src\gfx\gameObjects\shapes\RectangleShape.h" />
     <ClInclude Include="src\gfx\gameObjects\Renderable.h" />
     <ClInclude Include="src\gfx\gameObjects\Sprite.h" />

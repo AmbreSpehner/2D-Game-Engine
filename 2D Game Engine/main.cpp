@@ -24,6 +24,7 @@
 #include "src/utils/File_Reader.h"
 #include "src/gfx/Animation/Animation.h"
 #include "src/gfx/gameObjects/shapes/TriangleShape.h"
+#include "src/gfx/gameObjects/shapes/PolygonShape.h"
 
 std::unordered_map<std::string, std::shared_ptr<Texture>> TextureCodex::m_pTextureMap;
 
@@ -51,6 +52,20 @@ int main( )
 
 	RectangleShape shape2( glm::vec3( 200.0f, 200.0f, 0.0f ), glm::vec2( 100.0f, 100.0f ), glm::vec4( 0.0f, 1.0f, 0.0f, 1.0f ) );
 	shape2.SetType( RectangleShape::ShapeType::LINE );
+
+	std::vector<glm::vec3> vertices =
+	{
+		glm::vec3( -300.0f, 100.0f, 0.0f ),
+		glm::vec3( -200.0f, 100.0f, 0.0f ),
+		glm::vec3( -300.0f, 200.0f, 0.0f ),
+		glm::vec3( -200.0f, 200.0f,  0.0f ),
+		glm::vec3( 300.0f, -200.0f, 0.0f ),
+		glm::vec3( 400.0f, 300.0f, 0.0f ),
+		glm::vec3( 400.0f, -300.0f, 0.0f )
+	};
+
+	PolygonShape shape3( vertices, glm::vec4( 0.0f, 1.0f, 1.0f, 1.0f ) );
+
 
 	// DeltaTime.
 	auto timePoint = std::chrono::steady_clock::now( );
@@ -86,6 +101,7 @@ int main( )
 
 		VAO.Bind( );
 
+		shape3.Render( );
 		shape.Render( shader );
 		shape2.Render( shader );
 		sprite.Render( shader );

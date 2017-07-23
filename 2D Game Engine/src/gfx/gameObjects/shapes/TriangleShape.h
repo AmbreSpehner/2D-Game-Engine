@@ -16,6 +16,4 @@ public:
 	TriangleShape( const glm::vec3& vertPos1, const glm::vec3& vertPos2, const glm::vec3& vertPos3, const glm::vec4& colour, int type );
 
 	void Render( Shader& shader );
-
-private:
 };

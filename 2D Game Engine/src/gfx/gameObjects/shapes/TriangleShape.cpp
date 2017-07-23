@@ -27,6 +27,8 @@ TriangleShape::TriangleShape( const glm::vec3 & vertPos1, const glm::vec3 & vert
 
 	m_VAO.BindBuffer( m_VertVBO, ShaderLocation::POSITION, 0, 0 );
 	m_VAO.BindBuffer( m_ColourVBO, ShaderLocation::COLOUR, 0, 0 );
+
+	m_VerticesCount = vertices.size( ) / m_VertVBO.GetComponentCount( );
 }
 
 TriangleShape::TriangleShape( const glm::vec3 & vertPos1, const glm::vec3 & vertPos2, const glm::vec3 & vertPos3, const glm::vec4 & colour, int type )
@@ -52,6 +54,8 @@ TriangleShape::TriangleShape( const glm::vec3 & vertPos1, const glm::vec3 & vert
 
 	m_VAO.BindBuffer( m_VertVBO, ShaderLocation::POSITION, 0, 0 );
 	m_VAO.BindBuffer( m_ColourVBO, ShaderLocation::COLOUR, 0, 0 );
+
+	m_VerticesCount = vertices.size( ) / m_VertVBO.GetComponentCount( );
 }
 
 void TriangleShape::Render( Shader& shader )

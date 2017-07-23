@@ -91,4 +91,5 @@ public:
 private:
 	GLuint m_VertexBufferID;
 	GLuint m_ComponentCount;
+	GLuint m_Count;
 };

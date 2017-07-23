@@ -71,7 +71,7 @@ RectangleShape::RectangleShape( const glm::vec3 & position, const glm::vec2 & si
 	m_IBO = IndexBuffer( indices, indices.size( ) );
  }
 
- void RectangleShape::Render( Shader& shader )
+void RectangleShape::Render( Shader& shader )
 {
 	m_VAO.Bind();
 

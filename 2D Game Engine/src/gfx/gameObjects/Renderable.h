@@ -118,6 +118,16 @@ public:
 	virtual void Render( Shader& shader ) = 0;
 
 	/**
+	*	@brief	Default move operator.
+	*
+	*	Default move operator.
+	*
+	*	@return	renderable, rvalue renderable object
+	*/
+	Renderable& operator=( Renderable&& renderable ) = default;
+
+protected:
+	/**
 	 *	@brief	Set the position of the renderable.
 	 *
 	 *	Set the position of the renderable.
@@ -231,16 +241,6 @@ public:
 	const glm::vec4& GetColour() const { return m_Colour; }
 
 	/**
-	 *	@brief	Default move operator.
-	 *
-	 *	Default move operator.
-	 *
-	 *	@return	renderable, rvalue renderable object
-	 */
-	Renderable& operator=( Renderable&& renderable ) = default;
-
-protected:
-	/**
 	 *	@brief	Render the renderable.
 	 *
 	 *	Render the renderable using indices.
@@ -265,11 +265,11 @@ protected:
 	{
 		if( m_CurrentType == ShapeType::FILLED )
 		{
-			glDrawArrays( GL_TRIANGLES, 0, 3 );
+			glDrawArrays( GL_TRIANGLES, 0, m_VerticesCount );
 		}
 		else if( m_CurrentType == ShapeType::LINE )
 		{
-			glDrawArrays( GL_LINE_LOOP, 0, 3 );
+			glDrawArrays( GL_LINE_LOOP, 0, m_VerticesCount );
 		}
 	}
 
@@ -281,6 +281,8 @@ protected:
 	glm::vec3 m_VertPos1;
 	glm::vec3 m_VertPos2;
 	glm::vec3 m_VertPos3;
+
+	GLuint m_VerticesCount;
 
 	int m_CurrentType;
 
