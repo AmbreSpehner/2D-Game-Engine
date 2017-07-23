@@ -53,6 +53,14 @@ public:
 	 */
 	void Render( Shader& shader ) override;
 
+	void SetPosition( glm::vec3& position );
+	void SetSize( glm::vec2& size );
+	void SetColour( glm::vec4& colour );
+
+	const glm::vec3& GetPosition( ) const { return m_Position; }
+	const glm::vec2& GetSize( ) const { return m_Size; }
+	const glm::vec4& GetColour( ) const { return m_Colour; }
+
 	/**
 	 *	@brief	Set the texture of the sprite.
 	 *

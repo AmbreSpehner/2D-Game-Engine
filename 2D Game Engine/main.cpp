@@ -64,7 +64,7 @@ int main( )
 		glm::vec3( 400.0f, -300.0f, 0.0f )
 	};
 
-	PolygonShape shape3( vertices, glm::vec4( 0.0f, 1.0f, 1.0f, 1.0f ) );
+	PolygonShape shape3( vertices, glm::vec4( 0.0f, 1.0f, 1.0f, 1.0f ), Renderable::LINE );
 
 
 	// DeltaTime.
@@ -101,7 +101,7 @@ int main( )
 
 		VAO.Bind( );
 
-		shape3.Render( );
+		shape3.Render( shader );
 		shape.Render( shader );
 		shape2.Render( shader );
 		sprite.Render( shader );

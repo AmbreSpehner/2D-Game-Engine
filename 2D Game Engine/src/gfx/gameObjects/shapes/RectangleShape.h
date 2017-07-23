@@ -39,7 +39,6 @@ public:
 	 *	@param	colour, vec4 colour of the shape
 	 */
 	RectangleShape( const glm::vec3& position, const glm::vec2& size, const glm::vec4& colour );
-
 	/**
 	*	@brief	Constructor.
 	*
@@ -52,10 +51,13 @@ public:
 	*/
 	RectangleShape( const glm::vec3& position, const glm::vec2& size, const glm::vec4& colour, int type );
 
-	/**
-	 *	@brief Render the shape.
-	 *
-	 *	Render the shape to the window.
-	 */
 	void Render( Shader& shader ) override;
+
+	void SetPosition( const glm::vec3& position );
+	void SetSize( const glm::vec2& size );
+	void SetColour( const glm::vec4 colour );
+
+	const glm::vec3& GetPosition( ) const { return m_Position; }
+	const glm::vec2& GetSize( ) const { return m_Size; }
+	const glm::vec4& GetColour( ) const { return m_Colour; }
 };
