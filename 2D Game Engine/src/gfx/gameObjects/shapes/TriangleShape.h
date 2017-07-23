@@ -3,10 +3,10 @@
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 
-#include "../buffers/VertexBuffer.h"
-#include "../buffers/VertexArray.h"
+#include "../../buffers/VertexBuffer.h"
+#include "../../buffers/VertexArray.h"
 
-#include "Renderable.h"
+#include "../Renderable.h"
 
 class TriangleShape : public Renderable
 {

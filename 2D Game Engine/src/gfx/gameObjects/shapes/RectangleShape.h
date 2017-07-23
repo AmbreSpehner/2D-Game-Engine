@@ -10,10 +10,10 @@
 #pragma once
 
 // Include Project
-#include "Renderable.h"
+#include "../Renderable.h"
 
-#include "../buffers/VertexBuffer.h"
-#include "../buffers/IndexBuffer.h"
+#include "../../buffers/VertexBuffer.h"
+#include "../../buffers/IndexBuffer.h"
 
 /**
  *	@brief	Create a rectangular shape.

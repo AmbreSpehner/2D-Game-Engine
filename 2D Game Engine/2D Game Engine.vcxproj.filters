@@ -27,9 +27,6 @@
     <ClCompile Include="src\gfx\Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\gfx\gameObjects\RectangleShape.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\gfx\gameObjects\Sprite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -48,7 +45,10 @@
     <ClCompile Include="src\gfx\Animation\Animation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\gfx\gameObjects\TriangleShape.cpp">
+    <ClCompile Include="src\gfx\gameObjects\shapes\RectangleShape.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gfx\gameObjects\shapes\TriangleShape.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -83,9 +83,6 @@
     <ClInclude Include="src\gfx\gameObjects\GameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\gfx\gameObjects\RectangleShape.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\gfx\gameObjects\Renderable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -110,7 +107,10 @@
     <ClInclude Include="src\gfx\Animation\Animation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\gfx\gameObjects\TriangleShape.h">
+    <ClInclude Include="src\gfx\gameObjects\shapes\RectangleShape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gfx\gameObjects\shapes\TriangleShape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

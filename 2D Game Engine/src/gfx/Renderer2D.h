@@ -3,7 +3,7 @@
 #include <deque>
 #include <memory>
 
-#include "gameObjects/RectangleShape.h"
+#include "gameObjects/shapes/RectangleShape.h"
 
 #include "../shader/Shader.h"
 

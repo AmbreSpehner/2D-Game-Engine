@@ -14,7 +14,7 @@
 #include "src/gfx/buffers/VertexArray.h"
 #include "src/gfx/buffers/VertexBuffer.h"
 #include "src/gfx/buffers/IndexBuffer.h"
-#include "src/gfx/gameObjects/RectangleShape.h"
+#include "src/gfx/gameObjects/shapes/RectangleShape.h"
 #include "src/gfx/gameObjects/GameObject.h"
 #include "src/gfx/gameObjects/Sprite.h"
 #include "src/gfx/texture/Texture.h"
@@ -23,7 +23,7 @@
 #include "src/shader/Shader.h"
 #include "src/utils/File_Reader.h"
 #include "src/gfx/Animation/Animation.h"
-#include "src/gfx/gameObjects/TriangleShape.h"
+#include "src/gfx/gameObjects/shapes/TriangleShape.h"
 
 std::unordered_map<std::string, std::shared_ptr<Texture>> TextureCodex::m_pTextureMap;
 

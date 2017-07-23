@@ -4,7 +4,7 @@
 #include <memory>
 
 #include "Renderable.h"
-#include "RectangleShape.h"
+#include "shapes/RectangleShape.h"
 #include "Sprite.h"
 #include "../texture/Texture.h"
 
