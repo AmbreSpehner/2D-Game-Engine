@@ -34,7 +34,7 @@ public:
 	/**
 	 *	@brief	Constructor.
 	 *
-	 *	Set the position and size of the object.
+	 *	Set the position and size of a rectangular shaped object.
 	 *
 	 *	@param	position, vec3 position of the renderable
 	 *	@param	size, vec2 size of the renderable
@@ -45,7 +45,7 @@ public:
 	/**
 	 *	@brief	Constructor.
 	 *
-	 *	Set the position and size of the object.
+	 *	Set the position and size of a rectangular shaped object.
 	 *
 	 *	@param	position, vec3 position of the renderable
 	 *	@param	size, vec2 size of the renderable
@@ -57,7 +57,7 @@ public:
 	/**
 	 *	@brief	Constructor.
 	 *
-	 *	Set the position, size and colour of the object.
+	 *	Set the position, size and colour of a rectangular shaped object.
 	 *
 	 *	@param	position, vec3 position of the renderable
 	 *	@param	size, vec2 size of the renderable
@@ -69,7 +69,7 @@ public:
 	/**
 	 *	@brief	Constructor.
 	 *
-	 *	Set the position, size and colour of the object.
+	 *	Set the position, size and colour of a rectangular shaped object.
 	 *
 	 *	@param	position, vec3 position of the renderable
 	 *	@param	size, vec2 size of the renderable
@@ -79,10 +79,31 @@ public:
 		: m_Position( position ), m_Size( size ), m_Colour( colour ), m_CurrentType( type )
 	{	}
 
+	/**
+	 *	@brief	Constructor.
+	 *
+	 *	Set the position of the vertices and the colour of a triangular shape.
+	 *
+	 *	@param	vertPos1, first vertex position
+	 *	@param	vertPos2, second vertex position
+	 *	@param	vertPos3, third vertex position
+	 *	@param	colour, colour of the renderable
+	 */
 	Renderable( const glm::vec3& vertPos1, const glm::vec3& vertPos2, const glm::vec3& vertPos3, const glm::vec4& colour )
 		: m_VertPos1( vertPos1 ), m_VertPos2( vertPos2 ), m_VertPos3( vertPos3 ), m_Colour( colour )
 	{ m_CurrentType = 0; }
 
+	/**
+	 * @brief	Constructor.
+	 *
+	 *	Set the position of the vertices, the colour and the rendering type of a triangular shape.
+	 *
+	 *	@param	vertPos1, first vertex position
+	 *	@param	vertPos2, second vertex position
+	 *	@param	vertPos3, third vertex position
+	 *	@param	colour, colour of the renderable
+	 *	@param	type, rendering type
+	 */
 	Renderable( const glm::vec3& vertPos1, const glm::vec3& vertPos2, const glm::vec3& vertPos3, const glm::vec4& colour, int type )
 		: m_VertPos1( vertPos1 ), m_VertPos2( vertPos2 ), m_VertPos3( vertPos3 ), m_Colour( colour ), m_CurrentType( type )
 	{	}
