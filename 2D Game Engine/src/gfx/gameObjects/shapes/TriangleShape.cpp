@@ -10,9 +10,9 @@ TriangleShape::TriangleShape( const glm::vec3 & vertPos1, const glm::vec3 & vert
 {
 	std::vector<GLfloat> vertices =
 	{
-		m_VertPos1.x, m_VertPos1.y, m_VertPos1.z,
-		m_VertPos2.x, m_VertPos2.y, m_VertPos2.z,
-		m_VertPos3.x, m_VertPos3.y, m_VertPos3.z
+	m_VertPos1.x, m_VertPos1.y, m_VertPos1.z,
+	m_VertPos2.x, m_VertPos2.y, m_VertPos2.z,
+	m_VertPos3.x, m_VertPos3.y, m_VertPos3.z
 	};
 
 	std::vector<GLfloat> colours =
@@ -124,8 +124,8 @@ const glm::vec3 & TriangleShape::GetVertex( int number ) const
 	else if( number == VertexNum::VERT_3 )
 		return m_VertPos3;
 	else
-		return glm::vec3( 0.0f, 0.0f, 0.0f );
-		std::cout << "Chosen vertex does not exist!\n";
+		return m_VertPos1;
+		std::cout << "Chosen vertex does not exist. The first vertex is returned in it's place\n";
 }
 
 const glm::vec4 & TriangleShape::GetColour( ) const

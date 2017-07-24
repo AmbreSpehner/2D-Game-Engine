@@ -2,6 +2,7 @@
 
 #include <GL/glew.h>
 #include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 #include "../../buffers/VertexBuffer.h"
 #include "../../buffers/VertexArray.h"

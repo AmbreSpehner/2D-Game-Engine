@@ -11,13 +11,11 @@ PolygonShape::PolygonShape( std::vector<glm::vec3>& vertPos, glm::vec4& colour )
 
 	for( const auto& verts : m_VertPos )
 	{
-		vertices.insert( vertices.end(), glm::value_ptr( verts ), glm::value_ptr( verts ) + 3 );
+		vertices.insert( vertices.end( ), glm::value_ptr( verts ), glm::value_ptr( verts ) + 3 );
 	}
 
-	std::cout << vertices.size( ) << '\n';
-
 	std::vector<GLfloat> colours;
-	for( int i = 0; i < vertices.size( ); i += 3 )
+	for( std::size_t i = 0; i < vertices.size( ); i += 3 )
 	{
 		colours.emplace_back( m_Colour.r );
 		colours.emplace_back( m_Colour.g );
@@ -45,10 +43,8 @@ PolygonShape::PolygonShape( std::vector<glm::vec3>& vertPos, glm::vec4 & colour,
 		vertices.insert( vertices.end( ), glm::value_ptr( verts ), glm::value_ptr( verts ) + 3 );
 	}
 
-	std::cout << vertices.size( ) << '\n';
-
 	std::vector<GLfloat> colours;
-	for( int i = 0; i < vertices.size( ); i += 3 )
+	for( std::size_t i = 0; i < vertices.size( ); i += 3 )
 	{
 		colours.emplace_back( m_Colour.r );
 		colours.emplace_back( m_Colour.g );
