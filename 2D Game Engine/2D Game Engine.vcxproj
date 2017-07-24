@@ -70,12 +70,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir)/Deps/irrklang/include/;$(SolutionDir)/Deps/soil/include/;$(SolutionDir)/Deps/glm/;$(SolutionDir)/Deps/glew/include/;$(SolutionDir)/Deps/glfw/include/;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)/Deps/irrklang/lib/;$(SolutionDir)/Deps/soil/lib/;$(SolutionDir)/Deps/glew/lib/release/Win32/;$(SolutionDir)/Deps/glfw/lib-vc2015/;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)/Deps/box2d/include/;$(SolutionDir)/Deps/irrklang/include/;$(SolutionDir)/Deps/soil/include/;$(SolutionDir)/Deps/glm/;$(SolutionDir)/Deps/glew/include/;$(SolutionDir)/Deps/glfw/include/;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)/Deps/box2d/lib/Debug/;$(SolutionDir)/Deps/irrklang/lib/;$(SolutionDir)/Deps/soil/lib/;$(SolutionDir)/Deps/glew/lib/release/Win32/;$(SolutionDir)/Deps/glfw/lib-vc2015/;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(SolutionDir)/Deps/irrklang/include/;$(SolutionDir)/Deps/soil/include/;$(SolutionDir)/Deps/glm/;$(SolutionDir)/Deps/glew/include/;$(SolutionDir)/Deps/glfw/include/;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)/Deps/irrklang/lib/;$(SolutionDir)/Deps/soil/lib/;$(SolutionDir)/Deps/glew/lib/release/Win32/;$(SolutionDir)/Deps/glfw/lib-vc2015/;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)/Deps/box2d/Include/;$(SolutionDir)/Deps/irrklang/include/;$(SolutionDir)/Deps/soil/include/;$(SolutionDir)/Deps/glm/;$(SolutionDir)/Deps/glew/include/;$(SolutionDir)/Deps/glfw/include/;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)/Deps/box2d/lib/Release/;$(SolutionDir)/Deps/irrklang/lib/;$(SolutionDir)/Deps/soil/lib/;$(SolutionDir)/Deps/glew/lib/release/Win32/;$(SolutionDir)/Deps/glfw/lib-vc2015/;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -107,7 +107,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>irrKlang.lib;SOIL.lib;glfw3.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Box2D.lib;irrKlang.lib;SOIL.lib;glfw3.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

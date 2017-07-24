@@ -26,6 +26,8 @@
 #include "src/gfx/gameObjects/shapes/TriangleShape.h"
 #include "src/gfx/gameObjects/shapes/PolygonShape.h"
 
+#include <Box2D/Box2D.h>
+
 std::unordered_map<std::string, std::shared_ptr<Texture>> TextureCodex::m_pTextureMap;
 
 int main( )
@@ -65,7 +67,6 @@ int main( )
 	};
 
 	PolygonShape shape3( vertices, glm::vec4( 0.0f, 1.0f, 1.0f, 1.0f ), Renderable::LINE );
-
 
 	// DeltaTime.
 	auto timePoint = std::chrono::steady_clock::now( );
