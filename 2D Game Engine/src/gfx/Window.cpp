@@ -1,17 +1,7 @@
-/**
- *	@file		Window.cpp
- *	@Author		BouwnLaw
- *	@date		07/07/2017
- *  @brief		Creates a GLFW window instance.
- *
- *	Create a GLFW window instance.
- */
 #include "Window.h"
 
-// Include STL
 #include <iostream>
 
-// Include Deps
 #include <SOIL/SOIL.h>
 
 Window::Window( const GLint width, const GLint height, const std::string& title )

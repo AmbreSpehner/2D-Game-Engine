@@ -1,6 +1,5 @@
 #pragma once
 
-// Include Project
 #include "../texture/TextureCodex.h"
 #include "../gameObjects/Sprite.h"
 #include "../shapes/Rect.h"

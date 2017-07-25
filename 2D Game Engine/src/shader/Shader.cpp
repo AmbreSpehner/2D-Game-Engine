@@ -1,23 +1,10 @@
-/**
- *	@file		Shader.cpp
- *	@Author		BouwnLaw
- *	@date		07/07/2017
- *	@brief		Create a load a vertex shader and a fragment shader.
- *
- *	Create a load a vertex shader and a fragment shader and allow the use
- *	of the shaders.
- */
-
 #include "Shader.h"
 
-// Include STL
 #include <iostream>
 #include <vector>
 
-// Include Deps
 #include <glm/gtc/type_ptr.hpp>
 
-// Include Project
 #include "../utils/File_Reader.h"
 
 Shader::Shader( const std::string & vertexPath, const std::string & fragmentPath )

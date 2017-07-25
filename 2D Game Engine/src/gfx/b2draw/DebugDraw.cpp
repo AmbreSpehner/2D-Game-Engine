@@ -24,8 +24,3 @@ void DebugDraw::DrawSegment( const b2Vec2 * p1, const b2Vec2 * p2, const b2Color
 {
 
 }
-
-void DebugDraw::DrawTransform( const b2Transform & xf )
-{
-
-}

@@ -17,18 +17,18 @@ RectangleShape::RectangleShape( const Position& position, const Size& size, cons
 {
 	std::vector<GLfloat> vertices =
 	{
-		0, 0, 0,					// Bottom left.
-		0, m_Size.y, 0,				// Top left.
-		m_Size.x, m_Size.y, 0,		// Top Right.	
-		m_Size.x, 0, 0				// Bottom Right.
+		0, 0, 0,			
+		0, m_Size.y, 0,			
+		m_Size.x, m_Size.y, 0,	
+		m_Size.x, 0, 0			
 	};
 
 	std::vector<GLfloat> colours =
 	{
-		m_Colour.r, m_Colour.g, m_Colour.b, m_Colour.a,		// Bottom left.
-		m_Colour.r, m_Colour.g, m_Colour.b, m_Colour.a,		// Top left.
-		m_Colour.r, m_Colour.g, m_Colour.b, m_Colour.a,		// Top Right.	
-		m_Colour.r, m_Colour.g, m_Colour.b, m_Colour.a		// Bottom Right.
+		m_Colour.r, m_Colour.g, m_Colour.b, m_Colour.a,	
+		m_Colour.r, m_Colour.g, m_Colour.b, m_Colour.a,	
+		m_Colour.r, m_Colour.g, m_Colour.b, m_Colour.a,	
+		m_Colour.r, m_Colour.g, m_Colour.b, m_Colour.a	
 	};
 
 	m_VertVBO = VertexBuffer( vertices, vertices.size(), 3 );
