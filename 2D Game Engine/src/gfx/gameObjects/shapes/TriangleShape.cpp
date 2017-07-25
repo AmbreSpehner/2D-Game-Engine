@@ -47,7 +47,7 @@ void TriangleShape::SetVertex( const Position& vertex, int number )
 	else if( number == VertexNum::VERT_3 )
 		m_VertPos3 = vertex;
 	else
-		std::cout << "Chosen vertex does not exist!\n";
+		throw std::exception{ "Chosen vertex does not exist!\n" };
 
 	std::vector<GLfloat> vertices =
 	{
@@ -97,8 +97,7 @@ const Position& TriangleShape::GetVertex( int number ) const
 	else if( number == VertexNum::VERT_3 )
 		return m_VertPos3;
 	else
-		return m_VertPos1;
-		std::cout << "Chosen vertex does not exist. The first vertex is returned in it's place\n";
+		throw std::exception{ "Chosen vertex does not exist!\n" };
 }
 
 const Colour& TriangleShape::GetColour( ) const

@@ -27,26 +27,9 @@ public:
 
 	const glm::vec3 GetPosition( ) const { return m_Position.ToVec3(); }
 
-	/**
-	*	@brief	Default move operator.
-	*
-	*	Default move operator.
-	*
-	*	@return	renderable, rvalue renderable object
-	*/
 	Renderable& operator=( Renderable&& renderable ) = default;
 
-	/**
-	 *	@brief	Set the type of rendering desired.
-	 *
-	 *	Set the type of rendering desired.
-	 *
-	 *	@param	type, type of rendering
-	 */
-	void SetType( int type )
-	{
-		m_CurrentType = type;
-	}
+	void SetType( int type ) { m_CurrentType = type; }
 
 protected:
 	void RenderIndices( )

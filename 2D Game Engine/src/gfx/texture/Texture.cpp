@@ -1,17 +1,7 @@
-/**
- *	@file	Texture.cpp
- *	@author	BouwnLaw
- *	@date	09/07/2017
- *	@brief	Loads a texture.
- *
- *	Loads a texture from a file.
- */
 #include "Texture.h"
 
-// Include STL
 #include <iostream>
 
-// Include Deps
 #include <SOIL/SOIL.h>
 
 Texture::Texture( const std::string& filepath )
