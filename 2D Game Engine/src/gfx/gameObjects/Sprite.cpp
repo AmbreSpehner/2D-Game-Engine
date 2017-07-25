@@ -1,20 +1,11 @@
-/**
- *	@file	Sprite.cpp
- *	@author	BouwnLaw
- *	@date	09/07/2017
- *	@brief	Create a Sprite.
- *
- *	Create using Renderable.h as a base using a texture.
- */
 #include "Sprite.h"
 
-// Include Deps
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
 #include <iostream>
 
-Sprite::Sprite( const glm::vec3 & position, std::shared_ptr<Texture> pTexture )
+Sprite::Sprite( const Position& position, std::shared_ptr<Texture> pTexture )
 	:
 	Renderable( position, pTexture->GetSize() ),
 	m_pTexture( pTexture )
@@ -47,7 +38,7 @@ Sprite::Sprite( const glm::vec3 & position, std::shared_ptr<Texture> pTexture )
 	m_IBO = IndexBuffer( indices, indices.size() );
 }
 
-Sprite::Sprite( const glm::vec3& position, const glm::vec2& size, std::shared_ptr<Texture> pTexture )
+Sprite::Sprite( const Position& position, const Size& size, std::shared_ptr<Texture> pTexture )
 	: 
 	Renderable( position, size ),
 	m_pTexture( pTexture )
@@ -91,7 +82,9 @@ void Sprite::Render( Shader& shader )
 	m_pTexture->Bind();
 
 	glm::mat4 model;
-	model = glm::translate( model, m_Position );
+	// auto vec3 = m_Position.ToVec3( );
+	model = glm::translate( model, m_Position.ToVec3() );
+	
 	shader.SetUniformMat4f( "model", model );
 
 	Renderable::RenderIndices();
@@ -99,12 +92,12 @@ void Sprite::Render( Shader& shader )
 	shader.SetUniform1i( "useTexture", false );
 }
 
-void Sprite::SetPosition( glm::vec3 & position )
+void Sprite::SetPosition( Position& position )
 {
 	m_Position = position;
 }
 
-void Sprite::SetSize( glm::vec2 & size )
+void Sprite::SetSize( Size& size )
 {
 	m_Size = size;
 
@@ -120,7 +113,7 @@ void Sprite::SetSize( glm::vec2 & size )
 	m_VAO.BindBuffer( m_VertVBO, ShaderLocation::POSITION, 0, 0 );
 }
 
-void Sprite::SetColour( glm::vec4 & colour )
+void Sprite::SetColour( Colour& colour )
 {
 	m_Colour = colour;
 
@@ -145,14 +138,14 @@ void Sprite::ScaleSprite( float scale )
 {
 	m_Scale = scale;
 
-	SetSize( m_Size * m_Scale );
+	SetSize( Size( m_Size.x * m_Scale, m_Size.y * m_Scale ) );
 }
 
 void Sprite::SetTextureRect( const FloatRect& rect )
 {
 	m_TextureRect.SetRect( rect.x, rect.y, rect.dx, rect.dy );
 
-	SetSize( glm::vec2( rect.dx, rect.dy ) * m_Scale );
+	SetSize( Size( rect.dx * m_Scale, rect.dy * m_Scale ) );
 	SetTextCoords( m_TextureRect.x, m_TextureRect.y, m_TextureRect.dx, m_TextureRect.dy );
 }
 
@@ -161,11 +154,11 @@ void Sprite::SetTextureRect( float x, float y, float dx, float dy )
 	m_TextureRect.SetRect( x / m_pTexture->GetSize( ).x, y / m_pTexture->GetSize( ).y,
 						   dx / m_pTexture->GetSize( ).x, dy / m_pTexture->GetSize( ).y );
 
-	SetSize( glm::vec2( dx, dy ) * m_Scale );
+	SetSize( Size( dx * m_Scale, dy * m_Scale ) );
 	SetTextCoords( m_TextureRect.x, m_TextureRect.y, m_TextureRect.dx, m_TextureRect.dy );
 }
 
-void Sprite::SetTextureRect( const glm::vec3 & position, const glm::vec2 & size )
+void Sprite::SetTextureRect( const Position& position, const Size& size )
 {
 	SetTextureRect( position.x, position.y, size.x, size.y );
 }
@@ -185,7 +178,7 @@ void Sprite::SetTextCoords( const float x, const float y, const float dx, const 
 	m_VAO.BindBuffer( m_TexCoordVBO, ShaderLocation::TEXTURE_COORD, 0, 0 );
 }
 
-void Sprite::SetTextCoords( const glm::vec3 & position, const glm::vec2 & size )
+void Sprite::SetTextCoords( const Position& position, const Size& size )
 {
 	SetTextCoords( position.x, position.y, size.x, size.y );
 }

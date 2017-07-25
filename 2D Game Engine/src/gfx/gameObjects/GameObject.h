@@ -14,18 +14,18 @@ public:
 	class Factory
 	{
 	public:
-		void SetSprite( const std::string& name, const glm::vec3& pos, std::shared_ptr<Texture> texture )
+		void SetSprite( const std::string& name, const Position& pos, std::shared_ptr<Texture> texture )
 		{
 			auto pSprite = std::make_unique<Sprite>( pos, texture );
 			renderableMap[name] = std::move( pSprite );
 		}
 
-		void SetSprite( const std::string& name, const glm::vec3& pos, const glm::vec2& size, std::shared_ptr<Texture> texture )
+		void SetSprite( const std::string& name, const Position& pos, const Size& size, std::shared_ptr<Texture> texture )
 		{
 			renderableMap[name] = std::make_unique<Sprite>( pos, size, texture );
 		}
 
-		void SetRectangleShape( const std::string& name, const glm::vec3& pos, const glm::vec2& size, const glm::vec4& colour )
+		void SetRectangleShape( const std::string& name, const Position& pos, const Size& size, const Colour& colour )
 		{
 			renderableMap[name] = std::make_unique<RectangleShape>( pos, size, colour );
 		}

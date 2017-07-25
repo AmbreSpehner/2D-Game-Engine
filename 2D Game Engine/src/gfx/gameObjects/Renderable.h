@@ -1,129 +1,31 @@
-/**
- *	@file	Renderable.h
- *	@author	BouwnLaw
- *	@date	09/07/2017
- *	@brief	Base class for all square objects to be rendered.
- *
- *	Base class for all square objects to be rendered.
- */
 #pragma once
 
-// Include Deps
 #include <glm/glm.hpp>
 
-// Include Project
 #include "../buffers/VertexArray.h"
 #include "../../shader/Shader.h"
 
-#include <iostream>
+#include "../structs/Structs.h"
 
-/**
- *	@brief	Base class for all square objects to be rendered.
- *
- *	Base class for all square objects to be rendered.
- */
 class Renderable
 {
 public:
-	/**
-	 *	@brief	Constructor.
-	 *	
-	 *	Default constructor.
-	 */
 	Renderable() = default;
-	/**
-	 *	@brief	Constructor.
-	 *
-	 *	Set the position and size of a rectangular shaped object.
-	 *
-	 *	@param	position, vec3 position of the renderable
-	 *	@param	size, vec2 size of the renderable
-	 */
-	Renderable( const glm::vec3& position, const glm::vec2& size )
-		: m_Position( position ), m_Size( size )
-	{ m_CurrentType = 0; }
-	/**
-	 *	@brief	Constructor.
-	 *
-	 *	Set the position and size of a rectangular shaped object.
-	 *
-	 *	@param	position, vec3 position of the renderable
-	 *	@param	size, vec2 size of the renderable
-	 *	@param	tipe, type of rendering
-	 */
-	Renderable( const glm::vec3& position, const glm::vec2& size, int type )
-		: m_Position( position ), m_Size( size ), m_CurrentType( type ) 
-	{	}
-	/**
-	 *	@brief	Constructor.
-	 *
-	 *	Set the position, size and colour of a rectangular shaped object.
-	 *
-	 *	@param	position, vec3 position of the renderable
-	 *	@param	size, vec2 size of the renderable
-	 *	@param	colour, vec4 colour of the renderable
-	 */
-	Renderable( const glm::vec3& position, const glm::vec2& size, const glm::vec4& colour )
-		: m_Position( position ), m_Size( size ), m_Colour( colour )
-	{ m_CurrentType = 0; }
-	/**
-	 *	@brief	Constructor.
-	 *
-	 *	Set the position, size and colour of a rectangular shaped object.
-	 *
-	 *	@param	position, vec3 position of the renderable
-	 *	@param	size, vec2 size of the renderable
-	 *	@param	colour, vec4 colour of the renderable
-	 */
-	Renderable( const glm::vec3& position, const glm::vec2& size, const glm::vec4& colour, int type )
-		: m_Position( position ), m_Size( size ), m_Colour( colour ), m_CurrentType( type )
-	{	}
-	/**
-	 *	@brief	Constructor.
-	 *
-	 *	Set the position of the vertices and the colour of a triangular shape.
-	 *
-	 *	@param	vertPos1, first vertex position
-	 *	@param	vertPos2, second vertex position
-	 *	@param	vertPos3, third vertex position
-	 *	@param	colour, colour of the renderable
-	 */
-	Renderable( const glm::vec3& vertPos1, const glm::vec3& vertPos2, const glm::vec3& vertPos3, const glm::vec4& colour )
-		: m_VertPos1( vertPos1 ), m_VertPos2( vertPos2 ), m_VertPos3( vertPos3 ), m_Colour( colour )
-	{ m_CurrentType = 0; }
-	/**
-	 * @brief	Constructor.
-	 *
-	 *	Set the position of the vertices, the colour and the rendering type of a triangular shape.
-	 *
-	 *	@param	vertPos1, first vertex position
-	 *	@param	vertPos2, second vertex position
-	 *	@param	vertPos3, third vertex position
-	 *	@param	colour, colour of the renderable
-	 *	@param	type, rendering type
-	 */
-	Renderable( const glm::vec3& vertPos1, const glm::vec3& vertPos2, const glm::vec3& vertPos3, const glm::vec4& colour, int type )
-		: m_VertPos1( vertPos1 ), m_VertPos2( vertPos2 ), m_VertPos3( vertPos3 ), m_Colour( colour ), m_CurrentType( type )
-	{	}
 
-	Renderable( std::vector<glm::vec3>& vertPos, glm::vec4& colour )
-		: m_VertPos( vertPos ), m_Colour( colour )
-	{	}
+	Renderable( const Position& position, const Size& size )
+		: m_Position( position ), m_Size( size ), m_CurrentType( 0 ) {	}
 
-	Renderable( std::vector<glm::vec3>& vertPos, glm::vec4& colour, int type )
-		: m_VertPos( vertPos ), m_Colour( colour ), m_CurrentType( type )
-	{	}
+	Renderable( const Position& position, const Size& size, const Colour& colour )
+		: m_Position( position ), m_Size( size ), m_Colour( colour ), m_CurrentType( 0 ) {	}
 
-	/**
-	 *	@brief	Destructor.
-	 *
-	 *	Virtual destructor.
-	 */
+	Renderable( const Position& vertPos1, const Position& vertPos2, const Position& vertPos3, const Colour& colour )
+		: m_VertPos1( vertPos1 ), m_VertPos2( vertPos2 ), m_VertPos3( vertPos3 ), m_Colour( colour ), m_CurrentType( 0 ) {	}
+
 	virtual ~Renderable() = default;
 
 	virtual void Render( Shader& shader ) = 0;
 
-	const glm::vec3& GetPosition( ) const { return m_Position; }
+	const glm::vec3 GetPosition( ) const { return m_Position.ToVec3(); }
 
 	/**
 	*	@brief	Default move operator.
@@ -176,19 +78,17 @@ protected:
 	}
 
 protected:
-	glm::vec3 m_Position;
-	glm::vec2 m_Size;
-	glm::vec4 m_Colour;
+	Position m_Position;
+	Colour m_Colour;
+	Size m_Size;
 
-	glm::vec3 m_VertPos1;
-	glm::vec3 m_VertPos2;
-	glm::vec3 m_VertPos3;
-
-	std::vector<glm::vec3> m_VertPos;
+	Position m_VertPos1;
+	Position m_VertPos2;
+	Position m_VertPos3;
 
 	GLuint m_VerticesCount;
 
-	int m_CurrentType;
+	unsigned short m_CurrentType;
 
 	VertexBuffer m_VertVBO;
 	VertexBuffer m_ColourVBO;

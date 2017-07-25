@@ -24,7 +24,6 @@
 #include "src/utils/File_Reader.h"
 #include "src/gfx/Animation/Animation.h"
 #include "src/gfx/gameObjects/shapes/TriangleShape.h"
-#include "src/gfx/gameObjects/shapes/PolygonShape.h"
 
 #include <Box2D/Box2D.h>
 
@@ -42,31 +41,14 @@ int main( )
 	VertexArray VAO;
 	Renderer2D renderer;
 
-	Sprite sprite( glm::vec3( 0.0f, 0.0f, 0.0f ), TextureCodex::Acquire( "res/paddle.png" ) );
+	Sprite sprite( Position( 100.0f, 100.0f, 0.0f ), TextureCodex::Acquire( "res/paddle.png" ) );
 	sprite.SetTextureRect( 0, 16, 32, 8 );
 	sprite.ScaleSprite( 3.0f );
 
 	Animation anim( 0.0f, 16.0f, 32.0f, 8.0f, 16, 0.5f );
 
-	TriangleShape shape( glm::vec3( -200.0f, -200.0f, 0.0f ), glm::vec3( 100.0f, 0.0f, 0.0f ),
-						 glm::vec3( 0.0f, -200.0f, 0.0f ), glm::vec4( 1.0f, 0.0f, 0.0f, 1.0f ) );
-	shape.SetType( Renderable::ShapeType::FILLED );
-
-	RectangleShape shape2( glm::vec3( 200.0f, 200.0f, 0.0f ), glm::vec2( 100.0f, 100.0f ), glm::vec4( 0.0f, 1.0f, 0.0f, 1.0f ) );
+	RectangleShape shape2( Position( 200.0f, 200.0f, 0.0f ), Size( 100.0f, 100.0f ), Colour( 0.0f, 1.0f, 0.0f, 1.0f ) );
 	shape2.SetType( RectangleShape::ShapeType::LINE );
-
-	std::vector<glm::vec3> vertices =
-	{
-		glm::vec3( -300.0f, 100.0f, 0.0f ),
-		glm::vec3( -200.0f, 100.0f, 0.0f ),
-		glm::vec3( -300.0f, 200.0f, 0.0f ),
-		glm::vec3( -200.0f, 200.0f,  0.0f ),
-		glm::vec3( 300.0f, -200.0f, 0.0f ),
-		glm::vec3( 400.0f, 300.0f, 0.0f ),
-		glm::vec3( 400.0f, -300.0f, 0.0f )
-	};
-
-	PolygonShape shape3( vertices, glm::vec4( 0.0f, 1.0f, 1.0f, 1.0f ), Renderable::LINE );
 
 	// DeltaTime.
 	auto timePoint = std::chrono::steady_clock::now( );
@@ -102,8 +84,8 @@ int main( )
 
 		VAO.Bind( );
 
-		shape3.Render( shader );
-		shape.Render( shader );
+		// shape3.Render( shader );
+		// shape.Render( shader );
 		shape2.Render( shader );
 		sprite.Render( shader );
 

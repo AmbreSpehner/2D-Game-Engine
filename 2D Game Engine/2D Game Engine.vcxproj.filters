@@ -51,7 +51,7 @@
     <ClCompile Include="src\gfx\gameObjects\shapes\TriangleShape.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\gfx\gameObjects\shapes\PolygonShape.cpp">
+    <ClCompile Include="src\gfx\b2draw\DebugDraw.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -116,7 +116,19 @@
     <ClInclude Include="src\gfx\gameObjects\shapes\TriangleShape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\gfx\gameObjects\shapes\PolygonShape.h">
+    <ClInclude Include="src\gfx\b2draw\DebugDraw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gfx\structs\Colour.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gfx\structs\Position.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gfx\structs\Size.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gfx\structs\Structs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

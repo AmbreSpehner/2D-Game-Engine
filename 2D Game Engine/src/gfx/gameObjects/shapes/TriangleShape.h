@@ -13,17 +13,16 @@ class TriangleShape : public Renderable
 {
 public:
 	TriangleShape( ) = default;
-	TriangleShape( const glm::vec3& vertPos1, const glm::vec3& vertPos2, const glm::vec3& vertPos3, const glm::vec4& colour );
-	TriangleShape( const glm::vec3& vertPos1, const glm::vec3& vertPos2, const glm::vec3& vertPos3, const glm::vec4& colour, int type );
+	TriangleShape( const Position& vertPos1, const Position& vertPos2, const Position& vertPos3, const Colour& colour );
 
 	void Render( Shader& shader ) override;
 
-	void SetVertex( const glm::vec3& vertex, int number );
-	void SetVertices( const glm::vec3& vertPos1, const glm::vec3& vertPos2, const glm::vec3& vertPos3 );
-	void SetColour( const glm::vec4& colour );
+	void SetVertex( const Position& vertex, int number );
+	void SetVertices( const Position& vertPos1, const Position& vertPos2, const Position& vertPos3 );
+	void SetColour( const Colour& colour );
 
-	const glm::vec3& GetVertex( int number ) const;
-	const glm::vec4& GetColour( ) const;
+	const Position& GetVertex( int number ) const;
+	const Colour& GetColour( ) const;
 
 public:
 	enum VertexNum
