@@ -83,7 +83,7 @@ void Sprite::Render( Shader& shader )
 
 	glm::mat4 model;
 	// auto vec3 = m_Position.ToVec3( );
-	model = glm::translate( model, m_Position.ToVec3() );
+	model = glm::translate( model, static_cast<glm::vec3>( m_Position ) );
 	
 	shader.SetUniformMat4f( "model", model );
 

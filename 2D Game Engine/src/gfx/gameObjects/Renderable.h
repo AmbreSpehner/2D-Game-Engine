@@ -25,7 +25,7 @@ public:
 
 	virtual void Render( Shader& shader ) = 0;
 
-	const glm::vec3 GetPosition( ) const { return m_Position.ToVec3(); }
+	const glm::vec3 GetPosition( ) const { return static_cast<glm::vec3>( m_Position ); }
 
 	Renderable& operator=( Renderable&& renderable ) = default;
 

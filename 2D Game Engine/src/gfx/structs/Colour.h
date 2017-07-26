@@ -3,7 +3,7 @@
 struct Colour
 {
 	Colour( ) = default;
-	Colour( float rIn, float gIn, float bIn, float aIn = 1.0f )
+	Colour( GLfloat rIn, GLfloat gIn, GLfloat bIn, GLfloat aIn = 1.0f )
 	{
 		r = rIn;
 		g = gIn;
@@ -11,7 +11,7 @@ struct Colour
 		a = aIn;
 	}
 
-	void Set( float rIn, float gIn, float bIn, float aIn = 1.0f )
+	void Set( GLfloat rIn, GLfloat gIn, GLfloat bIn, GLfloat aIn = 1.0f )
 	{
 		r = rIn;
 		g = gIn;
@@ -19,5 +19,5 @@ struct Colour
 		a = aIn;
 	}
 
-	float r, b, g, a;
+	GLfloat r, b, g, a;
 };

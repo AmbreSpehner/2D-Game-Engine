@@ -3,17 +3,17 @@
 struct Size
 {
 	Size( ) = default;
-	Size( float xIn, float yIn )
+	Size( GLfloat xIn, GLfloat yIn )
 	{
 		x = xIn;
 		y = yIn;
 	}
 
-	void Set( float xIn, float yIn )
+	void Set( GLfloat xIn, GLfloat yIn )
 	{
 		x = xIn;
 		y = yIn;
 	}
 
-	float x, y;
+	GLfloat x, y;
 };

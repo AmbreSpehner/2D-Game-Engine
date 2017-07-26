@@ -27,6 +27,9 @@
 
 #include <Box2D/Box2D.h>
 
+#include <ft2build.h>
+#include FT_FREETYPE_H
+
 std::unordered_map<std::string, std::shared_ptr<Texture>> TextureCodex::m_pTextureMap;
 
 int main( )
@@ -49,6 +52,12 @@ int main( )
 
 	RectangleShape shape2( Position( 200.0f, 200.0f, 0.0f ), Size( 100.0f, 100.0f ), Colour( 0.0f, 1.0f, 0.0f, 1.0f ) );
 	shape2.SetType( RectangleShape::ShapeType::LINE );
+
+	auto a = glm::vec3( 10.0f, 10.0f, 10.0f );
+	auto b = Position( 10.0f, 10.0f, 10.0f );
+
+	std::cout << sizeof( a ) << '\n';
+	std::cout << sizeof( b ) << '\n';
 
 	// DeltaTime.
 	auto timePoint = std::chrono::steady_clock::now( );
