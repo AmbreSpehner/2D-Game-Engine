@@ -27,8 +27,8 @@ public:
 public:
 	enum VertexNum
 	{
-		VERT_1 = 1,
-		VERT_2 = 2,
-		VERT_3 = 3
+		P1 = 1,
+		P2 = 2,
+		P3 = 3
 	};
 };

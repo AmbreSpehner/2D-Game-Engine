@@ -12,7 +12,7 @@ class TrueTypeFont
 public:
 	TrueTypeFont( ) = default;
 	TrueTypeFont( const std::string& path, GLuint fontHeight = 32);
-	TrueTypeFont( const std::string& path, GLui_Size& fontSize = { 0, 32 } );
+	TrueTypeFont( const std::string& path, GLui_Size& fontSize );
 
 private:
 	FT_Library m_FT;

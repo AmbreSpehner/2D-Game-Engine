@@ -19,7 +19,7 @@ public:
 		: m_Position( position ), m_Size( size ), m_Colour( colour ), m_CurrentType( 0 ) {	}
 
 	Renderable( const Position& p1, const Position& p2, const Colour& colour, unsigned short type = 1 )
-		: m_P1( p1 ), m_P2( p2 ), m_Colour( colour ) {  m_CurrentType = type; }
+		: m_P1( p1 ), m_P2( p2 ), m_Colour( colour ), m_CurrentType( type ) {	}
 
 	Renderable( const Position& p1, const Position& p2, const Position& p3, const Colour& colour )
 		: m_P1( p1 ), m_P2( p2 ), m_P3( p3 ), m_Colour( colour ), m_CurrentType( 0 ) {	}
@@ -75,6 +75,7 @@ protected:
 	GLuint m_VerticesCount;
 
 	unsigned short m_CurrentType;
+	float m_LineWidth;
 
 	VertexBuffer m_VertVBO;
 	VertexBuffer m_ColourVBO;

@@ -1,141 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\fonts\TrueTypeFont.cpp" />
+    <ClCompile Include="src\gfx\Animation\Animation.cpp" />
+    <ClCompile Include="src\gfx\b2draw\DebugDraw.cpp" />
+    <ClCompile Include="src\gfx\buffers\IndexBuffer.cpp" />
+    <ClCompile Include="src\gfx\buffers\VertexArray.cpp" />
+    <ClCompile Include="src\gfx\buffers\VertexBuffer.cpp" />
+    <ClCompile Include="src\gfx\gameObjects\shapes\RectangleShape.cpp" />
+    <ClCompile Include="src\gfx\gameObjects\Sprite.cpp" />
+    <ClCompile Include="src\gfx\gameObjects\shapes\TriangleShape.cpp" />
+    <ClCompile Include="src\gfx\texture\Texture.cpp" />
+    <ClCompile Include="src\gfx\Renderer2D.cpp" />
+    <ClCompile Include="src\gfx\Window.cpp" />
+    <ClCompile Include="src\shader\Shader.cpp" />
+    <ClCompile Include="src\gfx\gameObjects\shapes\SegmentLine.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\shader\Shader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gfx\Renderer2D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gfx\Window.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gfx\gameObjects\Sprite.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gfx\buffers\IndexBuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gfx\buffers\VertexArray.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gfx\buffers\VertexBuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gfx\texture\Texture.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gfx\Animation\Animation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gfx\gameObjects\shapes\RectangleShape.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gfx\gameObjects\shapes\TriangleShape.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gfx\b2draw\DebugDraw.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\fonts\TrueTypeFont.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClInclude Include="src\fonts\TrueTypeFont.h" />
+    <ClInclude Include="src\gfx\Animation\Animation.h" />
+    <ClInclude Include="src\gfx\b2draw\DebugDraw.h" />
+    <ClInclude Include="src\gfx\buffers\IndexBuffer.h" />
+    <ClInclude Include="src\gfx\buffers\VertexArray.h" />
+    <ClInclude Include="src\gfx\buffers\VertexBuffer.h" />
+    <ClInclude Include="src\gfx\gameObjects\GameObject.h" />
+    <ClInclude Include="src\gfx\gameObjects\shapes\RectangleShape.h" />
+    <ClInclude Include="src\gfx\gameObjects\Renderable.h" />
+    <ClInclude Include="src\gfx\gameObjects\Sprite.h" />
+    <ClInclude Include="src\gfx\gameObjects\shapes\TriangleShape.h" />
+    <ClInclude Include="src\gfx\structs\Colour.h" />
+    <ClInclude Include="src\gfx\structs\Position.h" />
+    <ClInclude Include="src\gfx\structs\Size.h" />
+    <ClInclude Include="src\gfx\structs\Structs.h" />
+    <ClInclude Include="src\gfx\texture\Texture.h" />
+    <ClInclude Include="src\gfx\Renderer2D.h" />
+    <ClInclude Include="src\gfx\texture\TextureCodex.h" />
+    <ClInclude Include="src\gfx\shapes\Rect.h" />
+    <ClInclude Include="src\gfx\Window.h" />
+    <ClInclude Include="src\shader\Shader.h" />
+    <ClInclude Include="src\utils\File_Reader.h" />
+    <ClInclude Include="src\gfx\gameObjects\shapes\SegmentLine.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\paddle.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\background_blue1.png">
-      <Filter>Resource Files</Filter>
-    </Image>
+    <Image Include="res\background_blue1.png" />
+    <Image Include="res\paddle.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\FragmentShader.glsl" />
     <None Include="shaders\VertexShader.glsl" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\utils\File_Reader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\shader\Shader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\gfx\Renderer2D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\gfx\Window.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\gfx\shapes\Rect.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\gfx\gameObjects\GameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\gfx\gameObjects\Renderable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\gfx\gameObjects\Sprite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\gfx\buffers\IndexBuffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\gfx\buffers\VertexArray.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\gfx\buffers\VertexBuffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\gfx\texture\TextureCodex.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\gfx\texture\Texture.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\gfx\Animation\Animation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\gfx\gameObjects\shapes\RectangleShape.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\gfx\gameObjects\shapes\TriangleShape.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\gfx\b2draw\DebugDraw.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\gfx\structs\Colour.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\gfx\structs\Position.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\gfx\structs\Size.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\gfx\structs\Structs.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\fonts\TrueTypeFont.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

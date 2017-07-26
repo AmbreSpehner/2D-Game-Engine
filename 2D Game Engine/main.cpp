@@ -24,6 +24,7 @@
 #include "src/utils/File_Reader.h"
 #include "src/gfx/Animation/Animation.h"
 #include "src/gfx/gameObjects/shapes/TriangleShape.h"
+#include "src/gfx/gameObjects/shapes/SegmentLine.h"
 
 #include <Box2D/Box2D.h>
 
@@ -49,6 +50,8 @@ int main( )
 
 	RectangleShape shape2( Position( 200.0f, 200.0f, 0.0f ), GLf_Size( 100.0f, 100.0f ), Colour( 0.0f, 1.0f, 0.0f, 1.0f ) );
 	shape2.SetType( RectangleShape::ShapeType::LINE );
+
+	SegmentLine shape( Position( -100.0f, 0.0f ), Position( 100.0, 100.0f ), Colour( 1.0f, 0.0f, 0.0f ) );
 
 	// DeltaTime.
 	auto timePoint = std::chrono::steady_clock::now( );
@@ -85,7 +88,7 @@ int main( )
 		VAO.Bind( );
 
 		// shape3.Render( shader );
-		// shape.Render( shader );
+		shape.Render( shader );
 		shape2.Render( shader );
 		sprite.Render( shader );
 

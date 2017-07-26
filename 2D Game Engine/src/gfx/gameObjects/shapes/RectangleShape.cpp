@@ -1,14 +1,5 @@
-/**
- *	@file	RectangleShape.cpp
- *	@author	BouwnLaw
- *	@date	09/07/2017
- *	@brief	Create a rectangular shape.
- *
- *	Create a rectangular shape with a given position, size and colour.
- */
 #include "RectangleShape.h"
 
-// Include Deps
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 

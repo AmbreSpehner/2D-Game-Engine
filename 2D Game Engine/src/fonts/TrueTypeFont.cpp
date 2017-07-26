@@ -2,7 +2,7 @@
 
 #include <stdexcept>
 
-TrueTypeFont::TrueTypeFont( const std::string& path, GLuint fontHeight = 32 )
+TrueTypeFont::TrueTypeFont( const std::string& path, GLuint fontHeight )
 {
 	if( FT_Init_FreeType( &m_FT ) )
 	{
@@ -17,7 +17,7 @@ TrueTypeFont::TrueTypeFont( const std::string& path, GLuint fontHeight = 32 )
 	FT_Set_Pixel_Sizes( m_Face, 0, fontHeight );
 }
 
-TrueTypeFont::TrueTypeFont( const std::string& path, GLui_Size& fontSize = { 0, 32 } )
+TrueTypeFont::TrueTypeFont( const std::string& path, GLui_Size& fontSize )
 {
 	if( FT_Init_FreeType( &m_FT ) )
 	{
