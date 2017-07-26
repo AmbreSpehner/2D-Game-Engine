@@ -54,6 +54,9 @@
     <ClCompile Include="src\gfx\b2draw\DebugDraw.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\gfx\gameObjects\shapes\SegmentShape.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\paddle.png">
@@ -129,6 +132,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\gfx\structs\Structs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gfx\gameObjects\shapes\SegmentShape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

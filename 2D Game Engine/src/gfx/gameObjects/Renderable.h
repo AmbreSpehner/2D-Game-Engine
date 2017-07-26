@@ -18,8 +18,11 @@ public:
 	Renderable( const Position& position, const Size& size, const Colour& colour )
 		: m_Position( position ), m_Size( size ), m_Colour( colour ), m_CurrentType( 0 ) {	}
 
-	Renderable( const Position& vertPos1, const Position& vertPos2, const Position& vertPos3, const Colour& colour )
-		: m_VertPos1( vertPos1 ), m_VertPos2( vertPos2 ), m_VertPos3( vertPos3 ), m_Colour( colour ), m_CurrentType( 0 ) {	}
+	Renderable( const Position& p1, const Position& p2, const Colour& colour, unsigned short type = 1 )
+		: m_P1( p1 ), m_P2( p2 ), m_Colour( colour ) {  m_CurrentType = type; }
+
+	Renderable( const Position& p1, const Position& p2, const Position& p3, const Colour& colour )
+		: m_P1( p1 ), m_P2( p2 ), m_P3( p3 ), m_Colour( colour ), m_CurrentType( 0 ) {	}
 
 	virtual ~Renderable() = default;
 
@@ -65,9 +68,9 @@ protected:
 	Colour m_Colour;
 	Size m_Size;
 
-	Position m_VertPos1;
-	Position m_VertPos2;
-	Position m_VertPos3;
+	Position m_P1;
+	Position m_P2;
+	Position m_P3;
 
 	GLuint m_VerticesCount;
 

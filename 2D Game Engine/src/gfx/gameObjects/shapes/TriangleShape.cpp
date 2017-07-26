@@ -4,15 +4,15 @@
 
 #include <iostream>
 
-TriangleShape::TriangleShape( const Position& vertPos1, const Position& vertPos2, const Position& vertPos3, const Colour& colour )
+TriangleShape::TriangleShape( const Position& p1, const Position& p2, const Position& p3, const Colour& colour )
 	:
-	Renderable( vertPos1, vertPos2, vertPos3, colour )
+	Renderable( p1, p2, p3, colour )
 {
 	std::vector<GLfloat> vertices =
 	{
-		m_VertPos1.x, m_VertPos1.y, m_VertPos1.z,
-		m_VertPos2.x, m_VertPos2.y, m_VertPos2.z,
-		m_VertPos3.x, m_VertPos3.y, m_VertPos3.z
+		m_P1.x, m_P1.y, m_P1.z,
+		m_P2.x, m_P2.y, m_P2.z,
+		m_P3.x, m_P3.y, m_P3.z
 	};
 
 	std::vector<GLfloat> colours =
@@ -41,32 +41,36 @@ void TriangleShape::Render( Shader& shader )
 void TriangleShape::SetVertex( const Position& vertex, int number )
 {
 	if( number == VertexNum::VERT_1 )
-		m_VertPos1 = vertex;
+		m_P1 = vertex;
 	else if( number == VertexNum::VERT_2 )
-		m_VertPos2 = vertex;
+		m_P2 = vertex;
 	else if( number == VertexNum::VERT_3 )
-		m_VertPos3 = vertex;
+		m_P3 = vertex;
 	else
 		throw std::exception{ "Chosen vertex does not exist!\n" };
 
 	std::vector<GLfloat> vertices =
 	{
-		m_VertPos1.x, m_VertPos1.y, m_VertPos1.z,
-		m_VertPos2.x, m_VertPos2.y, m_VertPos2.z,
-		m_VertPos3.x, m_VertPos3.y, m_VertPos3.z
+		m_P1.x, m_P1.y, m_P1.z,
+		m_P2.x, m_P2.y, m_P2.z,
+		m_P3.x, m_P3.y, m_P3.z
 	};
 
 	m_VertVBO = VertexBuffer( vertices, vertices.size( ), 3 );
 	m_VAO.BindBuffer( m_VertVBO, ShaderLocation::POSITION, 0, 0 );
 }
 
-void TriangleShape::SetVertices( const Position& vertPos1, const Position& vertPos2, const Position& vertPos3 )
+void TriangleShape::SetVertices( const Position& p1, const Position& p2, const Position& p3 )
 {
+	m_P1 = p1;
+	m_P2 = p2;
+	m_P3 = p3;
+
 	std::vector<GLfloat> vertices =
 	{
-		m_VertPos1.x, m_VertPos1.y, m_VertPos1.z,
-		m_VertPos2.x, m_VertPos2.y, m_VertPos2.z,
-		m_VertPos3.x, m_VertPos3.y, m_VertPos3.z
+		m_P1.x, m_P1.y, m_P1.z,
+		m_P2.x, m_P2.y, m_P2.z,
+		m_P3.x, m_P3.y, m_P3.z
 	};
 
 	m_VertVBO = VertexBuffer( vertices, vertices.size( ), 3 );
@@ -91,11 +95,11 @@ void TriangleShape::SetColour( const Colour& colour )
 const Position& TriangleShape::GetVertex( int number ) const
 {
 	if( number == VertexNum::VERT_1 )
-		return m_VertPos1;
+		return m_P1;
 	else if( number == VertexNum::VERT_2 )
-		return m_VertPos2;
+		return m_P2;
 	else if( number == VertexNum::VERT_3 )
-		return m_VertPos3;
+		return m_P3;
 	else
 		throw std::exception{ "Chosen vertex does not exist!\n" };
 }

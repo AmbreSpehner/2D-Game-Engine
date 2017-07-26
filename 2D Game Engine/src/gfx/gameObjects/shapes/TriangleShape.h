@@ -13,12 +13,12 @@ class TriangleShape : public Renderable
 {
 public:
 	TriangleShape( ) = default;
-	TriangleShape( const Position& vertPos1, const Position& vertPos2, const Position& vertPos3, const Colour& colour );
+	TriangleShape( const Position& p1, const Position& p2, const Position& p3, const Colour& colour );
 
 	void Render( Shader& shader ) override;
 
 	void SetVertex( const Position& vertex, int number );
-	void SetVertices( const Position& vertPos1, const Position& vertPos2, const Position& vertPos3 );
+	void SetVertices( const Position& p1, const Position& p2, const Position& p3 );
 	void SetColour( const Colour& colour );
 
 	const Position& GetVertex( int number ) const;
