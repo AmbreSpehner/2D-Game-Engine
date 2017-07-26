@@ -27,9 +27,6 @@
 
 #include <Box2D/Box2D.h>
 
-#include <ft2build.h>
-#include FT_FREETYPE_H
-
 std::unordered_map<std::string, std::shared_ptr<Texture>> TextureCodex::m_pTextureMap;
 
 int main( )
