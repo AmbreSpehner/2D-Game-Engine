@@ -38,7 +38,7 @@ Sprite::Sprite( const Position& position, std::shared_ptr<Texture> pTexture )
 	m_IBO = IndexBuffer( indices, indices.size() );
 }
 
-Sprite::Sprite( const Position& position, const Size& size, std::shared_ptr<Texture> pTexture )
+Sprite::Sprite( const Position& position, const GLf_Size& size, std::shared_ptr<Texture> pTexture )
 	: 
 	Renderable( position, size ),
 	m_pTexture( pTexture )
@@ -97,7 +97,7 @@ void Sprite::SetPosition( Position& position )
 	m_Position = position;
 }
 
-void Sprite::SetSize( Size& size )
+void Sprite::SetSize( GLf_Size& size )
 {
 	m_Size = size;
 
@@ -138,14 +138,14 @@ void Sprite::ScaleSprite( float scale )
 {
 	m_Scale = scale;
 
-	SetSize( Size( m_Size.x * m_Scale, m_Size.y * m_Scale ) );
+	SetSize( GLf_Size( m_Size.x * m_Scale, m_Size.y * m_Scale ) );
 }
 
 void Sprite::SetTextureRect( const FloatRect& rect )
 {
 	m_TextureRect.SetRect( rect.x, rect.y, rect.dx, rect.dy );
 
-	SetSize( Size( rect.dx * m_Scale, rect.dy * m_Scale ) );
+	SetSize( GLf_Size( rect.dx * m_Scale, rect.dy * m_Scale ) );
 	SetTextCoords( m_TextureRect.x, m_TextureRect.y, m_TextureRect.dx, m_TextureRect.dy );
 }
 
@@ -154,11 +154,11 @@ void Sprite::SetTextureRect( float x, float y, float dx, float dy )
 	m_TextureRect.SetRect( x / m_pTexture->GetSize( ).x, y / m_pTexture->GetSize( ).y,
 						   dx / m_pTexture->GetSize( ).x, dy / m_pTexture->GetSize( ).y );
 
-	SetSize( Size( dx * m_Scale, dy * m_Scale ) );
+	SetSize( GLf_Size( dx * m_Scale, dy * m_Scale ) );
 	SetTextCoords( m_TextureRect.x, m_TextureRect.y, m_TextureRect.dx, m_TextureRect.dy );
 }
 
-void Sprite::SetTextureRect( const Position& position, const Size& size )
+void Sprite::SetTextureRect( const Position& position, const GLf_Size& size )
 {
 	SetTextureRect( position.x, position.y, size.x, size.y );
 }
@@ -178,7 +178,7 @@ void Sprite::SetTextCoords( const float x, const float y, const float dx, const 
 	m_VAO.BindBuffer( m_TexCoordVBO, ShaderLocation::TEXTURE_COORD, 0, 0 );
 }
 
-void Sprite::SetTextCoords( const Position& position, const Size& size )
+void Sprite::SetTextCoords( const Position& position, const GLf_Size& size )
 {
 	SetTextCoords( position.x, position.y, size.x, size.y );
 }

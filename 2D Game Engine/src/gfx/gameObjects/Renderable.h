@@ -12,10 +12,10 @@ class Renderable
 public:
 	Renderable() = default;
 
-	Renderable( const Position& position, const Size& size )
+	Renderable( const Position& position, const GLf_Size& size )
 		: m_Position( position ), m_Size( size ), m_CurrentType( 0 ) {	}
 
-	Renderable( const Position& position, const Size& size, const Colour& colour )
+	Renderable( const Position& position, const GLf_Size& size, const Colour& colour )
 		: m_Position( position ), m_Size( size ), m_Colour( colour ), m_CurrentType( 0 ) {	}
 
 	Renderable( const Position& vertPos1, const Position& vertPos2, const Position& vertPos3, const Colour& colour )
@@ -63,7 +63,7 @@ protected:
 protected:
 	Position m_Position;
 	Colour m_Colour;
-	Size m_Size;
+	GLf_Size m_Size;
 
 	Position m_VertPos1;
 	Position m_VertPos2;

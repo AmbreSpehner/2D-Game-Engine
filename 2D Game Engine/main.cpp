@@ -47,14 +47,8 @@ int main( )
 
 	Animation anim( 0.0f, 16.0f, 32.0f, 8.0f, 16, 0.5f );
 
-	RectangleShape shape2( Position( 200.0f, 200.0f, 0.0f ), Size( 100.0f, 100.0f ), Colour( 0.0f, 1.0f, 0.0f, 1.0f ) );
+	RectangleShape shape2( Position( 200.0f, 200.0f, 0.0f ), GLf_Size( 100.0f, 100.0f ), Colour( 0.0f, 1.0f, 0.0f, 1.0f ) );
 	shape2.SetType( RectangleShape::ShapeType::LINE );
-
-	auto a = glm::vec3( 10.0f, 10.0f, 10.0f );
-	auto b = Position( 10.0f, 10.0f, 10.0f );
-
-	std::cout << sizeof( a ) << '\n';
-	std::cout << sizeof( b ) << '\n';
 
 	// DeltaTime.
 	auto timePoint = std::chrono::steady_clock::now( );
