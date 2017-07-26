@@ -1,19 +1,26 @@
 #pragma once
 
+#include <GL/glew.h>
+
+template<typename T>
 struct Size
 {
 	Size( ) = default;
-	Size( float xIn, float yIn )
+	Size( T xIn, T yIn )
 	{
 		x = xIn;
 		y = yIn;
 	}
 
-	void Set( float xIn, float yIn )
+	void Set( T xIn, T yIn )
 	{
 		x = xIn;
 		y = yIn;
 	}
 
-	float x, y;
+	T x, y;
 };
+
+typedef Size<GLfloat> GLf_Size;
+typedef Size<GLint> GLi_Size;
+typedef Size<GLuint> GLui_Size;

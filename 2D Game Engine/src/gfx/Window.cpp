@@ -1,6 +1,6 @@
 #include "Window.h"
 
-#include <iostream>
+#include <stdexcept>
 
 #include <SOIL/SOIL.h>
 
@@ -20,7 +20,7 @@ Window::Window( const GLint width, const GLint height, const std::string& title 
 
 	if( m_pWindow == nullptr )
 	{
-		fprintf( stderr, "Failed to initialize GLFW\n" );
+		throw std::runtime_error{ "Failed to initialize GLFW!\n" };
 		glfwTerminate();
 	}
 
@@ -29,7 +29,7 @@ Window::Window( const GLint width, const GLint height, const std::string& title 
 	glewExperimental = 1;
 	if( glewInit() != 0 )
 	{
-		fprintf( stderr, "Failed to initialize GLEW\n" );
+		throw std::runtime_error{ "Failed to initialize GLEW!\n" };
 	}
 
 	// Enable Depth.

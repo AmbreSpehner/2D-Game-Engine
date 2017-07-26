@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include <iostream>
+#include <stdexcept>
 
 TriangleShape::TriangleShape( const Position& p1, const Position& p2, const Position& p3, const Colour& colour )
 	:
@@ -47,7 +47,7 @@ void TriangleShape::SetVertex( const Position& vertex, int number )
 	else if( number == VertexNum::VERT_3 )
 		m_P3 = vertex;
 	else
-		throw std::exception{ "Chosen vertex does not exist!\n" };
+		throw std::out_of_range{ "Chosen vertex does not exist!\n" };
 
 	std::vector<GLfloat> vertices =
 	{
@@ -101,7 +101,7 @@ const Position& TriangleShape::GetVertex( int number ) const
 	else if( number == VertexNum::VERT_3 )
 		return m_P3;
 	else
-		throw std::exception{ "Chosen vertex does not exist!\n" };
+		throw std::out_of_range{ "Chosen vertex does not exist!\n" };
 }
 
 const Colour& TriangleShape::GetColour( ) const

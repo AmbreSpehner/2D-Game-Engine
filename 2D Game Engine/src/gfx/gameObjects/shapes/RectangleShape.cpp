@@ -12,7 +12,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-RectangleShape::RectangleShape( const Position& position, const Size& size, const Colour& colour )
+RectangleShape::RectangleShape( const Position& position, const GLf_Size& size, const Colour& colour )
 	: Renderable( position, size, colour )
 {
 	std::vector<GLfloat> vertices =
@@ -46,7 +46,7 @@ void RectangleShape::Render( Shader& shader )
 	m_VAO.Bind();
 
 	glm::mat4 model;
-	model = glm::translate( model, m_Position.ToVec3( ) );
+	model = glm::translate( model, static_cast<glm::vec3>( m_Position ) );
 
 	shader.SetUniformMat4f( "model", model );
 
@@ -58,7 +58,7 @@ void RectangleShape::SetPosition( const Position& position )
 	m_Position = position;
 }
 
-void RectangleShape::SetSize( const Size& size )
+void RectangleShape::SetSize( const GLf_Size& size )
 {
 	m_Size = size;
 

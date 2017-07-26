@@ -54,7 +54,7 @@
     <ClCompile Include="src\gfx\b2draw\DebugDraw.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\gfx\gameObjects\shapes\SegmentShape.cpp">
+    <ClCompile Include="src\fonts\TrueTypeFont.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -134,7 +134,7 @@
     <ClInclude Include="src\gfx\structs\Structs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\gfx\gameObjects\shapes\SegmentShape.h">
+    <ClInclude Include="src\fonts\TrueTypeFont.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

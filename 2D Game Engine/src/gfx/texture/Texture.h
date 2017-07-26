@@ -15,9 +15,9 @@ public:
 	void Bind();
 	void Unbind();
 
-	const Size GetSize() const
+	const GLf_Size GetSize() const
 	{
-		return Size( ( float ) m_Width, ( float ) m_Height );
+		return GLf_Size( ( GLfloat ) m_Width, ( GLfloat ) m_Height );
 	}
 
 private:

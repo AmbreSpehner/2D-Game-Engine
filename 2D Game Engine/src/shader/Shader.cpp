@@ -43,7 +43,6 @@ GLuint Shader::LoadShaders( const std::string & vertexPath, const std::string & 
 	GLint result;
 
 	// compile vertex shader.
-	std::cout << "Compiling Shaders: " << vertexPath << '\n';
 	glShaderSource( vertexShaderID, 1, &vertexSource, NULL );
 	glCompileShader( vertexShaderID );
 
@@ -60,7 +59,6 @@ GLuint Shader::LoadShaders( const std::string & vertexPath, const std::string & 
 	}
 
 	// Compile fragment shader.
-	std::cout << "Compiling shaders: " << fragmentPath << '\n';
 	glShaderSource( fragmentShaderID, 1, &fragmentSource, NULL );
 	glCompileShader( fragmentShaderID );
 
@@ -77,7 +75,6 @@ GLuint Shader::LoadShaders( const std::string & vertexPath, const std::string & 
 	}
 
 	// Link the program.
-	std::cout << "Linking program.\n";
 	GLuint programID = glCreateProgram();
 	glAttachShader( programID, vertexShaderID );
 	glAttachShader( programID, fragmentShaderID );

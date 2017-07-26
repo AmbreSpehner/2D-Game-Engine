@@ -47,7 +47,7 @@ int main( )
 
 	Animation anim( 0.0f, 16.0f, 32.0f, 8.0f, 16, 0.5f );
 
-	RectangleShape shape2( Position( 200.0f, 200.0f, 0.0f ), Size( 100.0f, 100.0f ), Colour( 0.0f, 1.0f, 0.0f, 1.0f ) );
+	RectangleShape shape2( Position( 200.0f, 200.0f, 0.0f ), GLf_Size( 100.0f, 100.0f ), Colour( 0.0f, 1.0f, 0.0f, 1.0f ) );
 	shape2.SetType( RectangleShape::ShapeType::LINE );
 
 	// DeltaTime.
