@@ -4,38 +4,38 @@
 
 Animation::Animation( float x, float y, float dx, float dy, int numFrames, float holdTime )
 	:
-	m_HoldTime( holdTime )
+	holdTime( holdTime )
 {
-	m_Frames.reserve( numFrames );
+	frames.reserve( numFrames );
 
 	for( int i = 0; i < numFrames; i++ )
 	{
-		m_Frames.emplace_back( x, y, dx, dy );
+		frames.emplace_back( x, y, dx, dy );
 		x += dx;
 	}
 }
 
 void Animation::ApplyToSprite( Sprite & sprite ) const
 {
-	sprite.SetTextureRect( m_Frames[m_FrameIndex].x, m_Frames[m_FrameIndex].y,
-						   m_Frames[m_FrameIndex].dx, m_Frames[m_FrameIndex].dy );
+	sprite.SetTextureRect( frames[frameIndex].x, frames[frameIndex].y,
+						   frames[frameIndex].dx, frames[frameIndex].dy );
 }
 
 void Animation::Update( float deltaTime )
 {
-	m_Time += deltaTime;
+	time += deltaTime;
 
-	while( m_Time >= m_HoldTime )
+	while( time >= holdTime )
 	{
-		m_Time -= m_HoldTime;
+		time -= holdTime;
 		Advance( );
 	}
 }
 
 void Animation::Advance( )
 {
-	if( ++m_FrameIndex >= int( m_Frames.size( ) ) )
+	if( ++frameIndex >= int( frames.size( ) ) )
 	{
-		m_FrameIndex = 0;
+		frameIndex = 0;
 	}
 }

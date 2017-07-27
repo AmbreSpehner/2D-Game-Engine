@@ -13,7 +13,7 @@ class TriangleShape : public Renderable
 {
 public:
 	TriangleShape( ) = default;
-	TriangleShape( const Position& p1, const Position& p2, const Position& p3, const Colour& colour );
+	TriangleShape( const Position& p1, const Position& p2, const Position& p3, const Colour& colour, unsigned short type = 0 );
 
 	void Render( Shader& shader ) override;
 
@@ -22,7 +22,7 @@ public:
 	void SetColour( const Colour& colour );
 
 	const Position& GetVertex( int number ) const;
-	const Colour& GetColour( ) const;
+	const Colour& GetColour( ) const { return colour; }
 
 public:
 	enum VertexNum

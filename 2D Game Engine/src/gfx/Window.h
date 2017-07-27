@@ -24,10 +24,10 @@ public:
 	void EnableFrameLimit( bool state );
 
 public:
-	GLFWwindow* m_pWindow;
+	GLFWwindow* pWindow;
 
 private:
-	GLint m_Width;
-	GLint m_Height;
-	std::string m_Title;
+	GLint width;
+	GLint height;
+	std::string title;
 };

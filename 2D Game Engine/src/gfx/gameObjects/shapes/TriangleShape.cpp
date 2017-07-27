@@ -4,36 +4,36 @@
 
 #include <stdexcept>
 
-TriangleShape::TriangleShape( const Position& p1, const Position& p2, const Position& p3, const Colour& colour )
+TriangleShape::TriangleShape( const Position& p1, const Position& p2, const Position& p3, const Colour& colour, unsigned short type )
 	:
-	Renderable( p1, p2, p3, colour )
+	Renderable( p1, p2, p3, colour, type )
 {
 	std::vector<GLfloat> vertices =
 	{
-		m_P1.x, m_P1.y, m_P1.z,
-		m_P2.x, m_P2.y, m_P2.z,
-		m_P3.x, m_P3.y, m_P3.z
+		this->p1.x, this->p1.y, this->p1.z,
+		this->p2.x, this->p2.y, this->p2.z,
+		this->p3.x, this->p3.y, this->p3.z
 	};
 
 	std::vector<GLfloat> colours =
 	{
-		m_Colour.r, m_Colour.g, m_Colour.b, m_Colour.a,
-		m_Colour.r, m_Colour.g, m_Colour.b, m_Colour.a,
-		m_Colour.r, m_Colour.g, m_Colour.b, m_Colour.a
+		this->colour.r, this->colour.g, this->colour.b, this->colour.a,
+		this->colour.r, this->colour.g, this->colour.b, this->colour.a,
+		this->colour.r, this->colour.g, this->colour.b, this->colour.a
 	};
 
-	m_VertVBO = VertexBuffer( vertices, vertices.size( ), 3 );
-	m_ColourVBO = VertexBuffer( colours, colours.size( ), 4 );
+	vertVBO = VertexBuffer( vertices, vertices.size( ), 3 );
+	colourVBO = VertexBuffer( colours, colours.size( ), 4 );
 
-	m_VAO.BindBuffer( m_VertVBO, ShaderLocation::POSITION, 0, 0 );
-	m_VAO.BindBuffer( m_ColourVBO, ShaderLocation::COLOUR, 0, 0 );
+	VAO.BindBuffer( vertVBO, ShaderLocation::POSITION, 0, 0 );
+	VAO.BindBuffer( colourVBO, ShaderLocation::COLOUR, 0, 0 );
 
-	m_VerticesCount = vertices.size( ) / m_VertVBO.GetComponentCount( );
+	verticesCount = vertices.size( ) / vertVBO.GetComponentCount( );
 }
 
 void TriangleShape::Render( Shader& shader )
 {
-	m_VAO.Bind( );
+	VAO.Bind( );
 
 	Renderable::RenderVertices( );
 }
@@ -41,70 +41,65 @@ void TriangleShape::Render( Shader& shader )
 void TriangleShape::SetVertex( const Position& vertex, int number )
 {
 	if( number == VertexNum::P1 )
-		m_P1 = vertex;
+		p1 = vertex;
 	else if( number == VertexNum::P2 )
-		m_P2 = vertex;
+		p2 = vertex;
 	else if( number == VertexNum::P3 )
-		m_P3 = vertex;
+		p3 = vertex;
 	else
 		throw std::out_of_range{ "Chosen vertex does not exist!\n" };
 
 	std::vector<GLfloat> vertices =
 	{
-		m_P1.x, m_P1.y, m_P1.z,
-		m_P2.x, m_P2.y, m_P2.z,
-		m_P3.x, m_P3.y, m_P3.z
+		p1.x, p1.y, p1.z,
+		p2.x, p2.y, p2.z,
+		p3.x, p3.y, p3.z
 	};
 
-	m_VertVBO = VertexBuffer( vertices, vertices.size( ), 3 );
-	m_VAO.BindBuffer( m_VertVBO, ShaderLocation::POSITION, 0, 0 );
+	vertVBO = VertexBuffer( vertices, vertices.size( ), 3 );
+	VAO.BindBuffer( vertVBO, ShaderLocation::POSITION, 0, 0 );
 }
 
 void TriangleShape::SetVertices( const Position& p1, const Position& p2, const Position& p3 )
 {
-	m_P1 = p1;
-	m_P2 = p2;
-	m_P3 = p3;
+	this->p1 = p1;
+	this->p2 = p2;
+	this->p3 = p3;
 
 	std::vector<GLfloat> vertices =
 	{
-		m_P1.x, m_P1.y, m_P1.z,
-		m_P2.x, m_P2.y, m_P2.z,
-		m_P3.x, m_P3.y, m_P3.z
+		this->p1.x, this->p1.y, this->p1.z,
+		this->p2.x, this->p2.y, this->p2.z,
+		this->p3.x, this->p3.y, this->p3.z
 	};
 
-	m_VertVBO = VertexBuffer( vertices, vertices.size( ), 3 );
-	m_VAO.BindBuffer( m_VertVBO, ShaderLocation::POSITION, 0, 0 );
+	vertVBO = VertexBuffer( vertices, vertices.size( ), 3 );
+	VAO.BindBuffer( vertVBO, ShaderLocation::POSITION, 0, 0 );
 }
 
 void TriangleShape::SetColour( const Colour& colour )
 {
-	m_Colour = colour;
+	this->colour = colour;
 
 	std::vector<GLfloat> colours =
 	{
-		m_Colour.r, m_Colour.g, m_Colour.b, m_Colour.a,
-		m_Colour.r, m_Colour.g, m_Colour.b, m_Colour.a,
-		m_Colour.r, m_Colour.g, m_Colour.b, m_Colour.a
+		this->colour.r, this->colour.g, this->colour.b, this->colour.a,
+		this->colour.r, this->colour.g, this->colour.b, this->colour.a,
+		this->colour.r, this->colour.g, this->colour.b, this->colour.a
 	};
 
-	m_ColourVBO = VertexBuffer( colours, colours.size( ), 4 );
-	m_VAO.BindBuffer( m_ColourVBO, ShaderLocation::COLOUR, 0, 0 );
+	colourVBO = VertexBuffer( colours, colours.size( ), 4 );
+	VAO.BindBuffer( colourVBO, ShaderLocation::COLOUR, 0, 0 );
 }
 
 const Position& TriangleShape::GetVertex( int number ) const
 {
 	if( number == VertexNum::P1 )
-		return m_P1;
+		return p1;
 	else if( number == VertexNum::P2 )
-		return m_P2;
+		return p2;
 	else if( number == VertexNum::P3 )
-		return m_P3;
+		return p3;
 	else
 		throw std::out_of_range{ "Chosen vertex does not exist!\n" };
-}
-
-const Colour& TriangleShape::GetColour( ) const
-{
-	return m_Colour;
 }

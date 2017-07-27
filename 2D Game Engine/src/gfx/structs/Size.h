@@ -6,16 +6,16 @@ template<typename T>
 struct Size
 {
 	Size( ) = default;
-	Size( T xIn, T yIn )
+	Size( const T x, const T y )
 	{
-		x = xIn;
-		y = yIn;
+		this->x = x;
+		this->y = y;
 	}
 
-	void Set( T xIn, T yIn )
+	void Set( const T x, const T y )
 	{
-		x = xIn;
-		y = yIn;
+		this->x = x;
+		this->y = y;
 	}
 
 	T x, y;

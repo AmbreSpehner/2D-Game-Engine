@@ -15,14 +15,14 @@ public:
 	void SetPoint( const Position& p, int number );
 	void SetPoints( const Position& p1, const Position& p2 );
 
-	const float& GetLineWidth( ) const { return m_LineWidth; }
-	const Colour& GetColour( ) const { return m_Colour; }
+	const float& GetLineWidth( ) const { return lineWidth; }
+	const Colour& GetColour( ) const { return colour; }
 	const Position& GetPoint( int number ) const
 	{
 		if( number == VertexNum::P1 )
-			return m_P1;
+			return p1;
 		else if( number == VertexNum::P2 )
-			return m_P2;
+			return p2;
 		else
 			throw std::out_of_range{ "Chosen vertex does not exist!\n" };
 	}

@@ -17,10 +17,9 @@ private:
 	void Advance( );
 
 private:
-	float m_HoldTime;
-	float m_Time = 0.0f;
-	int m_FrameIndex = 0;
+	float holdTime;
+	float time = 0.0f;
+	int frameIndex = 0;
 
-	std::shared_ptr<Texture> m_pTexture;
-	std::vector<FloatRect> m_Frames;
+	std::vector<FloatRect> frames;
 };

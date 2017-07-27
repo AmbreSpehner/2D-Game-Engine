@@ -9,17 +9,17 @@
 
 Shader::Shader( const std::string & vertexPath, const std::string & fragmentPath )
 {
-	m_ShaderID = LoadShaders( vertexPath, fragmentPath );
+	shaderID = LoadShaders( vertexPath, fragmentPath );
 }
 
 Shader::~Shader()
 {
-	glDeleteProgram( m_ShaderID );
+	glDeleteProgram( shaderID );
 }
 
 void Shader::Enable() const
 {
-	glUseProgram( m_ShaderID );
+	glUseProgram( shaderID );
 }
 
 void Shader::Disable() const
@@ -95,7 +95,7 @@ GLint Shader::GetUniformLocation( const std::string & name )
 {
 	auto nameBis = name.c_str();
 
-	return glGetUniformLocation( m_ShaderID, nameBis );
+	return glGetUniformLocation( shaderID, nameBis );
 }
 
 void Shader::SetUniformMat4f( const std::string & name, const glm::mat4 & matrix )

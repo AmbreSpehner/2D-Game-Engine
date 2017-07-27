@@ -14,5 +14,5 @@ public:
 	void Flush( VertexArray& VAO, Shader& shader );
 
 private:
-	std::deque<Renderable*> m_RenderQueue;
+	std::deque<Renderable*> renderQueue;
 };

@@ -7,14 +7,14 @@
 
 void Renderer2D::Submit( Renderable* renderable )
 {
-	m_RenderQueue.push_back( renderable );
+	renderQueue.push_back( renderable );
 }
 
 void Renderer2D::Flush( VertexArray& VAO, Shader& shader )
 {
-	while ( !m_RenderQueue.empty() )
+	while ( !renderQueue.empty() )
 	{
-		Renderable* renderable = m_RenderQueue.front();
+		Renderable* renderable = renderQueue.front();
 
 		glm::mat4 model;
 		model = glm::translate( model, renderable->GetPosition() );
@@ -23,6 +23,6 @@ void Renderer2D::Flush( VertexArray& VAO, Shader& shader )
 
 		renderable->Render( shader );
 
-		m_RenderQueue.pop_front();
+		renderQueue.pop_front();
 	}
 }

@@ -1,35 +1,27 @@
-/**
- *	@file	VertexBuffer.cpp
- *	@author	BouwnLaw
- *	@date	08/07/2017
- *	@brief	Create a vertex buffer object.
- *
- *	Create a vertex buffer object to process all vertices given.
- */
 #include "VertexBuffer.h"
 
 VertexBuffer::VertexBuffer( std::vector<GLfloat>& data, GLuint count, GLuint componentCount )
 	:
-	m_Count( count ),
-	m_ComponentCount( componentCount )
+	count( count ),
+	componentCount( componentCount )
 {
-	glGenBuffers( 1, &m_VertexBufferID );
-	glBindBuffer( GL_ARRAY_BUFFER, m_VertexBufferID );
+	glGenBuffers( 1, &vertexBufferID );
+	glBindBuffer( GL_ARRAY_BUFFER, vertexBufferID );
 	glBufferData( GL_ARRAY_BUFFER, sizeof( GLfloat ) * count, &data.front(), GL_STATIC_DRAW );
 	glBindBuffer( GL_ARRAY_BUFFER, 0 );
 }
 
 VertexBuffer::~VertexBuffer()
 {
-	if ( m_VertexBufferID != 0 )
+	if ( vertexBufferID != 0 )
 	{
-		glDeleteBuffers( 1, &m_VertexBufferID );
+		glDeleteBuffers( 1, &vertexBufferID );
 	}
 }
 
 void VertexBuffer::Bind() const
 {
-	glBindBuffer( GL_ARRAY_BUFFER, m_VertexBufferID );
+	glBindBuffer( GL_ARRAY_BUFFER, vertexBufferID );
 }
 
 void VertexBuffer::Unbind() const
@@ -39,5 +31,5 @@ void VertexBuffer::Unbind() const
 
 GLuint VertexBuffer::GetComponentCount() const
 {
-	return m_ComponentCount;
+	return componentCount;
 }

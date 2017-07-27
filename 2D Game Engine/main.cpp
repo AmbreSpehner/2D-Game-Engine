@@ -28,7 +28,7 @@
 
 #include <Box2D/Box2D.h>
 
-std::unordered_map<std::string, std::shared_ptr<Texture>> TextureCodex::m_pTextureMap;
+std::unordered_map<std::string, std::shared_ptr<Texture>> TextureCodex::pTextureMap;
 
 int main( )
 {

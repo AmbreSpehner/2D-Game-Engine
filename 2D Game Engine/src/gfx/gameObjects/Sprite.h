@@ -10,8 +10,8 @@ class Sprite : public Renderable
 {
 public:
 	Sprite() = default;
-	Sprite( const Position& m_Position, std::shared_ptr<Texture> pTexture );
-	Sprite( const Position& m_Position, const GLf_Size& m_Size, std::shared_ptr<Texture> pTexture );
+	Sprite( const Position& position, std::shared_ptr<Texture> pTexture );
+	Sprite( const Position& position, const GLf_Size& size, std::shared_ptr<Texture> pTexture );
 
 	void Render( Shader& shader ) override;
 
@@ -19,9 +19,9 @@ public:
 	void SetSize( GLf_Size& size );
 	void SetColour( Colour& colour );
 
-	const Position& GetPosition( ) const { return m_Position; }
-	const GLf_Size& GetSize( ) const { return m_Size; }
-	const Colour& GetColour( ) const { return m_Colour; }
+	const Position& GetPosition( ) const { return position; }
+	const GLf_Size& GetSize( ) const { return size; }
+	const Colour& GetColour( ) const { return colour; }
 
 	void SetTexture( std::shared_ptr<Texture> pTexture );
 
@@ -37,10 +37,10 @@ public:
 	Sprite& operator=( Sprite&& rSprite ) = default;
 
 private:
-	float m_Scale;
+	float scale;
 
-	VertexBuffer m_TexCoordVBO;
-	FloatRect m_TextureRect;
+	VertexBuffer texCoordVBO;
+	FloatRect textureRect;
 
-	std::shared_ptr<Texture> m_pTexture;
+	std::shared_ptr<Texture> pTexture;
 };

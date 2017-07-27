@@ -1,22 +1,13 @@
-/**
- *	@file	VertexArray.cpp
- *	@author	BouwnLaw
- *	@date	08/07/2017
- *	@brief	Create a Vertex Array object.
- *
- *	Create a vertex array object.
- */
 #include "VertexArray.h"
-
 
 VertexArray::VertexArray()
 {
-	glGenVertexArrays( 1, &m_ArrayID );
+	glGenVertexArrays( 1, &arrayID );
 }
 
 VertexArray::~VertexArray()
 {
-	glDeleteVertexArrays( 1, &m_ArrayID );
+	glDeleteVertexArrays( 1, &arrayID );
 }
 
 void VertexArray::BindBuffer( const VertexBuffer& buffer, GLuint index, GLsizei stride, GLint offset )
@@ -32,7 +23,7 @@ void VertexArray::BindBuffer( const VertexBuffer& buffer, GLuint index, GLsizei 
 
 void VertexArray::Bind() const
 {
-	glBindVertexArray( m_ArrayID );
+	glBindVertexArray( arrayID );
 }
 
 void VertexArray::Unbind() const

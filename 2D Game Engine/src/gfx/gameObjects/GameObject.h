@@ -16,8 +16,7 @@ public:
 	public:
 		void CreateSprite( const std::string& name, const Position& pos, std::shared_ptr<Texture> texture )
 		{
-			auto pSprite = std::make_unique<Sprite>( pos, texture );
-			renderableMap[name] = std::move( pSprite );
+			renderableMap[name] = std::make_unique<Sprite>( pos, texture );
 		}
 
 		void CreateSprite( const std::string& name, const Position& pos, const GLf_Size& size, std::shared_ptr<Texture> texture )

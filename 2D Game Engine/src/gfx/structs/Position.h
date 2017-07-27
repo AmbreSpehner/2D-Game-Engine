@@ -7,18 +7,18 @@
 struct Position
 {
 	Position( ) = default;
-	Position( GLfloat xIn, GLfloat yIn, GLfloat zIn = 0.0f )
+	Position( const GLfloat x, const GLfloat y, const GLfloat z = 0.0f )
 	{
-		x = xIn;
-		y = yIn;
-		z = zIn;
+		this->x = x;
+		this->y = y;
+		this->z = z;
 	}
 
-	void Set( GLfloat xIn, GLfloat yIn, GLfloat zIn = 0.0f )
+	void Set( const GLfloat x, const GLfloat y, const GLfloat z = 0.0f )
 	{
-		x = xIn;
-		y = yIn;
-		z = zIn;
+		this->x = x;
+		this->y = y;
+		this->z = z;
 	}
 
 	explicit operator glm::vec3( ) const { return glm::vec3{ x, y, z }; }

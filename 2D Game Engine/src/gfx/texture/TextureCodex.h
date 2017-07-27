@@ -12,8 +12,8 @@ class TextureCodex
 public:
 	static std::shared_ptr<Texture> Acquire( const std::string& filepath )
 	{
-		const auto i = m_pTextureMap.find( filepath );
-		if( i != m_pTextureMap.end() )
+		const auto i = pTextureMap.find( filepath );
+		if( i != pTextureMap.end() )
 		{
 			return i->second;
 		}
@@ -21,7 +21,7 @@ public:
 		{
 			auto pTexture = std::make_shared<Texture>( filepath );
 
-			m_pTextureMap.insert( { filepath, pTexture } );
+			pTextureMap.insert( { filepath, pTexture } );
 
 			return pTexture;
 		}
@@ -29,11 +29,11 @@ public:
 
 	static void Discard()
 	{
-		for( auto i = m_pTextureMap.begin(); i != m_pTextureMap.end(); )
+		for( auto i = pTextureMap.begin(); i != pTextureMap.end(); )
 		{
 			if( i->second.unique() )
 			{
-				i = m_pTextureMap.erase( i );
+				i = pTextureMap.erase( i );
 			}
 			else
 			{
@@ -43,5 +43,5 @@ public:
 	}
 
 private:
-	static std::unordered_map<std::string, std::shared_ptr<Texture>> m_pTextureMap;
+	static std::unordered_map<std::string, std::shared_ptr<Texture>> pTextureMap;
 };

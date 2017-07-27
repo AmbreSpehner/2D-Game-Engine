@@ -32,5 +32,5 @@ private:
 	GLint GetUniformLocation( const std::string& name );
 
 private:
-	GLuint m_ShaderID;
+	GLuint shaderID;
 };

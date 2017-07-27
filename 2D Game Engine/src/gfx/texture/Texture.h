@@ -17,11 +17,11 @@ public:
 
 	const GLf_Size GetSize() const
 	{
-		return GLf_Size( ( GLfloat ) m_Width, ( GLfloat ) m_Height );
+		return GLf_Size( static_cast<GLfloat>( width ), static_cast<GLfloat>( height ) );
 	}
 
 private:
-	int m_Width, m_Height;
+	int width, height;
 
-	GLuint m_TextureID;
+	GLuint textureID;
 };

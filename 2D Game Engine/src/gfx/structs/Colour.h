@@ -3,20 +3,20 @@
 struct Colour
 {
 	Colour( ) = default;
-	Colour( GLfloat rIn, GLfloat gIn, GLfloat bIn, GLfloat aIn = 1.0f )
+	Colour( const GLfloat r, const GLfloat g, const GLfloat b, const GLfloat a = 1.0f )
 	{
-		r = rIn;
-		g = gIn;
-		b = bIn;
-		a = aIn;
+		this->r = r;
+		this->g = g;
+		this->b = b;
+		this->a = a;
 	}
 
-	void Set( GLfloat rIn, GLfloat gIn, GLfloat bIn, GLfloat aIn = 1.0f )
+	void Set( const GLfloat r, const GLfloat g, const GLfloat b, const GLfloat a = 1.0f )
 	{
-		r = rIn;
-		g = gIn;
-		b = bIn;
-		a = aIn;
+		this->r = r;
+		this->g = g;
+		this->b = b;
+		this->a = a;
 	}
 
 	GLfloat r, b, g, a;
