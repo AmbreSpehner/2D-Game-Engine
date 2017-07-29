@@ -131,6 +131,7 @@
     <ClCompile Include="src\gfx\buffers\IndexBuffer.cpp" />
     <ClCompile Include="src\gfx\buffers\VertexArray.cpp" />
     <ClCompile Include="src\gfx\buffers\VertexBuffer.cpp" />
+    <ClCompile Include="src\gfx\gameObjects\RenderableImage.cpp" />
     <ClCompile Include="src\gfx\gameObjects\shapes\RectangleShape.cpp" />
     <ClCompile Include="src\gfx\gameObjects\shapes\SegmentLine.cpp" />
     <ClCompile Include="src\gfx\gameObjects\Sprite.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="src\gfx\buffers\VertexArray.h" />
     <ClInclude Include="src\gfx\buffers\VertexBuffer.h" />
     <ClInclude Include="src\gfx\gameObjects\GameObject.h" />
+    <ClInclude Include="src\gfx\gameObjects\RenderableImage.h" />
     <ClInclude Include="src\gfx\gameObjects\shapes\RectangleShape.h" />
     <ClInclude Include="src\gfx\gameObjects\Renderable.h" />
     <ClInclude Include="src\gfx\gameObjects\shapes\SegmentLine.h" />

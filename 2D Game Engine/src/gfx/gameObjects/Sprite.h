@@ -39,7 +39,6 @@ public:
 private:
 	float scale;
 
-	VertexBuffer texCoordVBO;
 	FloatRect textureRect;
 
 	std::shared_ptr<Texture> pTexture;

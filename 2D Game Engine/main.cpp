@@ -25,7 +25,6 @@
 #include "src/gfx/Animation/Animation.h"
 #include "src/gfx/gameObjects/shapes/TriangleShape.h"
 #include "src/gfx/gameObjects/shapes/SegmentLine.h"
-#include "src/fonts/TrueTypeFont.h"
 
 #include <Box2D/Box2D.h>
 
@@ -49,7 +48,7 @@ int main( )
 
 	Animation anim( 0.0f, 16.0f, 32.0f, 8.0f, 16, 0.5f );
 
-	TrueTypeFont ttf( "res/fonts/arial.ttf", 80 );
+	// TrueTypeFont ttf( "res/fonts/arial.ttf", 80 );
 
 	auto timePoint = std::chrono::steady_clock::now( );
 

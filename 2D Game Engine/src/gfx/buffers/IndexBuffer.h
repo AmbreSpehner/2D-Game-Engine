@@ -30,7 +30,7 @@ public:
 	}
 
 public:
-	enum BUFFER_USAGE
+	enum BufferUsage
 	{
 		STATIC	= 0,
 		DYNAMIC = 1

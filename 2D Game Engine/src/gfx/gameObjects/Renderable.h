@@ -79,7 +79,10 @@ protected:
 
 	VertexBuffer vertVBO;
 	VertexBuffer colourVBO;
+	VertexBuffer texCoordVBO;
+
 	IndexBuffer IBO;
+	
 	VertexArray VAO;
 
 protected:
