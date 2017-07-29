@@ -26,18 +26,31 @@ TrueTypeFont::TrueTypeFont( const std::string path, GLuint fontHeight )
 			continue;
 		}
 
+		int totalPixels = face->glyph->bitmap.width * face->glyph->bitmap.rows;
+
+		for( int i = 0; i < totalPixels; i++ )
+		{
+			Pixel pixel;
+			pixel.r = face->glyph->bitmap.buffer[i];
+			pixel.g = 255;
+			pixel.b = 255;
+			pixel.a = 255;
+
+			buffer.emplace_back( pixel );
+		}
+
 		GLuint textureID;
 		glGenTextures( 1, &textureID );
 		glBindTexture( GL_TEXTURE_2D, textureID );
-		glTexImage2D( GL_TEXTURE_2D, 0, GL_RED, face->glyph->bitmap.width, face->glyph->bitmap.rows, 
-					  0, GL_RED, GL_UNSIGNED_BYTE, face->glyph->bitmap.buffer );
+		glTexImage2D( GL_TEXTURE_2D, 0, GL_RGBA, face->glyph->bitmap.width, face->glyph->bitmap.rows,
+					  0, GL_RGBA, GL_UNSIGNED_BYTE, &buffer.front() );
 
 		glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE );
 		glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE );
 		glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
 		glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
 
-		Character character = 
+		Character character =
 		{
 			textureID,
 			glm::ivec2( face->glyph->bitmap.width, face->glyph->bitmap.rows ),
@@ -66,6 +79,8 @@ TrueTypeFont::TrueTypeFont( const std::string path, GLuint fontHeight )
 
 void TrueTypeFont::RenderText( Shader& shader, std::string text, GLfloat x, GLfloat y, GLfloat scale, Colour& colour )
 {
+	shader.Enable( );
+
 	shader.SetUniform1i( "useFont", true );
 	shader.SetUniformVec4f( "fontColour", static_cast< glm::vec4 >( colour ) );
 
@@ -77,20 +92,20 @@ void TrueTypeFont::RenderText( Shader& shader, std::string text, GLfloat x, GLfl
 	{
 		Character ch = characterMap[*it];
 
-		GLfloat xpos = x + ch.bearing.x * scale;
-		GLfloat ypos = y - ( ch.size.y - ch.bearing.y ) * scale;
+		GLfloat xPos = x + ch.bearing.x * scale;
+		GLfloat yPos = y - ( ch.size.y - ch.bearing.y ) * scale;
 
 		GLfloat w = ch.size.x * scale;
 		GLfloat h = ch.size.y * scale;
 
 		GLfloat vertices[6][4] = {
-			{ xpos,     ypos + h,   0.0, 0.0 },
-			{ xpos,     ypos,       0.0, 1.0 },
-			{ xpos + w, ypos,       1.0, 1.0 },
+			{ xPos,     yPos + h,   0.0, 0.0 },
+			{ xPos,     yPos,       0.0, 1.0 },
+			{ xPos + w, yPos,       1.0, 1.0 },
 
-			{ xpos,     ypos + h,   0.0, 0.0 },
-			{ xpos + w, ypos,       1.0, 1.0 },
-			{ xpos + w, ypos + h,   1.0, 0.0 }
+			{ xPos,     yPos + h,   0.0, 0.0 },
+			{ xPos + w, yPos,       1.0, 1.0 },
+			{ xPos + w, yPos + h,   1.0, 0.0 }
 		};
 
 		glBindTexture( GL_TEXTURE_2D, ch.textureID );

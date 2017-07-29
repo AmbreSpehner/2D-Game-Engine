@@ -20,7 +20,7 @@ void main()
 	}
 	else if( useFont)
 	{
-		colour = fontColour * vec4( 1.0, 1.0, 1.0, texture( font, myTexCoord ) );
+		colour = fontColour * texture2D( font, myTexCoord );
 	}
 	else
 	{

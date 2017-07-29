@@ -35,7 +35,7 @@ int main( )
 {
 	Window window( 1000, 800, "OpenGL" );
 	window.SetIcon( "res/wall.jpg" );
-	window.EnableFrameLimit( true );
+	// window.EnableFrameLimit( true );
 
 	TextureCodex::Discard( );
 
@@ -51,16 +51,14 @@ int main( )
 
 	TrueTypeFont ttf( "res/fonts/arial.ttf", 80 );
 
-	// DeltaTime.
 	auto timePoint = std::chrono::steady_clock::now( );
 
 	while( !window.IsClosed( ) )
 	{
 		window.ProcessInput( );
 		window.Update( );
-		window.Clear( Colour( 1.0f, 1.0f, 1.0f, 1.0f ) );
+		window.Clear( Colour( 0.0f, 0.0f, 0.0f, 1.0f ) );
 
-		// get DeltaTime.
 		float deltaTime;
 		{
 			const auto newTimePoint = std::chrono::steady_clock::now( );
@@ -74,7 +72,7 @@ int main( )
 		glm::mat4 view;
 		glm::mat4 projection;
 		view = glm::lookAt( glm::vec3( 0.0f, 0.0f, 1.0f ), glm::vec3( 0.0f, 0.0f, 0.0f ), glm::vec3( 0.0f, 1.0f, 0.0f ) );
-		projection = glm::ortho( -500.0f, 500.0f, -400.0f, 400.0f, 0.1f, 100.0f );
+		projection = glm::ortho( 0.0f, 1000.0f, 0.0f, 800.0f, 0.1f, 100.0f );
 
 		shader.SetUniformMat4f( "model", model );
 		shader.SetUniformMat4f( "view", view );
@@ -85,7 +83,7 @@ int main( )
 
 		VAO.Bind( );
 
-		ttf.RenderText( shader, "Hello", 0.0f, 0.0f, 1.0f, Colour( 1.0f, 0.0f, 0.0f, 1.0f ) );
+		ttf.RenderText( shader, "Hello", 500.0f, 500.0f, 1.0f, Colour( 1.0f, 0.0f, 0.0f, 1.0f ) );
 		sprite.Render( shader );
 
 		VAO.Unbind( );

@@ -30,11 +30,17 @@ public:
 		GLuint advance;
 	};
 
+	struct Pixel
+	{
+		std::uint8_t r, g, b, a;
+	};
+
 private:
 	FT_Library ft;
 	FT_Face face;
 
 	std::map<GLchar, Character> characterMap;
+	std::vector<Pixel> buffer;
 
 	GLuint VAO, VBO;
 };
