@@ -16,6 +16,7 @@
     <ClCompile Include="src\gfx\Window.cpp" />
     <ClCompile Include="src\shader\Shader.cpp" />
     <ClCompile Include="src\gfx\gameObjects\shapes\SegmentLine.cpp" />
+    <ClCompile Include="src\gfx\camera\Camera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\fonts\TrueTypeFont.h" />
@@ -41,6 +42,7 @@
     <ClInclude Include="src\shader\Shader.h" />
     <ClInclude Include="src\utils\File_Reader.h" />
     <ClInclude Include="src\gfx\gameObjects\shapes\SegmentLine.h" />
+    <ClInclude Include="src\gfx\camera\Camera.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\background_blue1.png" />
