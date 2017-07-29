@@ -32,14 +32,11 @@ Window::Window( const GLint width, const GLint height, const std::string& title 
 		throw std::runtime_error{ "Failed to initialize GLEW!\n" };
 	}
 
-	// Enable Depth.
 	glEnable( GL_DEPTH_TEST );
 
-	// Enable Blending.
 	glEnable( GL_BLEND );
 	glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
 
-	// Create Viewport.
 	glViewport( 0, 0, this->width, this->height );
 }
 
@@ -58,9 +55,9 @@ void Window::Update()
 	glfwSwapBuffers( pWindow );
 }
 
-void Window::Clear()
+void Window::Clear( Colour& colour )
 {
-	glClearColor( 0.0f, 0.0f, 0.0f, 1.0f );
+	glClearColor( colour.r, colour.g, colour.b, colour.a );
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 }
 

@@ -82,7 +82,6 @@ void Sprite::Render( Shader& shader )
 	pTexture->Bind();
 
 	glm::mat4 model;
-	// auto vec3 = position.ToVec3( );
 	model = glm::translate( model, static_cast<glm::vec3>( position ) );
 	
 	shader.SetUniformMat4f( "model", model );

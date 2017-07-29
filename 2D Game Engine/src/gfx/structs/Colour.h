@@ -1,5 +1,7 @@
 #pragma once
 
+#include <glm/vec4.hpp>
+
 struct Colour
 {
 	Colour( ) = default;
@@ -18,6 +20,8 @@ struct Colour
 		this->b = b;
 		this->a = a;
 	}
+
+	explicit operator glm::vec4( ) const { return glm::vec4( r, g, b, a ); }
 
 	GLfloat r, b, g, a;
 };

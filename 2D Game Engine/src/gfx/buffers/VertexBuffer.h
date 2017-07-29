@@ -8,7 +8,7 @@ class VertexBuffer
 {
 public:
 	VertexBuffer() = default;
-	VertexBuffer( std::vector<GLfloat>& data, GLuint count, GLuint componentCount );
+	VertexBuffer( std::vector<GLfloat>& data, GLuint count, GLuint componentCount, GLubyte usageType = 0 );
 	~VertexBuffer();
 
 	void Bind() const;
@@ -29,8 +29,17 @@ public:
 		return *this;
 	}
 
+public:
+	enum BUFFER_USAGE
+	{
+		STATIC	= 0,
+		DYNAMIC = 1
+	};
+
 private:
 	GLuint vertexBufferID;
 	GLuint componentCount;
 	GLuint count;
+
+	GLubyte usageType;
 };

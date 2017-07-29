@@ -5,6 +5,8 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+#include "structs/Colour.h"
+
 class Window
 {
 public:
@@ -14,7 +16,7 @@ public:
 	void ProcessInput();
 
 	void Update();
-	void Clear();
+	void Clear( Colour& colour );
 
 	bool IsClosed();
 

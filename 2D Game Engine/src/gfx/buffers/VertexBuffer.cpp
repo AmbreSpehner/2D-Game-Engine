@@ -1,13 +1,22 @@
 #include "VertexBuffer.h"
 
-VertexBuffer::VertexBuffer( std::vector<GLfloat>& data, GLuint count, GLuint componentCount )
+VertexBuffer::VertexBuffer( std::vector<GLfloat>& data, GLuint count, GLuint componentCount, GLubyte usageType )
 	:
 	count( count ),
-	componentCount( componentCount )
+	componentCount( componentCount ),
+	usageType( usageType )
 {
 	glGenBuffers( 1, &vertexBufferID );
 	glBindBuffer( GL_ARRAY_BUFFER, vertexBufferID );
-	glBufferData( GL_ARRAY_BUFFER, sizeof( GLfloat ) * count, &data.front(), GL_STATIC_DRAW );
+
+	if( this->usageType == BUFFER_USAGE::STATIC )
+		glBufferData( GL_ARRAY_BUFFER, sizeof( GLfloat ) * count, &data.front( ), GL_STATIC_DRAW );
+	else if( this->usageType = BUFFER_USAGE::DYNAMIC )
+		glBufferData( GL_ARRAY_BUFFER, sizeof( GLfloat ) * count, &data.front( ), GL_DYNAMIC_DRAW );
+	else
+		throw std::out_of_range{ "The usage type does not exist!" };
+
+
 	glBindBuffer( GL_ARRAY_BUFFER, 0 );
 }
 

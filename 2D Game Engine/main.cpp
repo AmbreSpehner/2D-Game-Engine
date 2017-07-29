@@ -25,6 +25,7 @@
 #include "src/gfx/Animation/Animation.h"
 #include "src/gfx/gameObjects/shapes/TriangleShape.h"
 #include "src/gfx/gameObjects/shapes/SegmentLine.h"
+#include "src/fonts/TrueTypeFont.h"
 
 #include <Box2D/Box2D.h>
 
@@ -48,10 +49,7 @@ int main( )
 
 	Animation anim( 0.0f, 16.0f, 32.0f, 8.0f, 16, 0.5f );
 
-	RectangleShape shape2( Position( 200.0f, 200.0f, 0.0f ), GLf_Size( 100.0f, 100.0f ), Colour( 0.0f, 1.0f, 0.0f, 1.0f ) );
-	shape2.SetType( RectangleShape::ShapeType::LINE );
-
-	SegmentLine shape( Position( -100.0f, 0.0f ), Position( 100.0, 100.0f ), Colour( 1.0f, 0.0f, 0.0f ) );
+	TrueTypeFont ttf( "res/fonts/arial.ttf", 80 );
 
 	// DeltaTime.
 	auto timePoint = std::chrono::steady_clock::now( );
@@ -60,7 +58,7 @@ int main( )
 	{
 		window.ProcessInput( );
 		window.Update( );
-		window.Clear( );
+		window.Clear( Colour( 1.0f, 1.0f, 1.0f, 1.0f ) );
 
 		// get DeltaTime.
 		float deltaTime;
@@ -87,9 +85,7 @@ int main( )
 
 		VAO.Bind( );
 
-		// shape3.Render( shader );
-		shape.Render( shader );
-		shape2.Render( shader );
+		ttf.RenderText( shader, "Hello", 0.0f, 0.0f, 1.0f, Colour( 1.0f, 0.0f, 0.0f, 1.0f ) );
 		sprite.Render( shader );
 
 		VAO.Unbind( );

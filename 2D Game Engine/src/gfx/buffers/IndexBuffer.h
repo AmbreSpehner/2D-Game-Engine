@@ -8,7 +8,7 @@ class IndexBuffer
 {
 public:
 	IndexBuffer() = default;
-	IndexBuffer( std::vector<GLuint>& data, GLuint count );
+	IndexBuffer( std::vector<GLuint>& data, GLuint count, GLubyte usageType = 0 );
 	~IndexBuffer();
 
 	void Bind() const;
@@ -29,7 +29,16 @@ public:
 		return *this;
 	}
 
+public:
+	enum BUFFER_USAGE
+	{
+		STATIC	= 0,
+		DYNAMIC = 1
+	};
+
 private:
 	GLuint indexBufferID;
 	GLuint count;
+
+	GLubyte usageType;
 };
