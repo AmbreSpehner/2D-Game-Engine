@@ -125,7 +125,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="src\fonts\TrueTypeFont.cpp" />
+    <ClCompile Include="src\gfx\fonts\TrueTypeFont.cpp" />
     <ClCompile Include="src\gfx\Animation\Animation.cpp" />
     <ClCompile Include="src\gfx\b2draw\DebugDraw.cpp" />
     <ClCompile Include="src\gfx\buffers\IndexBuffer.cpp" />
@@ -149,7 +149,7 @@
     <None Include="shaders\VertexShader.glsl" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\fonts\TrueTypeFont.h" />
+    <ClInclude Include="src\gfx\fonts\TrueTypeFont.h" />
     <ClInclude Include="src\gfx\Animation\Animation.h" />
     <ClInclude Include="src\gfx\b2draw\DebugDraw.h" />
     <ClInclude Include="src\gfx\buffers\IndexBuffer.h" />
