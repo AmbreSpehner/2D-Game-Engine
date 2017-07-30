@@ -3,25 +3,27 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-RenderableImage::RenderableImage( const Position & position, const GLf_Size & size, const Colour & colour, unsigned short type )
-	: RenderableImage( position, size, colour, type )
+RenderableImage::RenderableImage( const Position & position, const GLf_Size & size, const Colour & colour, std::shared_ptr<Texture> pTexture, unsigned short type )
+	: 
+	Renderable( position, size, colour, type ),
+	pTexture( pTexture )
 {
 	textureRect = FloatRect( 0.0f, 0.0f, 1.0f, 1.0f );
 
-	std::vector< GLfloat > vertices =
+	std::vector<GLfloat> vertices =
 	{
-		0.0f, 0.0f, 0.0f,
-		0.0f, size.y, 0.0f,
-		size.x, size.y, 0.0f,
-		size.x, 0.0f, 0.0f
+		0, 0, 0,
+		0, 1, 0,
+		1, 1, 0,
+		1, 0, 0
 	};
 
-	std::vector< GLfloat > colours =
+	std::vector<GLfloat> colours =
 	{
-		colour.r, colour.g, colour.b, colour.a,
-		colour.r, colour.g, colour.b, colour.a,
-		colour.r, colour.g, colour.b, colour.a,
-		colour.r, colour.g, colour.b, colour.a
+		this->colour.r, this->colour.g, this->colour.b, this->colour.a,
+		this->colour.r, this->colour.g, this->colour.b, this->colour.a,
+		this->colour.r, this->colour.g, this->colour.b, this->colour.a,
+		this->colour.r, this->colour.g, this->colour.b, this->colour.a
 	};
 
 	std::vector< GLfloat > TexCoords =
@@ -44,15 +46,20 @@ RenderableImage::RenderableImage( const Position & position, const GLf_Size & si
 	IBO = IndexBuffer( indices, indices.size( ), IndexBuffer::BufferUsage::DYNAMIC );
 }
 
-void RenderableImage::Render( Shader & shader )
+void RenderableImage::Render( Shader& shader )
 {
 	shader.SetUniform1i( "useFont", true );
 	shader.SetUniform1i( "font", 0 );
 
+	glActiveTexture( GL_TEXTURE0 );
+	pTexture->Bind( );
+
 	VAO.Bind( );
 
 	glm::mat4 model;
-	model = glm::translate( model, static_cast< glm::vec3 >( position ) );
+	model = glm::translate( model, static_cast< glm::vec3 >( position ) ) * glm::scale( model, glm::vec3( size.x, size.y, 0.0f ) );
+
+	shader.SetUniformMat4f( "model", model );
 
 	Renderable::RenderIndices( );
 
@@ -81,7 +88,7 @@ void RenderableImage::SetColour( const Colour & colour )
 		this->colour.r, this->colour.g, this->colour.b, this->colour.a
 	};
 
-	colourVBO = VertexBuffer( colours, colours.size( ), 4, VertexBuffer::BufferUsage::DYNAMIC );
+	colourVBO = VertexBuffer( colours, colours.size( ), 4, VertexBuffer::BufferUsage::STATIC );
 	VAO.BindBuffer( colourVBO, ShaderLocation::COLOUR, 0, 0 );
 }
 
@@ -97,6 +104,6 @@ void RenderableImage::SetTextureRect( const FloatRect& rect )
 		textureRect.x + textureRect.dx, textureRect.y
 	};
 
-	texCoordVBO = VertexBuffer( TexCoords, TexCoords.size( ), 2, VertexBuffer::BufferUsage::DYNAMIC );
+	texCoordVBO = VertexBuffer( TexCoords, TexCoords.size( ), 2, VertexBuffer::BufferUsage::STATIC );
 	VAO.BindBuffer( texCoordVBO, ShaderLocation::TEXTURE_COORD, 0, 0 );
 }

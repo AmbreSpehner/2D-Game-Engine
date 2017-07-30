@@ -9,9 +9,9 @@ VertexBuffer::VertexBuffer( std::vector<GLfloat>& data, GLuint count, GLuint com
 	glGenBuffers( 1, &vertexBufferID );
 	glBindBuffer( GL_ARRAY_BUFFER, vertexBufferID );
 
-	if( this->usageType == BUFFER_USAGE::STATIC )
+	if( this->usageType == BufferUsage::STATIC )
 		glBufferData( GL_ARRAY_BUFFER, sizeof( GLfloat ) * count, &data.front( ), GL_STATIC_DRAW );
-	else if( this->usageType = BUFFER_USAGE::DYNAMIC )
+	else if( this->usageType = BufferUsage::DYNAMIC )
 		glBufferData( GL_ARRAY_BUFFER, sizeof( GLfloat ) * count, &data.front( ), GL_DYNAMIC_DRAW );
 	else
 		throw std::out_of_range{ "The usage type does not exist!" };

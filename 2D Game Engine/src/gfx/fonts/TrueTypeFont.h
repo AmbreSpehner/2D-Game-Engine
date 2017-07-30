@@ -8,10 +8,7 @@
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
-#include "../gfx/buffers/VertexBuffer.h"
-#include "../gfx/buffers/VertexArray.h"
-#include "../shader/Shader.h"
-#include "../gfx/structs/Structs.h"
+#include "../gameObjects/RenderableImage.h"
 
 class TrueTypeFont
 {
@@ -24,15 +21,10 @@ public:
 public:
 	struct Character
 	{
-		GLuint textureID;
+		std::shared_ptr<Texture> pTexture;
 		glm::ivec2 size;
 		glm::ivec2 bearing;
 		GLuint advance;
-	};
-
-	struct Pixel
-	{
-		std::uint8_t r, g, b, a;
 	};
 
 private:
@@ -40,7 +32,4 @@ private:
 	FT_Face face;
 
 	std::map<GLchar, Character> characterMap;
-	std::vector<Pixel> buffer;
-
-	GLuint VAO, VBO;
 };

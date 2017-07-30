@@ -25,6 +25,8 @@
 #include "src/gfx/Animation/Animation.h"
 #include "src/gfx/gameObjects/shapes/TriangleShape.h"
 #include "src/gfx/gameObjects/shapes/SegmentLine.h"
+#include "src/gfx/gameObjects/RenderableImage.h"
+#include "src/gfx/fonts/TrueTypeFont.h"
 
 #include <Box2D/Box2D.h>
 
@@ -40,15 +42,10 @@ int main( )
 
 	Shader shader( "shaders/VertexShader.glsl", "shaders/FragmentShader.glsl" );
 	VertexArray VAO;
-	Renderer2D renderer;
 
-	Sprite sprite( Position( 100.0f, 100.0f, 0.0f ), TextureCodex::Acquire( "res/paddle.png" ) );
-	sprite.SetTextureRect( 0, 16, 32, 8 );
-	sprite.ScaleSprite( 3.0f );
+	RectangleShape shape( Position( 000.0f, 000.0f, 0.0f ), GLf_Size( 100.0f, 100.0f ), Colour( 0.0f, 1.0f, 0.0f, 1.0f ) );
 
-	Animation anim( 0.0f, 16.0f, 32.0f, 8.0f, 16, 0.5f );
-
-	// TrueTypeFont ttf( "res/fonts/arial.ttf", 80 );
+	TrueTypeFont ttf( "res/fonts/arial.ttf", 32 );
 
 	auto timePoint = std::chrono::steady_clock::now( );
 
@@ -77,13 +74,9 @@ int main( )
 		shader.SetUniformMat4f( "view", view );
 		shader.SetUniformMat4f( "projection", projection );
 
-		anim.Update( deltaTime );
-		anim.ApplyToSprite( sprite );
-
 		VAO.Bind( );
 
-		ttf.RenderText( shader, "Hello", 500.0f, 500.0f, 1.0f, Colour( 1.0f, 0.0f, 0.0f, 1.0f ) );
-		sprite.Render( shader );
+		ttf.RenderText( shader, "", 500.0f, 500.0f, 1.0f, Colour( 1.0f, 0.0f, 0.0f, 0.0f ) );
 
 		VAO.Unbind( );
 

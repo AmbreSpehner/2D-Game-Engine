@@ -47,6 +47,10 @@ protected:
 		{
 			glDrawElements( GL_LINE_LOOP, IBO.GetCount( ), GL_UNSIGNED_INT, nullptr );
 		}
+		else
+		{
+			throw std::out_of_range{ "The type of rendering specified does not match the available types!\n" };
+		}
 
 		IBO.Unbind();
 	}
@@ -60,6 +64,10 @@ protected:
 		else if( currentType == ShapeType::LINE )
 		{
 			glDrawArrays( GL_LINE_LOOP, 0, verticesCount );
+		}
+		else
+		{
+			throw std::out_of_range{ "The type of rendering specified does not match the available types!\n" };
 		}
 	}
 

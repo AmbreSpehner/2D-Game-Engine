@@ -8,9 +8,9 @@ IndexBuffer::IndexBuffer( std::vector<GLuint>& data, GLuint count, GLubyte usage
 	glGenBuffers( 1, &indexBufferID );
 	glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, indexBufferID );
 	
-	if( this->usageType == BUFFER_USAGE::STATIC )
+	if( this->usageType == BufferUsage::STATIC )
 		glBufferData( GL_ELEMENT_ARRAY_BUFFER, sizeof( GLuint ) * count, &data.front( ), GL_STATIC_DRAW );
-	else if( this->usageType == BUFFER_USAGE::DYNAMIC )
+	else if( this->usageType == BufferUsage::DYNAMIC )
 		glBufferData( GL_ELEMENT_ARRAY_BUFFER, sizeof( GLuint ) * count, &data.front( ), GL_DYNAMIC_DRAW );
 	else
 		throw std::out_of_range{ "The usage type does not exist!" };

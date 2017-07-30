@@ -2,12 +2,13 @@
 
 #include "Renderable.h"
 #include "../shapes/Rect.h"
+#include "../texture/Texture.h"
 
 class RenderableImage : public Renderable
 {
 public:
 	RenderableImage( ) = default;
-	RenderableImage( const Position& position, const GLf_Size& size, const Colour& colour, unsigned short type = 1.0f );
+	RenderableImage( const Position& position, const GLf_Size& size, const Colour& colour, std::shared_ptr<Texture> pTexture, unsigned short type = 0.0f );
 
 	void Render( Shader& shader );
 
@@ -23,4 +24,8 @@ public:
 
 private:
 	FloatRect textureRect;
+	std::shared_ptr<Texture> pTexture;
+
+
+	GLuint textureID;
 };

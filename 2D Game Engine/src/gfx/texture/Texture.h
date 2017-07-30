@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 #include <GL/glew.h>
 #include <glm/vec2.hpp>
@@ -10,7 +11,15 @@
 class Texture
 {
 public:
+	struct Pixel
+	{
+		std::uint8_t r, g, b, a;
+	};
+
+public:
+	Texture( ) = default;
 	Texture( const std::string& filepath );
+	Texture( std::vector<Pixel>& buffer, GLfloat width, GLfloat height );
 
 	void Bind();
 	void Unbind();
