@@ -7,7 +7,7 @@
 class RenderableImage : public Renderable
 {
 public:
-	RenderableImage( ) = default;
+	RenderableImage( );
 	RenderableImage( const Position& position, const GLf_Size& size, const Colour& colour, std::shared_ptr<Texture> pTexture, unsigned short type = 0.0f );
 
 	void Render( Shader& shader );
@@ -16,6 +16,7 @@ public:
 	void SetSize( const GLf_Size& size );
 	void SetColour( const Colour& colour );
 	void SetTextureRect( const FloatRect& rect );
+	void SetTexture( const std::shared_ptr<Texture> pTexture );
 
 	const Position& GetPosition( ) const { return position; }
 	const GLf_Size& GetSize( ) const { return size; }

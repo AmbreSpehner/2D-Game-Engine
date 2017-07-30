@@ -1,11 +1,17 @@
 #include "TrueTypeFont.h"
 
+
+#include <iostream>
+
+
 #include <stdexcept>
 
 #include "../texture/TextureCodex.h"
 
 TrueTypeFont::TrueTypeFont( const std::string path, GLuint fontHeight )
 {
+	image = RenderableImage( );
+
 	if( FT_Init_FreeType( &ft ) )
 	{
 		throw std::runtime_error{ "FT_Init_FreeType failed!\n" };
@@ -20,7 +26,7 @@ TrueTypeFont::TrueTypeFont( const std::string path, GLuint fontHeight )
 
 	glPixelStorei( GL_UNPACK_ALIGNMENT, 1 );
 
-	for( GLchar c = 0; c < 128; c++ )
+	for( GLchar c = 0; c < 127; c++ )
 	{
 		std::vector<Texture::Pixel> buffer;
 
@@ -58,7 +64,7 @@ TrueTypeFont::TrueTypeFont( const std::string path, GLuint fontHeight )
 	FT_Done_FreeType( ft );
 }
 
-void TrueTypeFont::RenderText( Shader& shader, std::string text, GLfloat x, GLfloat y, GLfloat scale, Colour& colour )
+void TrueTypeFont::RenderText( Shader& shader, std::string text, GLfloat x, GLfloat y, Colour& colour, GLfloat scale )
 {
 	std::string::const_iterator it;
 	for( it = text.begin( ); it != text.end( ); it++ )
@@ -71,7 +77,12 @@ void TrueTypeFont::RenderText( Shader& shader, std::string text, GLfloat x, GLfl
 		GLfloat w = ch.size.x * scale;
 		GLfloat h = ch.size.y * scale;
 
-		RenderableImage image( Position( xPos, yPos, 0.0f ), GLf_Size( w, h ), colour, ch.pTexture );
+		image.SetPosition( Position( xPos, yPos ) );
+		image.SetSize( GLf_Size( w, h ) );
+		image.SetColour( colour );
+		image.SetTexture( ch.pTexture );
+		
+		image.Render( shader );
 
 		x += ( ch.advance >> 6 ) * scale;
 	}

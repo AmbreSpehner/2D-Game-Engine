@@ -43,8 +43,6 @@ int main( )
 	Shader shader( "shaders/VertexShader.glsl", "shaders/FragmentShader.glsl" );
 	VertexArray VAO;
 
-	RectangleShape shape( Position( 000.0f, 000.0f, 0.0f ), GLf_Size( 100.0f, 100.0f ), Colour( 0.0f, 1.0f, 0.0f, 1.0f ) );
-
 	TrueTypeFont ttf( "res/fonts/arial.ttf", 32 );
 
 	auto timePoint = std::chrono::steady_clock::now( );
@@ -76,7 +74,7 @@ int main( )
 
 		VAO.Bind( );
 
-		ttf.RenderText( shader, "", 500.0f, 500.0f, 1.0f, Colour( 1.0f, 0.0f, 0.0f, 0.0f ) );
+		ttf.RenderText( shader, "the quick brown fox jumps over the lazy dog", 100.0f, 400.0f, Colour( 1.0f, 1.0f, 1.0f, 1.0f ) );
 
 		VAO.Unbind( );
 

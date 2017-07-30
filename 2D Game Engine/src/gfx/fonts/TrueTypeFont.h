@@ -16,7 +16,7 @@ public:
 	TrueTypeFont( ) = default;
 	TrueTypeFont( const std::string path, GLuint fontHeight = 32);
 
-	void RenderText( Shader& shader, std::string text, GLfloat x, GLfloat y, GLfloat scale, Colour& colour );
+	void RenderText( Shader& shader, std::string text, GLfloat x, GLfloat y, Colour& colour, GLfloat scale = 1.0f );
 
 public:
 	struct Character
@@ -30,6 +30,8 @@ public:
 private:
 	FT_Library ft;
 	FT_Face face;
+	
+	RenderableImage image;
 
 	std::map<GLchar, Character> characterMap;
 };
