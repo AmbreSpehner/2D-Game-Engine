@@ -35,7 +35,7 @@ RenderableImage::RenderableImage( )
 	IBO = IndexBuffer( indices, indices.size( ), IndexBuffer::BufferUsage::DYNAMIC );
 }
 
-RenderableImage::RenderableImage( const Position & position, const GLf_Size & size, const Colour & colour, std::shared_ptr<Texture> pTexture, unsigned short type )
+RenderableImage::RenderableImage( const GLf_Pos& position, const GLf_Size & size, const GLf_Colour& colour, std::shared_ptr<Texture> pTexture, unsigned short type )
 	: 
 	Renderable( position, size, colour, type ),
 	pTexture( pTexture )
@@ -88,7 +88,7 @@ void RenderableImage::Render( Shader& shader )
 
 	VAO.Bind( );
 
- 	glm::mat4 model;
+	glm::mat4 model;
  	model = glm::translate( model, static_cast< glm::vec3 >( position ) ) * glm::scale( model, glm::vec3( size.x, size.y, 0.0f ) );
 
 	shader.SetUniformMat4f( "model", model );
@@ -98,7 +98,7 @@ void RenderableImage::Render( Shader& shader )
 	shader.SetUniform1i( "useFont", false );
 }
 
-void RenderableImage::SetPosition( const Position & position )
+void RenderableImage::SetPosition( const GLf_Pos& position )
 {
 	this->position = position;
 }
@@ -108,7 +108,7 @@ void RenderableImage::SetSize( const GLf_Size & size )
 	this->size = size;
 }
 
-void RenderableImage::SetColour( const Colour & colour )
+void RenderableImage::SetColour( const GLf_Colour& colour )
 {
 	this->colour = colour;
 

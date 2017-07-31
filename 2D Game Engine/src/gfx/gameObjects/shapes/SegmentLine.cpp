@@ -3,7 +3,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-SegmentLine::SegmentLine( const Position& p1, const Position& p2, const Colour& colour, unsigned short type )
+SegmentLine::SegmentLine( const GLf_Pos& p1, const GLf_Pos& p2, const GLf_Colour& colour, unsigned short type )
 	:
 	Renderable( p1, p2, colour, type )
 {
@@ -12,7 +12,7 @@ SegmentLine::SegmentLine( const Position& p1, const Position& p2, const Colour& 
 		this->p1.x, this->p1.y, this->p1.z,
 		this->p2.x, this->p2.y, this->p2.z
 	};
-
+	
 	std::vector<GLfloat> colours =
 	{
 		this->colour.r, this->colour.g, this->colour.b, this->colour.a,
@@ -28,7 +28,7 @@ SegmentLine::SegmentLine( const Position& p1, const Position& p2, const Colour& 
 	verticesCount = vertices.size( ) / vertVBO.GetComponentCount( );
 }
 
-void SegmentLine::Render( Shader & shader )
+void SegmentLine::Render( Shader& shader )
 {
 	VAO.Bind( );
 
@@ -42,11 +42,11 @@ void SegmentLine::SetLineWidth( float lineWidth )
 	glLineWidth( this->lineWidth );
 }
 
-void SegmentLine::SetPoint( const Position & p, int number )
+void SegmentLine::SetPoint( const GLf_Pos & p, int index )
 {
-	if( number == VertexNum::P1 )
+	if( index == VertexNum::P1 )
 		p1 = p;
-	else if( number == VertexNum::P2 )
+	else if( index == VertexNum::P2 )
 		p2 = p;
 	else
 		throw std::out_of_range{ "Chosen vertex does not exist!\n" };
@@ -61,7 +61,7 @@ void SegmentLine::SetPoint( const Position & p, int number )
 	VAO.BindBuffer( vertVBO, ShaderLocation::POSITION, 0, 0 );
 }
 
-void SegmentLine::SetPoints( const Position & p1, const Position & p2 )
+void SegmentLine::SetPoints( const GLf_Pos & p1, const GLf_Pos & p2 )
 {
 	this->p1 = p1;
 	this->p2 = p2;
@@ -76,7 +76,7 @@ void SegmentLine::SetPoints( const Position & p1, const Position & p2 )
 	VAO.BindBuffer( vertVBO, ShaderLocation::POSITION, 0, 0 );
 }
 
-void SegmentLine::SetColour( const Colour & colour )
+void SegmentLine::SetColour( const GLf_Colour & colour )
 {
 	this->colour = colour;
 

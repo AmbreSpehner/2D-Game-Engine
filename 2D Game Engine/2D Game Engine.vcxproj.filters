@@ -36,13 +36,15 @@
     <ClInclude Include="src\gfx\texture\Texture.h" />
     <ClInclude Include="src\gfx\Renderer2D.h" />
     <ClInclude Include="src\gfx\texture\TextureCodex.h" />
-    <ClInclude Include="src\gfx\shapes\Rect.h" />
     <ClInclude Include="src\gfx\Window.h" />
     <ClInclude Include="src\shader\Shader.h" />
     <ClInclude Include="src\utils\File_Reader.h" />
     <ClInclude Include="src\gfx\gameObjects\shapes\SegmentLine.h" />
     <ClInclude Include="src\gfx\fonts\TrueTypeFont.h" />
     <ClInclude Include="src\gfx\gameObjects\RenderableImage.h" />
+    <ClInclude Include="src\collision\shapes\Rect.h" />
+    <ClInclude Include="src\collision\shapes\Triangle.h" />
+    <ClInclude Include="src\collision\shapes\Line.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\background_blue1.png" />
@@ -51,5 +53,9 @@
   <ItemGroup>
     <None Include="shaders\FragmentShader.glsl" />
     <None Include="shaders\VertexShader.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="res\fonts\times.ttf" />
+    <Font Include="res\fonts\arial.ttf" />
   </ItemGroup>
 </Project>

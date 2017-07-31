@@ -9,15 +9,15 @@ class RectangleShape : public Renderable
 {
 public:
 	RectangleShape() = default;
-	RectangleShape( const Position& position, const GLf_Size& size, const Colour& colour, unsigned short type = 0 );
+	RectangleShape( const GLf_Pos& position, const GLf_Size& size, const GLf_Colour& colour, unsigned short type = 0 );
 
 	void Render( Shader& shader ) override;
 
-	void SetPosition( const Position& position );
+	void SetPosition( const GLf_Pos& position );
 	void SetSize( const GLf_Size& size );
-	void SetColour( const Colour& colour );
+	void SetColour( const GLf_Colour& colour );
 
-	const Position& GetPosition( ) const { return position; }
+	const GLf_Pos& GetPosition( ) const { return position; }
 	const GLf_Size& GetSize( ) const { return size; }
-	const Colour& GetColour( ) const { return colour; }
+	const GLf_Colour& GetColour( ) const { return colour; }
 };

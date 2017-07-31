@@ -150,6 +150,8 @@
     <None Include="shaders\VertexShader.glsl" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\collision\shapes\Line.h" />
+    <ClInclude Include="src\collision\shapes\Triangle.h" />
     <ClInclude Include="src\gfx\fonts\TrueTypeFont.h" />
     <ClInclude Include="src\gfx\Animation\Animation.h" />
     <ClInclude Include="src\gfx\b2draw\DebugDraw.h" />
@@ -170,10 +172,14 @@
     <ClInclude Include="src\gfx\texture\Texture.h" />
     <ClInclude Include="src\gfx\Renderer2D.h" />
     <ClInclude Include="src\gfx\texture\TextureCodex.h" />
-    <ClInclude Include="src\gfx\shapes\Rect.h" />
+    <ClInclude Include="src\collision\shapes\Rect.h" />
     <ClInclude Include="src\gfx\Window.h" />
     <ClInclude Include="src\shader\Shader.h" />
     <ClInclude Include="src\utils\File_Reader.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="res\fonts\arial.ttf" />
+    <Font Include="res\fonts\times.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

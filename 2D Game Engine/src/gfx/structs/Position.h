@@ -4,17 +4,18 @@
 #include <glm/vec3.hpp>
 #include <Box2D/Common/b2Math.h>
 
+template<typename T>
 struct Position
 {
 	Position( ) = default;
-	Position( const GLfloat x, const GLfloat y, const GLfloat z = 0.0f )
+	Position( const T x, const T y, const T z = 0.0f )
 	{
 		this->x = x;
 		this->y = y;
 		this->z = z;
 	}
 
-	void Set( const GLfloat x, const GLfloat y, const GLfloat z = 0.0f )
+	void Set( const T x, const T y, const T z = 0.0f )
 	{
 		this->x = x;
 		this->y = y;
@@ -25,5 +26,9 @@ struct Position
 	explicit operator glm::vec2( ) const { return glm::vec2{ x, y }; }
 	explicit operator b2Vec2( ) const { return b2Vec2{ x, y }; }
 
-	GLfloat x, y, z;
+	T x, y, z;
 };
+
+typedef Size<GLfloat> GLf_Pos;
+typedef Size<GLint> GLi_Pos;
+typedef Size<GLuint> GLui_Pos;

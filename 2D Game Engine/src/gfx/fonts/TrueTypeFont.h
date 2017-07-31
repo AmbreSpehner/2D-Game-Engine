@@ -18,13 +18,15 @@ public:
 
 	void RenderText( Shader& shader, std::string text, GLfloat x, GLfloat y, Colour& colour, GLfloat scale = 1.0f );
 
+	void SetColour( const Colour& colour );
+
 public:
 	struct Character
 	{
 		std::shared_ptr<Texture> pTexture;
 		glm::ivec2 size;
 		glm::ivec2 bearing;
-		GLuint advance;
+		FT_Pos advance;
 	};
 
 private:

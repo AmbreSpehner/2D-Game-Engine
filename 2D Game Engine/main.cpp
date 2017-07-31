@@ -45,6 +45,10 @@ int main( )
 
 	TrueTypeFont ttf( "res/fonts/arial.ttf", 32 );
 
+	SegmentLine line( Position( 100.0f, 100.0f ), Position( 200.0f, 200.0f ), Colour( 1.0f, 0.0f, 0.0f, 1.0f ) );
+
+	int b = 1 + 1;
+
 	auto timePoint = std::chrono::steady_clock::now( );
 
 	while( !window.IsClosed( ) )
@@ -60,15 +64,15 @@ int main( )
 			timePoint = newTimePoint;
 		}
 
+		std::cout << deltaTime << '\n';
+
 		shader.Enable( );
 
-		glm::mat4 model;
 		glm::mat4 view;
 		glm::mat4 projection;
 		view = glm::lookAt( glm::vec3( 0.0f, 0.0f, 1.0f ), glm::vec3( 0.0f, 0.0f, 0.0f ), glm::vec3( 0.0f, 1.0f, 0.0f ) );
 		projection = glm::ortho( 0.0f, 1000.0f, 0.0f, 800.0f, 0.1f, 100.0f );
 
-		shader.SetUniformMat4f( "model", model );
 		shader.SetUniformMat4f( "view", view );
 		shader.SetUniformMat4f( "projection", projection );
 

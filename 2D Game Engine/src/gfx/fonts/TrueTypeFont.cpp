@@ -1,8 +1,6 @@
 #include "TrueTypeFont.h"
 
-
 #include <iostream>
-
 
 #include <stdexcept>
 
@@ -66,6 +64,8 @@ TrueTypeFont::TrueTypeFont( const std::string path, GLuint fontHeight )
 
 void TrueTypeFont::RenderText( Shader& shader, std::string text, GLfloat x, GLfloat y, Colour& colour, GLfloat scale )
 {
+	image.SetColour( colour );
+	
 	std::string::const_iterator it;
 	for( it = text.begin( ); it != text.end( ); it++ )
 	{
@@ -79,11 +79,15 @@ void TrueTypeFont::RenderText( Shader& shader, std::string text, GLfloat x, GLfl
 
 		image.SetPosition( Position( xPos, yPos ) );
 		image.SetSize( GLf_Size( w, h ) );
-		image.SetColour( colour );
 		image.SetTexture( ch.pTexture );
 		
 		image.Render( shader );
 
 		x += ( ch.advance >> 6 ) * scale;
 	}
+}
+
+void TrueTypeFont::SetColour( const Colour & colour )
+{
+	image.SetColour( colour );
 }

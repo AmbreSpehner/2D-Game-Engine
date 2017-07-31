@@ -5,7 +5,7 @@
 
 #include <iostream>
 
-Sprite::Sprite( const Position& position, std::shared_ptr<Texture> pTexture )
+Sprite::Sprite( const GLf_Pos& position, std::shared_ptr<Texture> pTexture )
 	:
 	Renderable( position, pTexture->GetSize() ),
 	pTexture( pTexture )
@@ -15,9 +15,9 @@ Sprite::Sprite( const Position& position, std::shared_ptr<Texture> pTexture )
 	std::vector<GLfloat> vertices =
 	{
 		0.0f, 0.0f, 0.0f,
-		0.0f, this->pTexture->GetSize().y, 0.0f,
-		this->pTexture->GetSize().x, this->pTexture->GetSize().y, 0.0f,
-		this->pTexture->GetSize().x, 0.0f, 0.0f
+		0.0f, 1.0f, 0.0f,
+		1.0f, 1.0f, 0.0f,
+		1.0f, 0.0f, 0.0f
 	};
 
 	std::vector<GLfloat> textVert =
@@ -38,7 +38,7 @@ Sprite::Sprite( const Position& position, std::shared_ptr<Texture> pTexture )
 	IBO = IndexBuffer( indices, indices.size() );
 }
 
-Sprite::Sprite( const Position& position, const GLf_Size& size, std::shared_ptr<Texture> pTexture )
+Sprite::Sprite( const GLf_Pos& position, const GLf_Size& size, std::shared_ptr<Texture> pTexture )
 	: 
 	Renderable( position, size ),
 	pTexture( pTexture )
@@ -48,9 +48,9 @@ Sprite::Sprite( const Position& position, const GLf_Size& size, std::shared_ptr<
 	std::vector<GLfloat> vertices =
 	{
 		0.0f, 0.0f, 0.0f,
-		0.0f, this->size.y, 0.0f,
-		this->size.x, this->size.y, 0.0f,
-		this->size.x, 0.0f, 0.0f
+		0.0f, 1.0f, 0.0f,
+		1.0f, 1.0f, 0.0f,
+		1.0f, 0.0f, 0.0f
 	};
 
 	std::vector<GLfloat> textVert =
@@ -82,7 +82,7 @@ void Sprite::Render( Shader& shader )
 	pTexture->Bind();
 
 	glm::mat4 model;
-	model = glm::translate( model, static_cast<glm::vec3>( position ) );
+ 	model = glm::translate( model, static_cast<glm::vec3>( position ) ) * glm::scale( model, glm::vec3( size.x, size.y, 0.0f ) );
 	
 	shader.SetUniformMat4f( "model", model );
 
@@ -91,7 +91,7 @@ void Sprite::Render( Shader& shader )
 	shader.SetUniform1i( "useTexture", false );
 }
 
-void Sprite::SetPosition( Position& position )
+void Sprite::SetPosition( GLf_Pos& position )
 {
 	this->position = position;
 }
@@ -99,33 +99,6 @@ void Sprite::SetPosition( Position& position )
 void Sprite::SetSize( GLf_Size& size )
 {
 	this->size = size;
-
-	std::vector<GLfloat> vertices =
-	{
-		0, 0, 0,
-		0, this->size.y, 0,
-		this->size.x, this->size.y, 0,
-		this->size.x, 0, 0
-	};
-
-	vertVBO = VertexBuffer( vertices, vertices.size( ), 3 );
-	VAO.BindBuffer( vertVBO, ShaderLocation::POSITION, 0, 0 );
-}
-
-void Sprite::SetColour( Colour& colour )
-{
-	this->colour = colour;
-
-	std::vector<GLfloat> colours =
-	{
-		this->colour.r, this->colour.g, this->colour.b, this->colour.a,
-		this->colour.r, this->colour.g, this->colour.b, this->colour.a,
-		this->colour.r, this->colour.g, this->colour.b, this->colour.a,
-		this->colour.r, this->colour.g, this->colour.b, this->colour.a
-	};
-
-	colourVBO = VertexBuffer( colours, colours.size( ), 4 );
-	VAO.BindBuffer( colourVBO, ShaderLocation::COLOUR, 0, 0 );
 }
 
 void Sprite::SetTexture( std::shared_ptr<Texture> pTexture )
@@ -157,7 +130,7 @@ void Sprite::SetTextureRect( float x, float y, float dx, float dy )
 	SetTextCoords( textureRect.x, textureRect.y, textureRect.dx, textureRect.dy );
 }
 
-void Sprite::SetTextureRect( const Position& position, const GLf_Size& size )
+void Sprite::SetTextureRect( const GLf_Pos& position, const GLf_Size& size )
 {
 	SetTextureRect( position.x, position.y, size.x, size.y );
 }
@@ -177,7 +150,7 @@ void Sprite::SetTextCoords( const float x, const float y, const float dx, const 
 	VAO.BindBuffer( texCoordVBO, ShaderLocation::TEXTURE_COORD, 0, 0 );
 }
 
-void Sprite::SetTextCoords( const Position& position, const GLf_Size& size )
+void Sprite::SetTextCoords( const GLf_Pos& position, const GLf_Size& size )
 {
 	SetTextCoords( position.x, position.y, size.x, size.y );
 }

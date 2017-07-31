@@ -14,17 +14,17 @@ public:
 	class Factory
 	{
 	public:
-		void CreateSprite( const std::string& name, const Position& pos, std::shared_ptr<Texture> texture )
+		void CreateSprite( const std::string& name, const GLf_Pos& pos, std::shared_ptr<Texture> texture )
 		{
 			renderableMap[name] = std::make_unique<Sprite>( pos, texture );
 		}
 
-		void CreateSprite( const std::string& name, const Position& pos, const GLf_Size& size, std::shared_ptr<Texture> texture )
+		void CreateSprite( const std::string& name, const GLf_Pos& pos, const GLf_Size& size, std::shared_ptr<Texture> texture )
 		{
 			renderableMap[name] = std::make_unique<Sprite>( pos, size, texture );
 		}
 
-		void CreateRectangleShape( const std::string& name, const Position& pos, const GLf_Size& size, const Colour& colour )
+		void CreateRectangleShape( const std::string& name, const GLf_Pos& pos, const GLf_Size& size, const GLf_Colour& colour )
 		{
 			renderableMap[name] = std::make_unique<RectangleShape>( pos, size, colour );
 		}

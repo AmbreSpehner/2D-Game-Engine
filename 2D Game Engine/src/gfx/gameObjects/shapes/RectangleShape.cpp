@@ -3,15 +3,15 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-RectangleShape::RectangleShape( const Position& position, const GLf_Size& size, const Colour& colour, unsigned short type )
+RectangleShape::RectangleShape( const GLf_Pos& position, const GLf_Size& size, const GLf_Colour& colour, unsigned short type )
 	: Renderable( position, size, colour, type )
 {
 	std::vector<GLfloat> vertices =
 	{
 		0, 0, 0,
-		0, this->size.y, 0,
-		this->size.x, this->size.y, 0,
-		this->size.x, 0, 0
+		0, 1, 0,
+		1, 1, 0,
+		1, 0, 0
 	};
 
 	std::vector<GLfloat> colours =
@@ -37,14 +37,14 @@ void RectangleShape::Render( Shader& shader )
 	VAO.Bind();
 
 	glm::mat4 model;
-	model = glm::translate( model, static_cast<glm::vec3>( position ) );
+	model = glm::translate( model, static_cast<glm::vec3>( position ) ) * glm::scale( model, glm::vec3( size.x, size.y, 0.0f ) );
 
 	shader.SetUniformMat4f( "model", model );
 
 	Renderable::RenderIndices();
 }
 
-void RectangleShape::SetPosition( const Position& position )
+void RectangleShape::SetPosition( const GLf_Pos& position )
 {
 	this->position = position;
 }
@@ -52,20 +52,9 @@ void RectangleShape::SetPosition( const Position& position )
 void RectangleShape::SetSize( const GLf_Size& size )
 {
 	this->size = size;
-
-	std::vector<GLfloat> vertices =
-	{
-		0, 0, 0,			
-		0, this->size.y, 0,			
-		this->size.x, this->size.y, 0,	
-		this->size.x, 0, 0			
-	};
-
-	vertVBO = VertexBuffer( vertices, vertices.size( ), 3 );
-	VAO.BindBuffer( vertVBO, ShaderLocation::POSITION, 0, 0 );
 }
 
-void RectangleShape::SetColour( const Colour& colour )
+void RectangleShape::SetColour( const GLf_Colour& colour )
 {
 	this->colour = colour;
 
