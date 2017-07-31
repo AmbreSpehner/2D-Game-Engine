@@ -20,12 +20,22 @@ public:
 
 	void SetVertex( const Position<T>& vertex, int index )
 	{
-		if( int index == P1 )
+		if( index == P1 )
 			this->p1 = vertex;
-		else if( int index == p2 )
+		else if( index == p2 )
 			this->p2 = vertex;
 		else
 			throw std::out_of_range{ "The specified index does not exist!\n" };
+	}
+
+	const void GetVertex( int index ) const
+	{
+		if( index == P1 )
+			return this->p1;
+		else if( index == P2 )
+			return this->p2;
+		else
+			throw std::out_of_range{ "The specified index does ot exist!\n" };
 	}
 
 public:
