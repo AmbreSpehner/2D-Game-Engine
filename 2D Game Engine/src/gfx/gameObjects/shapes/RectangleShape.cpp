@@ -3,7 +3,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-RectangleShape::RectangleShape( const GLf_Pos& position, const GLf_Size& size, const GLf_Colour& colour, unsigned short type )
+RectangleShape::RectangleShape( const Position& position, const GLf_Size& size, const Colour& colour, unsigned short type )
 	: Renderable( position, size, colour, type )
 {
 	std::vector<GLfloat> vertices =
@@ -44,7 +44,7 @@ void RectangleShape::Render( Shader& shader )
 	Renderable::RenderIndices();
 }
 
-void RectangleShape::SetPosition( const GLf_Pos& position )
+void RectangleShape::SetPosition( const Position& position )
 {
 	this->position = position;
 }
@@ -54,7 +54,7 @@ void RectangleShape::SetSize( const GLf_Size& size )
 	this->size = size;
 }
 
-void RectangleShape::SetColour( const GLf_Colour& colour )
+void RectangleShape::SetColour( const Colour& colour )
 {
 	this->colour = colour;
 

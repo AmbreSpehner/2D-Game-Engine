@@ -2,7 +2,7 @@
 
 #include "../texture/TextureCodex.h"
 #include "../gameObjects/Sprite.h"
-#include "../shapes/Rect.h"
+#include "../../collision/shapes/Rect.h"
 
 class Animation
 {

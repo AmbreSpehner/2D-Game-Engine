@@ -6,18 +6,18 @@ class SegmentLine : public Renderable
 {
 public:
 	SegmentLine( ) = default;
-	SegmentLine( const GLf_Pos& p1, const GLf_Pos& p2, const GLf_Colour& colour, unsigned short type = 1 );
+	SegmentLine( const Position& p1, const Position& p2, const Colour& colour, unsigned short type = 1 );
 
 	void Render( Shader& shader );
 
 	void SetLineWidth( float lineWidth );
-	void SetColour( const GLf_Colour& colour );
-	void SetPoint( const GLf_Pos& p, int index );
-	void SetPoints( const GLf_Pos& p1, const GLf_Pos& p2 );
+	void SetColour( const Colour& colour );
+	void SetPoint( const Position& p, int index );
+	void SetPoints( const Position& p1, const Position& p2 );
 
 	const float& GetLineWidth( ) const { return lineWidth; }
-	const GLf_Colour& GetColour( ) const { return colour; }
-	const GLf_Pos& GetPoint( int index ) const
+	const Colour& GetColour( ) const { return colour; }
+	const Position& GetPoint( int index ) const
 	{
 		if( index == VertexNum::P1 )
 			return p1;

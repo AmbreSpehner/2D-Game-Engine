@@ -3,7 +3,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-SegmentLine::SegmentLine( const GLf_Pos& p1, const GLf_Pos& p2, const GLf_Colour& colour, unsigned short type )
+SegmentLine::SegmentLine( const Position& p1, const Position& p2, const Colour& colour, unsigned short type )
 	:
 	Renderable( p1, p2, colour, type )
 {
@@ -42,7 +42,7 @@ void SegmentLine::SetLineWidth( float lineWidth )
 	glLineWidth( this->lineWidth );
 }
 
-void SegmentLine::SetPoint( const GLf_Pos & p, int index )
+void SegmentLine::SetPoint( const Position & p, int index )
 {
 	if( index == VertexNum::P1 )
 		p1 = p;
@@ -61,7 +61,7 @@ void SegmentLine::SetPoint( const GLf_Pos & p, int index )
 	VAO.BindBuffer( vertVBO, ShaderLocation::POSITION, 0, 0 );
 }
 
-void SegmentLine::SetPoints( const GLf_Pos & p1, const GLf_Pos & p2 )
+void SegmentLine::SetPoints( const Position & p1, const Position & p2 )
 {
 	this->p1 = p1;
 	this->p2 = p2;
@@ -76,7 +76,7 @@ void SegmentLine::SetPoints( const GLf_Pos & p1, const GLf_Pos & p2 )
 	VAO.BindBuffer( vertVBO, ShaderLocation::POSITION, 0, 0 );
 }
 
-void SegmentLine::SetColour( const GLf_Colour & colour )
+void SegmentLine::SetColour( const Colour & colour )
 {
 	this->colour = colour;
 

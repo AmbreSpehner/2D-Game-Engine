@@ -5,7 +5,7 @@
 
 #include <iostream>
 
-Sprite::Sprite( const GLf_Pos& position, std::shared_ptr<Texture> pTexture )
+Sprite::Sprite( const Position& position, std::shared_ptr<Texture> pTexture )
 	:
 	Renderable( position, pTexture->GetSize() ),
 	pTexture( pTexture )
@@ -38,7 +38,7 @@ Sprite::Sprite( const GLf_Pos& position, std::shared_ptr<Texture> pTexture )
 	IBO = IndexBuffer( indices, indices.size() );
 }
 
-Sprite::Sprite( const GLf_Pos& position, const GLf_Size& size, std::shared_ptr<Texture> pTexture )
+Sprite::Sprite( const Position& position, const GLf_Size& size, std::shared_ptr<Texture> pTexture )
 	: 
 	Renderable( position, size ),
 	pTexture( pTexture )
@@ -91,7 +91,7 @@ void Sprite::Render( Shader& shader )
 	shader.SetUniform1i( "useTexture", false );
 }
 
-void Sprite::SetPosition( GLf_Pos& position )
+void Sprite::SetPosition( Position& position )
 {
 	this->position = position;
 }
@@ -130,7 +130,7 @@ void Sprite::SetTextureRect( float x, float y, float dx, float dy )
 	SetTextCoords( textureRect.x, textureRect.y, textureRect.dx, textureRect.dy );
 }
 
-void Sprite::SetTextureRect( const GLf_Pos& position, const GLf_Size& size )
+void Sprite::SetTextureRect( const Position& position, const GLf_Size& size )
 {
 	SetTextureRect( position.x, position.y, size.x, size.y );
 }
@@ -150,7 +150,7 @@ void Sprite::SetTextCoords( const float x, const float y, const float dx, const 
 	VAO.BindBuffer( texCoordVBO, ShaderLocation::TEXTURE_COORD, 0, 0 );
 }
 
-void Sprite::SetTextCoords( const GLf_Pos& position, const GLf_Size& size )
+void Sprite::SetTextCoords( const Position& position, const GLf_Size& size )
 {
 	SetTextCoords( position.x, position.y, size.x, size.y );
 }
