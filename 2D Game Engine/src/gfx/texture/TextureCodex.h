@@ -6,7 +6,6 @@
 
 #include "Texture.h"
 
-
 class TextureCodex
 {
 public:

@@ -36,18 +36,14 @@ int main( )
 {
 	Window window( 1000, 800, "OpenGL" );
 	window.SetIcon( "res/wall.jpg" );
-	// window.EnableFrameLimit( true );
+	window.EnableFrameLimit( false );
 
 	TextureCodex::Discard( );
 
 	Shader shader( "shaders/VertexShader.glsl", "shaders/FragmentShader.glsl" );
 	VertexArray VAO;
 
-	TrueTypeFont ttf( "res/fonts/arial.ttf", 32 );
-
-	SegmentLine line( Position( 100.0f, 100.0f ), Position( 200.0f, 200.0f ), Colour( 1.0f, 0.0f, 0.0f, 1.0f ) );
-
-	int b = 1 + 1;
+	Sprite sprite( Position( 100.0f, 100.0f ), TextureCodex::Acquire( "res/background_blue1.png" ) );
 
 	auto timePoint = std::chrono::steady_clock::now( );
 
@@ -63,9 +59,6 @@ int main( )
 			deltaTime = std::chrono::duration<float>( newTimePoint - timePoint ).count( );
 			timePoint = newTimePoint;
 		}
-
-		std::cout << deltaTime << '\n';
-
 		shader.Enable( );
 
 		glm::mat4 view;
@@ -78,7 +71,7 @@ int main( )
 
 		VAO.Bind( );
 
-		ttf.RenderText( shader, "the quick brown fox jumps over the lazy dog", 100.0f, 400.0f, Colour( 1.0f, 1.0f, 1.0f, 1.0f ) );
+		sprite.Render( shader );
 
 		VAO.Unbind( );
 

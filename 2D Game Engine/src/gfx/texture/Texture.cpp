@@ -4,6 +4,8 @@
 
 #include <SOIL/SOIL.h>
 
+#include <iostream>
+
 Texture::Texture( const std::string& filepath )
 {
 	glGenTextures( 1, &textureID );
@@ -16,7 +18,8 @@ Texture::Texture( const std::string& filepath )
 	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
 	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
 
-	auto data = SOIL_load_image( filepath.c_str(), &width, &height, 0, SOIL_LOAD_RGBA );
+	auto file = filepath.c_str( );
+	auto data = SOIL_load_image( file, &width, &height, 0, SOIL_LOAD_RGBA );
 
 	if( data )
 	{
@@ -24,7 +27,8 @@ Texture::Texture( const std::string& filepath )
 		glGenerateMipmap( GL_TEXTURE_2D );
 	}
 	else
-		throw std::runtime_error( "Failed to load texture.\n" );
+		std::cout << SOIL_last_result( ) << '\n';
+		// throw std::runtime_error{ "Failed to load texture:" };
 
 	SOIL_free_image_data( data );
 

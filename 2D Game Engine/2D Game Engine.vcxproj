@@ -127,7 +127,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\gfx\fonts\TrueTypeFont.cpp" />
     <ClCompile Include="src\gfx\Animation\Animation.cpp" />
-    <ClCompile Include="src\gfx\b2draw\DebugDraw.cpp" />
     <ClCompile Include="src\gfx\buffers\IndexBuffer.cpp" />
     <ClCompile Include="src\gfx\buffers\VertexArray.cpp" />
     <ClCompile Include="src\gfx\buffers\VertexBuffer.cpp" />
@@ -142,10 +141,6 @@
     <ClCompile Include="src\shader\Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\background_blue1.png" />
-    <Image Include="res\paddle.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="shaders\FragmentShader.glsl" />
     <None Include="shaders\VertexShader.glsl" />
   </ItemGroup>
@@ -154,7 +149,6 @@
     <ClInclude Include="src\collision\shapes\Triangle.h" />
     <ClInclude Include="src\gfx\fonts\TrueTypeFont.h" />
     <ClInclude Include="src\gfx\Animation\Animation.h" />
-    <ClInclude Include="src\gfx\b2draw\DebugDraw.h" />
     <ClInclude Include="src\gfx\buffers\IndexBuffer.h" />
     <ClInclude Include="src\gfx\buffers\VertexArray.h" />
     <ClInclude Include="src\gfx\buffers\VertexBuffer.h" />
@@ -180,6 +174,10 @@
   <ItemGroup>
     <Font Include="res\fonts\arial.ttf" />
     <Font Include="res\fonts\times.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\background_blue1.png" />
+    <Image Include="res\Clap Clap Mofo.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

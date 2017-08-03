@@ -1,5 +1,7 @@
 #pragma once
 
+#include <vector>
+
 #include <glm/glm.hpp>
 
 #include "../buffers/VertexArray.h"
@@ -48,9 +50,7 @@ protected:
 			glDrawElements( GL_LINE_LOOP, IBO.GetCount( ), GL_UNSIGNED_INT, nullptr );
 		}
 		else
-		{
 			throw std::out_of_range{ "The type of rendering specified does not match the available types!\n" };
-		}
 
 		IBO.Unbind();
 	}
@@ -66,9 +66,7 @@ protected:
 			glDrawArrays( GL_LINE_LOOP, 0, verticesCount );
 		}
 		else
-		{
 			throw std::out_of_range{ "The type of rendering specified does not match the available types!\n" };
-		}
 	}
 
 protected:
@@ -84,6 +82,14 @@ protected:
 
 	unsigned short currentType;
 	float lineWidth;
+
+	std::vector<GLfloat> vertices =
+	{
+		0.0f, 0.0f, 0.0f,
+		0.0f, 1.0f, 0.0f,
+		1.0f, 1.0f, 0.0f,
+		1.0f, 0.0f, 0.0f
+	};
 
 	VertexBuffer vertVBO;
 	VertexBuffer colourVBO;

@@ -21,16 +21,10 @@ public:
 	const Position& GetPosition( ) const { return position; }
 	const GLf_Size& GetSize( ) const { return size; }
 
+	void SetScale( float scale );
 	void SetTexture( std::shared_ptr<Texture> pTexture );
-
-	void ScaleSprite( float scale );
-	
 	void SetTextureRect( const FloatRect& rect );
-	void SetTextureRect( const float x, const float y, const float dx, const float dy );
-	void SetTextureRect( const Position& position, const GLf_Size& size );
-
 	void SetTextCoords( const float x, const float y, const float dx, const float dy );
-	void SetTextCoords( const Position& position, const GLf_Size& size );
 
 	Sprite& operator=( Sprite&& rSprite ) = default;
 
