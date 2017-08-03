@@ -20,10 +20,10 @@ public:
 	Renderable( const Position& position, const GLf_Size& size, const Colour& colour, unsigned short type = 0 )
 		: position( position ), size( size ), colour( colour ), currentType( type ) {	}
 
-	Renderable( const Position& p1, const Position& p2, const Colour& colour, unsigned short type = 1 )
+	Renderable( const GLf_Point& p1, const GLf_Point& p2, const Colour& colour, unsigned short type = 1 )
 		: p1( p1 ), p2( p2 ), colour( colour ), currentType( type ) {	}
 
-	Renderable( const Position& p1, const Position& p2, const Position& p3, const Colour& colour, unsigned short type = 0 )
+	Renderable( const GLf_Point& p1, const GLf_Point& p2, const GLf_Point& p3, const Colour& colour, unsigned short type = 0 )
 		: p1( p1 ), p2( p2 ), p3( p3 ), colour( colour ), currentType( type ) {	}
 
 	virtual ~Renderable() = default;
@@ -71,12 +71,12 @@ protected:
 
 protected:
 	Position position;
-	GLf_Size size;
 	Colour colour;
+	GLf_Size size;
 
-	Position p1;
-	Position p2;
-	Position p3;
+	GLf_Point p1;
+	GLf_Point p2;
+	GLf_Point p3;
 
 	GLuint verticesCount;
 

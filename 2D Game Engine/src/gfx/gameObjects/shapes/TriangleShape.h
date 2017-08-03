@@ -13,15 +13,15 @@ class TriangleShape : public Renderable
 {
 public:
 	TriangleShape( ) = default;
-	TriangleShape( const Position& p1, const Position& p2, const Position& p3, const Colour& colour, unsigned short type = 0 );
+	TriangleShape( const GLf_Point& p1, const GLf_Point& p2, const GLf_Point& p3, const Colour& colour, unsigned short type = 0 );
 
 	void Render( Shader& shader ) override;
 
-	void SetVertex( const Position& vertex, int index );
-	void SetVertices( const Position& p1, const Position& p2, const Position& p3 );
+	void SetVertex( const GLf_Point& vertex, int index );
+	void SetVertices( const GLf_Point& p1, const GLf_Point& p2, const GLf_Point& p3 );
 	void SetColour( const Colour& colour );
 
-	const Position& GetVertex( int number ) const;
+	const GLf_Point& GetVertex( int number ) const;
 	const Colour& GetColour( ) const { return colour; }
 
 public:

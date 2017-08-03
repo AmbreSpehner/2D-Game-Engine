@@ -43,7 +43,9 @@ int main( )
 	Shader shader( "shaders/VertexShader.glsl", "shaders/FragmentShader.glsl" );
 	VertexArray VAO;
 
-	Sprite sprite( Position( 100.0f, 100.0f ), TextureCodex::Acquire( "res/background_blue1.png" ) );
+	TriangleShape shape( GLf_Point( 400.0f, 400.0f ), GLf_Point( 500.0f, 400.0f ), GLf_Point( 400.0f, 500.0f ), Colour( 1.0f, 1.0f, 1.0f, 1.0f ) );
+	SegmentLine line( GLf_Point( 100.0f, 100.0f ), GLf_Point( 200.0f, 200.0f ), Colour( 1.0f, 0.0f, 0.0f, 1.0f ) );
+	line.SetLineWidth( 3 );
 
 	auto timePoint = std::chrono::steady_clock::now( );
 
@@ -71,7 +73,8 @@ int main( )
 
 		VAO.Bind( );
 
-		sprite.Render( shader );
+		shape.Render( shader );
+		line.Render( shader );
 
 		VAO.Unbind( );
 

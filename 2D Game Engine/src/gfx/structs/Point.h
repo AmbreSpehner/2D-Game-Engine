@@ -10,7 +10,7 @@ struct Point
 	Point( const Position& p ) : x( p.x ), y( p.y ), z( p.z ) {	}
 
 	explicit operator glm::vec3( ) { return glm::vec3( x, y, z ); }
-	explicit const T operator[]( const int index ) const
+	const T operator[]( const int index ) const
 	{
 		if( index == 0 ) return x;
 		if( index == 1 ) return y;
@@ -19,3 +19,7 @@ struct Point
 
 	T x, y, z;
 };
+
+typedef Point<GLdouble> GLd_Point;
+typedef Point<GLfloat> GLf_Point;
+typedef Point<GLint> GLi_Point;

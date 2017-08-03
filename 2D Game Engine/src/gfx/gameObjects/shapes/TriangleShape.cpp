@@ -4,7 +4,7 @@
 
 #include <stdexcept>
 
-TriangleShape::TriangleShape( const Position& p1, const Position& p2, const Position& p3, const Colour& colour, unsigned short type )
+TriangleShape::TriangleShape( const GLf_Point& p1, const GLf_Point& p2, const GLf_Point& p3, const Colour& colour, unsigned short type )
 	:
 	Renderable( p1, p2, p3, colour, type )
 {
@@ -38,7 +38,7 @@ void TriangleShape::Render( Shader& shader )
 	Renderable::RenderVertices( );
 }
 
-void TriangleShape::SetVertex( const Position& vertex, int index )
+void TriangleShape::SetVertex( const GLf_Point& vertex, int index )
 {
 	if( index == VertexNum::P1 )
 		p1 = vertex;
@@ -60,7 +60,7 @@ void TriangleShape::SetVertex( const Position& vertex, int index )
 	VAO.BindBuffer( vertVBO, ShaderLocation::POSITION, 0, 0 );
 }
 
-void TriangleShape::SetVertices( const Position& p1, const Position& p2, const Position& p3 )
+void TriangleShape::SetVertices( const GLf_Point& p1, const GLf_Point& p2, const GLf_Point& p3 )
 {
 	this->p1 = p1;
 	this->p2 = p2;
@@ -92,7 +92,7 @@ void TriangleShape::SetColour( const Colour& colour )
 	VAO.BindBuffer( colourVBO, ShaderLocation::COLOUR, 0, 0 );
 }
 
-const Position& TriangleShape::GetVertex( int number ) const
+const GLf_Point& TriangleShape::GetVertex( int number ) const
 {
 	if( number == VertexNum::P1 )
 		return p1;
