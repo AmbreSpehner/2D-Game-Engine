@@ -43,6 +43,8 @@
     <ClInclude Include="src\collision\shapes\Rect.h" />
     <ClInclude Include="src\collision\shapes\Triangle.h" />
     <ClInclude Include="src\collision\shapes\Line.h" />
+    <ClInclude Include="src\gfx\structs\Point.h" />
+    <ClInclude Include="src\collision\structs\AABB.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\FragmentShader.glsl" />

@@ -85,6 +85,14 @@ void Sprite::SetTextureRect( const FloatRect& rect )
 	SetTextCoords( textureRect.x, textureRect.y, textureRect.dx, textureRect.dy );
 }
 
+void Sprite::SetTextureRect( const float x, const float y, const float dx, const float dy )
+{
+	textureRect.SetRect( x, y, dx, dy );
+
+	SetSize( GLf_Size( dx * scale, dy * scale ) );
+	SetTextCoords( textureRect.x, textureRect.y, textureRect.dx, textureRect.dy );
+}
+
 void Sprite::SetTextCoords( const float x, const float y, const float dx, const float dy )
 {
 	std::vector<GLfloat> textVert =

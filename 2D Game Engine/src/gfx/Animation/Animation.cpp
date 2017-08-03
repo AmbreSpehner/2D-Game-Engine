@@ -15,7 +15,7 @@ Animation::Animation( float x, float y, float dx, float dy, int numFrames, float
 	}
 }
 
-void Animation::ApplyToSprite( Sprite & sprite ) const
+void Animation::ApplyToSprite( Sprite& sprite ) const
 {
 	sprite.SetTextureRect( frames[frameIndex].x, frames[frameIndex].y,
 						   frames[frameIndex].dx, frames[frameIndex].dy );

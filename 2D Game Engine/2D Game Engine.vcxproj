@@ -159,7 +159,9 @@
     <ClInclude Include="src\gfx\gameObjects\shapes\SegmentLine.h" />
     <ClInclude Include="src\gfx\gameObjects\Sprite.h" />
     <ClInclude Include="src\gfx\gameObjects\shapes\TriangleShape.h" />
+    <ClInclude Include="src\collision\structs\AABB.h" />
     <ClInclude Include="src\gfx\structs\Colour.h" />
+    <ClInclude Include="src\gfx\structs\Point.h" />
     <ClInclude Include="src\gfx\structs\Position.h" />
     <ClInclude Include="src\gfx\structs\Size.h" />
     <ClInclude Include="src\gfx\structs\Structs.h" />

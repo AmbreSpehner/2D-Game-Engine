@@ -6,26 +6,9 @@
 SegmentLine::SegmentLine( const Position& p1, const Position& p2, const Colour& colour, unsigned short type )
 	:
 	Renderable( p1, p2, colour, type )
-{
-	std::vector<GLfloat> vertices =
-	{
-		this->p1.x, this->p1.y, this->p1.z,
-		this->p2.x, this->p2.y, this->p2.z
-	};
-	
-	std::vector<GLfloat> colours =
-	{
-		this->colour.r, this->colour.g, this->colour.b, this->colour.a,
-		this->colour.r, this->colour.g, this->colour.b, this->colour.a
-	};
-
-	vertVBO = VertexBuffer( vertices, vertices.size( ), 3 );
-	colourVBO = VertexBuffer( colours, colours.size( ), 4 );
-
-	VAO.BindBuffer( vertVBO, ShaderLocation::POSITION, 0, 0 );
-	VAO.BindBuffer( colourVBO, ShaderLocation::COLOUR, 0, 0 );
-
-	verticesCount = vertices.size( ) / vertVBO.GetComponentCount( );
+{	
+	SetPoints( p1, p2 );
+	SetColour( colour );
 }
 
 void SegmentLine::Render( Shader& shader )
@@ -59,6 +42,8 @@ void SegmentLine::SetPoint( const Position & p, int index )
 
 	vertVBO = VertexBuffer( vertices, vertices.size( ), 3 );
 	VAO.BindBuffer( vertVBO, ShaderLocation::POSITION, 0, 0 );
+
+	verticesCount = vertices.size( ) / vertVBO.GetComponentCount( );
 }
 
 void SegmentLine::SetPoints( const Position & p1, const Position & p2 )

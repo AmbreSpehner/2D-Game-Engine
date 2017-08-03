@@ -24,6 +24,7 @@ public:
 	void SetScale( float scale );
 	void SetTexture( std::shared_ptr<Texture> pTexture );
 	void SetTextureRect( const FloatRect& rect );
+	void SetTextureRect( const float x, const float y, const float dx, const float dy );
 	void SetTextCoords( const float x, const float y, const float dx, const float dy );
 
 	Sprite& operator=( Sprite&& rSprite ) = default;
