@@ -10,7 +10,7 @@ TriangleShape::TriangleShape( const Point<GLfloat>& p1, const Point<GLfloat>& p2
 {
 	std::vector<GLfloat> vertices =
 	{
-		this->p1.x, this->p1.y, this->p1.z,
+		this->p1.x, this->p2.y, this->p3.z,
 		this->p2.x, this->p2.y, this->p2.z,
 		this->p3.x, this->p3.y, this->p3.z
 	};
@@ -34,6 +34,11 @@ TriangleShape::TriangleShape( const Point<GLfloat>& p1, const Point<GLfloat>& p2
 void TriangleShape::Render( Shader& shader )
 {
 	VAO.Bind( );
+
+	glm::mat4 model;
+	model = glm::translate( model, glm::vec3( 0, 0, 0 ) );
+	
+	shader.SetUniformMat4f( "model", model );
 
 	Renderable::RenderVertices( );
 }
