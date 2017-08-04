@@ -23,7 +23,6 @@ struct Position
 
 	explicit operator glm::vec3( ) const { return glm::vec3{ x, y, z }; }
 	explicit operator glm::vec2( ) const { return glm::vec2{ x, y }; }
-	explicit operator b2Vec2( ) const { return b2Vec2{ x, y }; }
 
 	GLfloat x, y, z;
 };

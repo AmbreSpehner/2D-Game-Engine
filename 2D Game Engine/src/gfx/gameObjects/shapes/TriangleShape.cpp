@@ -22,8 +22,8 @@ TriangleShape::TriangleShape( const Point<GLfloat>& p1, const Point<GLfloat>& p2
 		this->colour.r, this->colour.g, this->colour.b, this->colour.a
 	};
 
-	vertVBO = VertexBuffer( vertices, vertices.size( ), 3 );
-	colourVBO = VertexBuffer( colours, colours.size( ), 4 );
+	vertVBO = VertexBuffer( vertices, vertices.size( ), 3, VertexBuffer::BufferUsage::STATIC );
+	colourVBO = VertexBuffer( colours, colours.size( ), 4, VertexBuffer::BufferUsage::STATIC );
 
 	VAO.BindBuffer( vertVBO, ShaderLocation::POSITION, 0, 0 );
 	VAO.BindBuffer( colourVBO, ShaderLocation::COLOUR, 0, 0 );

@@ -7,24 +7,35 @@ SegmentLine::SegmentLine( const Point<GLfloat>& p1, const Point<GLfloat>& p2, co
 	:
 	Renderable( p1, p2, colour, type )
 {	
-	SetColour( colour );
-	
 	std::vector<GLfloat> vertices =
 	{
-		this->p1.x, this->p1.y, this->p1.z,
-		this->p2.x, this->p2.y, this->p2.z
+		0.0f, 0.0f, 0.0f,
+		1.0f, 1.0f, 1.0f
 	};
 
-	vertVBO = VertexBuffer( vertices, vertices.size( ), 3 );
+	std::vector<GLfloat> colours =
+	{
+		this->colour.r, this->colour.g, this->colour.b, this->colour.a,
+		this->colour.r, this->colour.g, this->colour.b, this->colour.a
+	};
+
+	vertVBO = VertexBuffer( vertices, vertices.size( ), 3, VertexBuffer::BufferUsage::STATIC );
+	colourVBO = VertexBuffer( colours, colours.size( ), 4, VertexBuffer::BufferUsage::STATIC );
+
 	VAO.BindBuffer( vertVBO, ShaderLocation::POSITION, 0, 0 );
+	VAO.BindBuffer( colourVBO, ShaderLocation::COLOUR, 0, 0 );
 
 	verticesCount = vertices.size( ) / vertVBO.GetComponentCount( );
-
 }
 
 void SegmentLine::Render( Shader& shader )
 {
 	VAO.Bind( );
+
+	glm::mat4 model;
+	model = glm::translate( model, static_cast< glm::vec3 >( p1 ) ) * glm::scale( model, glm::vec3( p2.x / 2.0f, p2.y / 2.0f, p2.z ) );
+
+	shader.SetUniformMat4f( "model", model );
 
 	Renderable::RenderVertices( );
 }
@@ -44,32 +55,12 @@ void SegmentLine::SetPoint( const Point<GLfloat>& p, int index )
 		p2 = p;
 	else
 		throw std::out_of_range{ "Chosen vertex does not exist!\n" };
-
-	std::vector<GLfloat> vertices =
-	{
-		this->p1.x, this->p1.y, this->p1.z,
-		this->p2.x, this->p2.y, this->p2.z
-	};
-
-	vertVBO = VertexBuffer( vertices, vertices.size( ), 3 );
-	VAO.BindBuffer( vertVBO, ShaderLocation::POSITION, 0, 0 );
 }
 
 void SegmentLine::SetPoints( const Point<GLfloat>& p1, const Point<GLfloat>& p2 )
 {
 	this->p1 = p1;
 	this->p2 = p2;
-
-	std::vector<GLfloat> vertices =
-	{
-		this->p1.x, this->p1.y, this->p1.z,
-		this->p2.x, this->p2.y, this->p2.z
-	};
-
-	vertVBO = VertexBuffer( vertices, vertices.size( ), 3 );
-	VAO.BindBuffer( vertVBO, ShaderLocation::POSITION, 0, 0 );
-
-	verticesCount = vertices.size( ) / vertVBO.GetComponentCount( );
 }
 
 void SegmentLine::SetColour( const Colour& colour )

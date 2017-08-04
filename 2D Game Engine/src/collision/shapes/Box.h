@@ -25,6 +25,9 @@ public:
 		bool xOverlap = Abs( localAABB.centerPoint[0] - AABB.centerPoint[0] ) <= ( localAABB.halfWidth[0] + AABB.halfWidth[0] );
 		bool yOverlap = Abs( localAABB.centerPoint[1] - AABB.centerPoint[1] ) <= ( localAABB.halfHeight[1] + AABB.halfHeight[1] );
 
+		std::cout << "xOverlap: " << xOverlap << '\n';
+		std::cout << "yOverlap: " << yOverlap << '\n';
+
 		return xOverlap && yOverlap;
 	}
 
