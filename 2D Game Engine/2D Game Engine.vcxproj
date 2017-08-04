@@ -145,8 +145,8 @@
     <None Include="shaders\VertexShader.glsl" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\collision\shapes\Line.h" />
-    <ClInclude Include="src\collision\shapes\Triangle.h" />
+    <ClInclude Include="src\collision\shapes\Box.h" />
+    <ClInclude Include="src\collision\structs\Line.h" />
     <ClInclude Include="src\gfx\fonts\TrueTypeFont.h" />
     <ClInclude Include="src\gfx\Animation\Animation.h" />
     <ClInclude Include="src\gfx\buffers\IndexBuffer.h" />

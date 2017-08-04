@@ -19,6 +19,7 @@ public:
 	void RenderText( Shader& shader, std::string text, GLfloat x, GLfloat y, Colour& colour, GLfloat scale = 1.0f );
 
 	void SetColour( const Colour& colour );
+	void SetHeight( GLuint fontHeight );
 
 public:
 	struct Character

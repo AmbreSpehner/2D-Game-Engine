@@ -27,6 +27,7 @@
 #include "src/gfx/gameObjects/shapes/SegmentLine.h"
 #include "src/gfx/gameObjects/RenderableImage.h"
 #include "src/gfx/fonts/TrueTypeFont.h"
+#include "src/collision/shapes/Box.h"
 
 #include <Box2D/Box2D.h>
 
@@ -43,9 +44,14 @@ int main( )
 	Shader shader( "shaders/VertexShader.glsl", "shaders/FragmentShader.glsl" );
 	VertexArray VAO;
 
-	TriangleShape shape( GLf_Point( 400.0f, 400.0f ), GLf_Point( 500.0f, 400.0f ), GLf_Point( 400.0f, 500.0f ), Colour( 1.0f, 1.0f, 1.0f, 1.0f ) );
-	SegmentLine line( GLf_Point( 100.0f, 100.0f ), GLf_Point( 200.0f, 200.0f ), Colour( 1.0f, 0.0f, 0.0f, 1.0f ) );
+	TriangleShape shape( Point<GLfloat>( 400.0f, 400.0f ), Point<GLfloat>( 500.0f, 400.0f ), Point<GLfloat>( 400.0f, 500.0f ), Colour( 1.0f, 1.0f, 1.0f, 1.0f ) );
+	SegmentLine line( Point<GLfloat>( 100.0f, 100.0f ), Point<GLfloat>( 200.0f, 200.0f ), Colour( 1.0f, 0.0f, 0.0f, 1.0f ) );
 	line.SetLineWidth( 3 );
+
+	Box<GLfloat> box1( 0, 0, 100.0f, 100.0f );
+	Box<GLfloat> box2( 100, 101, 100.0f, 100.0f );
+
+	box1.isColliding( box2.GetAABB( ) );
 
 	auto timePoint = std::chrono::steady_clock::now( );
 

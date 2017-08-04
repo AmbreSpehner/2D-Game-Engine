@@ -41,10 +41,10 @@
     <ClInclude Include="src\gfx\fonts\TrueTypeFont.h" />
     <ClInclude Include="src\gfx\gameObjects\RenderableImage.h" />
     <ClInclude Include="src\collision\shapes\Rect.h" />
-    <ClInclude Include="src\collision\shapes\Triangle.h" />
-    <ClInclude Include="src\collision\shapes\Line.h" />
     <ClInclude Include="src\gfx\structs\Point.h" />
     <ClInclude Include="src\collision\structs\AABB.h" />
+    <ClInclude Include="src\collision\structs\Line.h" />
+    <ClInclude Include="src\collision\shapes\Box.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\FragmentShader.glsl" />

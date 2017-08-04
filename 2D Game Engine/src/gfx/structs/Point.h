@@ -19,7 +19,3 @@ struct Point
 
 	T x, y, z;
 };
-
-typedef Point<GLdouble> GLd_Point;
-typedef Point<GLfloat> GLf_Point;
-typedef Point<GLint> GLi_Point;

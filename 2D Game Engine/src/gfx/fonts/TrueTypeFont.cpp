@@ -91,3 +91,8 @@ void TrueTypeFont::SetColour( const Colour & colour )
 {
 	image.SetColour( colour );
 }
+
+void TrueTypeFont::SetHeight( GLuint fontHeight )
+{
+	FT_Set_Pixel_Sizes( face, 0, fontHeight );
+}

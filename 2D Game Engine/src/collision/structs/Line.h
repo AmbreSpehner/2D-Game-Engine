@@ -5,20 +5,19 @@
 #include "../../gfx/structs/Structs.h"
 
 template<typename T>
-class Line
+struct Line
 {
-public:
 	Line( ) = default;
-	Line( const Position<T>& p1, const Position<T>& p2 )
+	Line( const Point<T>& p1, const Point<T>& p2 )
 		: p1( p1 ), p2( p2 ) {	}
 
-	void SetLine( const Position<T>& p1, const Position<T>& p2 )
+	void SetLine( const Point<T>& p1, const Point<T>& p2 )
 	{
 		this->p1 = p1;
 		this->p2 = p2;
 	}
 
-	void SetVertex( const Position<T>& vertex, int index )
+	void SetVertex( const Point<T>& vertex, int index )
 	{
 		if( index == P1 )
 			this->p1 = vertex;
@@ -38,13 +37,11 @@ public:
 			throw std::out_of_range{ "The specified index does ot exist!\n" };
 	}
 
-public:
 	enum VertexIndex
 	{
 		P1 = 0,
 		P2 = 1
 	};
 
-private:
-	Position<T> p1, p2;
+	Point<T> p1, p2;
 };

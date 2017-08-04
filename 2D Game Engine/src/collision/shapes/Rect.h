@@ -4,9 +4,8 @@
 #include <glm/vec2.hpp>
 
 template<typename T>
-class Rect
+struct Rect
 {
-public:
 	Rect() = default;
 	Rect( const T x, const T y, const T dx, const T dy )
 		: x( x ), y( y ), dx( dx ), dy( dy ) {	}
@@ -68,9 +67,7 @@ public:
 		return glm::vec2( ( x + dx ) / 2.0f, ( y + dy ) / 2.0f );
 	}
 
-public:
-	T x, y;
-	T dx, dy;
+	T x, y, dx, dy;
 };
 
 typedef Rect<GLfloat> GLf_Rect;
