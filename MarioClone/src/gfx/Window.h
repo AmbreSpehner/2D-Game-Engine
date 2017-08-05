@@ -22,6 +22,8 @@ public:
 
 	void SetIcon( const std::string& path );
 	void SetKeyCallback( GLFWkeyfun keyCallback );
+	void SetMouseButtonCallback( GLFWmousebuttonfun mouseButtonCallback );
+	void SetMousePositionCallback( GLFWcursorposfun mousePositionCallback );
 
 	void EnableFrameLimit( bool state );
 

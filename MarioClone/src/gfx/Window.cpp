@@ -87,3 +87,12 @@ void Window::SetKeyCallback( GLFWkeyfun keyCallback )
 	glfwSetKeyCallback( pWindow, keyCallback );
 }
 
+void Window::SetMouseButtonCallback( GLFWmousebuttonfun mouseButtonCallback )
+{
+	glfwSetMouseButtonCallback( pWindow, mouseButtonCallback );
+}
+
+void Window::SetMousePositionCallback( GLFWcursorposfun mousePositionCallback )
+{
+	glfwSetCursorPosCallback( pWindow, mousePositionCallback );
+}

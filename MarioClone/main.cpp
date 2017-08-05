@@ -44,8 +44,8 @@ int main( )
 	Shader shader( "shaders/VertexShader.glsl", "shaders/FragmentShader.glsl" );
 	VertexArray VAO;
 
-	RectangleShape shape1( Position( 100, 100.0f ), GLf_Size( 100, 100 ), Colour( 0.0f, 0.0f, 0.0f, 1.0f ), Renderable::FILLED );
-	TriangleShape shape2( Point<GLfloat>( 100.0f, 100.0f ), Point<GLfloat>( 200.0f, 100.0f ), Point<GLfloat>( 100.0f, 200.0f ), Colour( 0.0f, 1.0f, 0.0f, 1.0f ) );
+	Sprite sprite( Position( 100.0f, 100.0f ), TextureCodex::Acquire( "res/background_blue1.png" ) );
+	sprite.SetScale( 2 );
 
 	Box<GLfloat> box1( 0, 0, 100.0f, 100.0f );
 	Box<GLfloat> box2( -101, -101, 100.0f, 100.0f );
@@ -78,8 +78,7 @@ int main( )
 
 		VAO.Bind( );
 
-		shape2.Render( shader );
-		shape1.Render( shader );
+		sprite.Render( shader );
 
 		VAO.Unbind( );
 
