@@ -27,19 +27,34 @@ public:
 	class InputManager
 	{
 	public:
-		static void MoveRight( )
+		static void MoveRight( Game& game )
 		{
-			
+			game.mario.MoveRight( );
 		}
 
-		static void MoveLeft( )
+		static void MoveLeft( Game& game )
 		{
-
+			game.mario.MoveLeft( );
 		}
 
-		static void Jump( )
+		static void Jump( Game& game )
 		{
+			game.mario.Jump( );
+		}
 
+		static void NotMovingRight( Game& game )
+		{
+			game.mario.NotMovingRight( );
+		}
+
+		static void NotMovingLeft( Game& game )
+		{
+			game.mario.NotMovingLeft( );
+		}
+
+		static void NotJumping( Game& game )
+		{
+			game.mario.NotJumping( );
 		}
 	};
 };

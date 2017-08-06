@@ -25,6 +25,7 @@ Window::Window( const GLint width, const GLint height, const std::string& title 
 	}
 
 	glfwMakeContextCurrent( pWindow );
+	glfwSetWindowPos( pWindow, 100, 100 );
 
 	glewExperimental = 1;
 	if( glewInit() != 0 )

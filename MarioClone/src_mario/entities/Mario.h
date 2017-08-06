@@ -21,6 +21,15 @@ public:
 	void Render( Shader& shader );
 
 	void HitGround( GroundBlock& block );
+
+	void MoveLeft( );
+	void MoveRight( );
+	void Jump( );
+
+	void NotMovingLeft( );
+	void NotMovingRight( );
+	void NotJumping( );
+
 private:
 	Position position;
 
@@ -34,6 +43,7 @@ private:
 	float fallSpeed = 40.0f;
 	float fallRate = 1.25f;
 
-	bool isMovingLeft, isMovingRight;
+	bool isMovingLeft;
+	bool isMovingRight;
 	bool isJumping;
 };

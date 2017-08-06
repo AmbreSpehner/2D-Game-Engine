@@ -22,6 +22,8 @@ GameWindow::GameWindow( const int width, const int height, const std::string& ti
 	Window::SetKeyCallback( GLFWInputManager::KeyCallback );
 	Window::SetMouseButtonCallback( GLFWInputManager::MouseButtonCallback );
 	Window::SetMousePositionCallback( GLFWInputManager::MousePositionCallback );
+
+	glfwSetWindowUserPointer( Window::pWindow, &game );
 }
 
 void GameWindow::MainLoop( )

@@ -14,18 +14,20 @@ public:
 
 		if( action == GLFW_PRESS || action == GLFW_REPEAT )
 		{
-			MoveRight( );
-			MoveLeft( );
+			if( key == GLFW_KEY_A )	MoveLeft( game );
+			if( key == GLFW_KEY_D ) MoveRight( game );
 		}
 
 		if( action == GLFW_PRESS )
 		{
-			Jump( );
+			if( key == GLFW_KEY_SPACE )	Jump( game );
 		}
 
 		if( action == GLFW_RELEASE )
 		{
-
+			if( key == GLFW_KEY_A ) NotMovingLeft( game );
+			if( key == GLFW_KEY_D ) NotMovingRight( game );
+			if( key == GLFW_KEY_SPACE )NotJumping( game );
 		}
 	}
 

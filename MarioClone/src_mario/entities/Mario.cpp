@@ -25,6 +25,15 @@ void Mario::Update( float deltaTime )
 	{
 		position.y -= fallSpeed * deltaTime;
 	}
+
+	if( isMovingLeft )
+	{
+		position.x -= 30 * deltaTime;
+	}
+	if( isMovingRight )
+	{
+		position.x += 30 * deltaTime;
+	}
 }
 
 void Mario::Render( Shader & shader )
@@ -35,4 +44,35 @@ void Mario::Render( Shader & shader )
 void Mario::HitGround( GroundBlock & block )
 {
 	isHittingGround = collisionBox.isColliding( block.GetCollisionBox( ).GetAABB() );
+}
+
+void Mario::MoveLeft( )
+{
+	std::cout << "left\n";
+	isMovingLeft = true;
+}
+
+void Mario::MoveRight( )
+{
+	isMovingRight = true;
+}
+
+void Mario::Jump( )
+{
+	isJumping = true;
+}
+
+void Mario::NotMovingLeft( )
+{
+	isMovingLeft = false;
+}
+
+void Mario::NotMovingRight( )
+{
+	isMovingRight = false;
+}
+
+void Mario::NotJumping( )
+{
+	isJumping = false;
 }
