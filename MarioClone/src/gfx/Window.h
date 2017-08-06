@@ -13,6 +13,7 @@ public:
 	Window( const GLint width, const GLint height, const std::string& title );
 	~Window();
 
+protected:
 	void ProcessInput();
 
 	void Update();
@@ -27,7 +28,7 @@ public:
 
 	void EnableFrameLimit( bool state );
 
-public:
+protected:
 	GLFWwindow* pWindow;
 
 private:

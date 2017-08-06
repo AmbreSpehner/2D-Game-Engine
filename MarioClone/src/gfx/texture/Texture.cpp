@@ -27,8 +27,10 @@ Texture::Texture( const std::string& filepath )
 		glGenerateMipmap( GL_TEXTURE_2D );
 	}
 	else
+	{
 		std::cout << SOIL_last_result( ) << '\n';
-		// throw std::runtime_error{ "Failed to load texture:" };
+		throw std::runtime_error{ "Failed to load texture:" };
+	}
 
 	SOIL_free_image_data( data );
 

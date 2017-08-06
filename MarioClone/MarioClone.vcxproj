@@ -126,6 +126,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\camera\Camera.cpp" />
     <ClCompile Include="src\gfx\fonts\TrueTypeFont.cpp" />
     <ClCompile Include="src\gfx\Animation\Animation.cpp" />
     <ClCompile Include="src\gfx\buffers\IndexBuffer.cpp" />
@@ -140,12 +141,17 @@
     <ClCompile Include="src\gfx\Renderer2D.cpp" />
     <ClCompile Include="src\gfx\Window.cpp" />
     <ClCompile Include="src\shader\Shader.cpp" />
+    <ClCompile Include="src_mario\blocks\GroundBlock.cpp" />
+    <ClCompile Include="src_mario\entities\Mario.cpp" />
+    <ClCompile Include="src_mario\game\Game.cpp" />
+    <ClCompile Include="src_mario\game\GameWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\FragmentShader.glsl" />
     <None Include="shaders\VertexShader.glsl" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\camera\Camera.h" />
     <ClInclude Include="src\collision\shapes\Box.h" />
     <ClInclude Include="src\collision\structs\Line.h" />
     <ClInclude Include="src\gfx\fonts\TrueTypeFont.h" />
@@ -173,14 +179,15 @@
     <ClInclude Include="src\gfx\Window.h" />
     <ClInclude Include="src\shader\Shader.h" />
     <ClInclude Include="src\utils\File_Reader.h" />
+    <ClInclude Include="src_mario\blocks\GroundBlock.h" />
+    <ClInclude Include="src_mario\entities\Mario.h" />
+    <ClInclude Include="src_mario\game\Game.h" />
+    <ClInclude Include="src_mario\game\GameWindow.h" />
+    <ClInclude Include="src_mario\input\GLFWInputManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <Font Include="res\fonts\arial.ttf" />
-    <Font Include="res\fonts\times.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="res\background_blue1.png" />
-    <Image Include="res\Clap Clap Mofo.jpg" />
+    <Image Include="res\marioset.png" />
+    <Image Include="res\tileset.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

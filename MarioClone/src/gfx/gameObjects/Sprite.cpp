@@ -11,10 +11,19 @@ Sprite::Sprite( const Position& position, std::shared_ptr<Texture> pTexture )
 	pTexture( pTexture ),
 	textureRect( 0.0f, 0.0f, 1.0f, 1.0f )
 {
-	SetTextCoords( textureRect.x, textureRect.y, textureRect.dx, textureRect.dy );
+	std::vector<GLfloat> textVert =
+	{
+		textureRect.x, textureRect.y,
+		textureRect.x, textureRect.y + textureRect.dy,
+		textureRect.x + textureRect.dx, textureRect.y + textureRect.dy,
+		textureRect.x + textureRect.dx, textureRect.y
+	};
 
 	vertVBO = VertexBuffer( vertices, vertices.size(), 3 );
+	texCoordVBO = VertexBuffer( textVert, textVert.size( ), 2 );
+
 	VAO.BindBuffer( vertVBO, ShaderLocation::POSITION, 0, 0 );
+	VAO.BindBuffer( texCoordVBO, ShaderLocation::TEXTURE_COORD, 0, 0 );
 
 	std::vector<GLuint> indices = { 0, 1, 2, 0, 2, 3 };
 	IBO = IndexBuffer( indices, indices.size() );
@@ -26,10 +35,19 @@ Sprite::Sprite( const Position& position, const GLf_Size& size, std::shared_ptr<
 	pTexture( pTexture ),
 	textureRect( 0.0f, 0.0f, 1.0f, 1.0f )
 {
-	SetTextCoords( textureRect.x, textureRect.y, textureRect.dx, textureRect.dy );
+	std::vector<GLfloat> textVert =
+	{
+		textureRect.x, textureRect.y,
+		textureRect.x, textureRect.y + textureRect.dy,
+		textureRect.x + textureRect.dx, textureRect.y + textureRect.dy,
+		textureRect.x + textureRect.dx, textureRect.y
+	};
 
-	vertVBO = VertexBuffer( vertices, vertices.size(), 3 );
+	vertVBO = VertexBuffer( vertices, vertices.size( ), 3 );
+	texCoordVBO = VertexBuffer( textVert, textVert.size( ), 2 );
+
 	VAO.BindBuffer( vertVBO, ShaderLocation::POSITION, 0, 0 );
+	VAO.BindBuffer( texCoordVBO, ShaderLocation::TEXTURE_COORD, 0, 0 );
 
 	std::vector<GLuint> indices = { 0, 1, 2, 0, 2, 3 };
 	IBO = IndexBuffer( indices, indices.size() );
@@ -79,31 +97,38 @@ void Sprite::SetScale( float scale )
 
 void Sprite::SetTextureRect( const FloatRect& rect )
 {
-	textureRect.SetRect( rect.x, rect.y, rect.dx, rect.dy );
+	textureRect.SetRect( rect.x / pTexture->GetSize( ).x, rect.y / pTexture->GetSize( ).y, 
+						 rect.dx / pTexture->GetSize( ).x, rect.dy / pTexture->GetSize( ).y );
 
 	SetSize( GLf_Size( rect.dx * scale, rect.dy * scale ) );
-	SetTextCoords( textureRect.x, textureRect.y, textureRect.dx, textureRect.dy );
+
+	std::vector<GLfloat> textVert =
+	{
+		textureRect.x, textureRect.y,
+		textureRect.x, textureRect.y + textureRect.dy,
+		textureRect.x + textureRect.dx, textureRect.y + textureRect.dy,
+		textureRect.x + textureRect.dx, textureRect.y
+	};
+
+	texCoordVBO = VertexBuffer( textVert, textVert.size( ), 2 );
+	VAO.BindBuffer( texCoordVBO, ShaderLocation::TEXTURE_COORD, 0, 0 );
 }
 
 void Sprite::SetTextureRect( const float x, const float y, const float dx, const float dy )
 {
-	textureRect.SetRect( x, y, dx, dy );
+	textureRect.SetRect( x / pTexture->GetSize().x, y / pTexture->GetSize( ).y, 
+						 dx / pTexture->GetSize( ).x, dy / pTexture->GetSize( ).y );
 
 	SetSize( GLf_Size( dx * scale, dy * scale ) );
-	SetTextCoords( textureRect.x, textureRect.y, textureRect.dx, textureRect.dy );
-}
 
-void Sprite::SetTextCoords( const float x, const float y, const float dx, const float dy )
-{
 	std::vector<GLfloat> textVert =
 	{
-		x, y,
-		x, y + dy,
-		x + dx, y + dy,
-		x + dx, y
+		textureRect.x, textureRect.y,
+		textureRect.x, textureRect.y + textureRect.dy,
+		textureRect.x + textureRect.dx, textureRect.y + textureRect.dy,
+		textureRect.x + textureRect.dx, textureRect.y
 	};
 
 	texCoordVBO = VertexBuffer( textVert, textVert.size( ), 2 );
-
 	VAO.BindBuffer( texCoordVBO, ShaderLocation::TEXTURE_COORD, 0, 0 );
 }

@@ -16,6 +16,11 @@
     <ClCompile Include="src\gfx\gameObjects\shapes\SegmentLine.cpp" />
     <ClCompile Include="src\gfx\fonts\TrueTypeFont.cpp" />
     <ClCompile Include="src\gfx\gameObjects\RenderableImage.cpp" />
+    <ClCompile Include="src\camera\Camera.cpp" />
+    <ClCompile Include="src_mario\game\GameWindow.cpp" />
+    <ClCompile Include="src_mario\game\Game.cpp" />
+    <ClCompile Include="src_mario\blocks\GroundBlock.cpp" />
+    <ClCompile Include="src_mario\entities\Mario.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\gfx\Animation\Animation.h" />
@@ -45,17 +50,19 @@
     <ClInclude Include="src\collision\structs\AABB.h" />
     <ClInclude Include="src\collision\structs\Line.h" />
     <ClInclude Include="src\collision\shapes\Box.h" />
+    <ClInclude Include="src\camera\Camera.h" />
+    <ClInclude Include="src_mario\game\GameWindow.h" />
+    <ClInclude Include="src_mario\game\Game.h" />
+    <ClInclude Include="src_mario\input\GLFWInputManager.h" />
+    <ClInclude Include="src_mario\blocks\GroundBlock.h" />
+    <ClInclude Include="src_mario\entities\Mario.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\FragmentShader.glsl" />
     <None Include="shaders\VertexShader.glsl" />
   </ItemGroup>
   <ItemGroup>
-    <Font Include="res\fonts\times.ttf" />
-    <Font Include="res\fonts\arial.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="res\Clap Clap Mofo.jpg" />
-    <Image Include="res\background_blue1.png" />
+    <Image Include="res\tileset.png" />
+    <Image Include="res\marioset.png" />
   </ItemGroup>
 </Project>
